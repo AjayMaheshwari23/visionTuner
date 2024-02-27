@@ -48,7 +48,7 @@ export default function RootLayout({
         break;
 
       case "3":
-        router.push("/nav3");
+        router.push("/settings");
         break;
 
       default:

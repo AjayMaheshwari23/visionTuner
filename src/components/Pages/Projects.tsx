@@ -4,7 +4,8 @@ const ProjectPage = () => {
   return (
     <>
       <div className="maindivP">
-        <ProjectCard />
+        <h1>Hello Projects</h1>
+        {/* <ProjectCard /> */}
       </div>
     </>
   );
