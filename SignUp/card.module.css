@@ -1,0 +1,92 @@
+.btn {
+    margin: 10%;
+    text-align: center;
+
+}
+
+.btn {
+    width: 200px;
+    font-size: 25px;
+    font-weight: 600;
+    color: #f1e4e4;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: 8vh;
+    height: 50px;
+    /* text-align:center; */
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.btn {
+    background-image: linear-gradient(to right, #fc6076, #ff9a44, #ef9d43, #e75516);
+    box-shadow: 0 4px 15px 0 rgba(252, 104, 110, 0.75);
+}
+
+.f_social_icon {
+    /* line-height: 43px; */
+    background: transparent;
+    /* border: 1px solid #e2e2eb; */
+    justify-content: center;
+    display: flex;
+    /* font-size: 20px; */
+}
+
+.social {
+    align-items: center;
+    justify-items: center;
+    margin-top: 20px;
+    margin-left: 10px;
+    border-radius: 50%;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 15px;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+
+.social:hover {
+    transform: translateY(-5px);
+}
+
+.facebook {
+    background: #0b34ec;
+    border-color: #0b34ec;
+    color: white;
+}
+
+.twitter {
+    background: #2ca6ed;
+    border-color: #2ca6ed;
+    color: white;
+}
+
+.google {
+    background: #e92525;
+    border-color: #e92525;
+    color: white;
+}
+
+.linkedin {
+    background: #29d1dd;
+    border-color: #29d1dd;
+    color: white;
+}
