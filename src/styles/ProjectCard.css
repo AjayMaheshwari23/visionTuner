@@ -1,0 +1,18 @@
+.metaInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-overflow: clip;
+}
+
+.metaDescription {
+  width: 250px;
+  overflow-wrap: break-word;
+  text-align: center;
+}
+
+.projectImage {
+  width: 400px;
+  height: 150px;
+}

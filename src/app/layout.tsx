@@ -15,6 +15,7 @@ import {
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
+  SettingOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme } from "antd";
 
@@ -70,17 +71,17 @@ export default function RootLayout({
               items={[
                 {
                   key: "1",
-                  icon: <VideoCameraOutlined />,
-                  label: "Projects",
-                },
-                {
-                  key: "2",
                   icon: <UserOutlined />,
                   label: "Profile",
                 },
                 {
-                  key: "3",
+                  key: "2",
                   icon: <UploadOutlined />,
+                  label: "Projects",
+                },
+                {
+                  key: "3",
+                  icon: <SettingOutlined />,
                   label: "Settings",
                 },
               ]}
