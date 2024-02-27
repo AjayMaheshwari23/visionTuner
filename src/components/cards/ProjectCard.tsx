@@ -6,28 +6,26 @@ import {
 } from "@ant-design/icons";
 import { Avatar, Card } from "antd";
 
-const { Meta } = Card;
+import "../../styles/ProjectCard.css";
+import ProjectImg from "../../../public/assets/images/project.png";
+import Image from "next/image";
 
 const ProjectCard: React.FC = () => (
   <Card
-    style={{ width: 300 }}
-    cover={
-      <img
-        alt="example"
-        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-      />
-    }
+    style={{ width: 300, margin: "15px" }}
+    cover={<Image className="projectImage" alt="Demo projectImage" src={ProjectImg}></Image>}
     actions={[
       <SettingOutlined key="setting" />,
       <EditOutlined key="edit" />,
       <EllipsisOutlined key="ellipsis" />,
     ]}
   >
-    <Meta
-      avatar={<Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=8" />}
-      title="Card title"
-      description="This is the description"
-    />
+    <div className="metaInfo">
+      <h2>Title of Project</h2>
+      <div className="metaDescription">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem, error?
+      </div>
+    </div>
   </Card>
 );
 
