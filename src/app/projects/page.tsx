@@ -1,10 +1,12 @@
 import ProjectCard from "../../components/cards/ProjectCard";
+import ModalComp from "../../components/modal/modal";
 
 const ProjectPage = () => {
+
   return (
     <>
       <ProjectCard />
-      <h1>Hello Projects</h1>
+      <ModalComp />
     </>
   );
 };
