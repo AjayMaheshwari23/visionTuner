@@ -22,7 +22,7 @@ import { Layout, Menu, Button, theme } from "antd";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 
-import "../../styles/dashboard.css";
+import "../../styles/Dashboard.css";
 import Projects from "../../components/Pages/Projects";
 
 const { Header, Sider, Content } = Layout;
