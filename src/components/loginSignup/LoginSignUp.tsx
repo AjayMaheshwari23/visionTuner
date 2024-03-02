@@ -1,7 +1,6 @@
 "use client";
 import styles from "../../styles/LoginSignUp.module.module.css";
 import React, { useState } from "react";
-import ReactCardFlip from "react-card-flip";
 // import { FaFacebook, FaTwitter, FaLinkedinIn, FaGoogle } from "react-icons/fa";
 import LoginA from "./login/Login";
 import SignupA from "./register/Signup";

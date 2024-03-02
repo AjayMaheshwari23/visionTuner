@@ -1,5 +1,5 @@
 "use client";
-import styles from "../LoginSignUp.module.module.css";
+import styles from "../LoginSignUp.module.css";
 import Link from "next/link";
 import { useState } from "react";
 import "../LoginSignUp";
