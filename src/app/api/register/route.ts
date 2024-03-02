@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import User from "../../models/user";
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextApiResponse } from "next";
 
-export function GET(request: NextApiRequest) {
+export function GET(request: Request) {
   const users = [
     {
       name: "Ajay",
