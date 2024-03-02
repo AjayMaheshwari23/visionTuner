@@ -28,29 +28,29 @@ const Second = () => {
     return e?.fileList;
   };
 
- const handleFileChange = async (event) => {
+ const handleFileChange = async (event:any) => {
    const files = event.target.files;
 
    if (files && files.length > 0) {
      // Process each selected file
-     Array.from(files).forEach((file, index) => {
-       const reader = new FileReader();
-       reader.onload = () => {
-         const imageDataUrl = reader.result;
+    //  Array.from(files).forEach((file: File, index: number) => {
+    //    const reader = new FileReader();
+    //    reader.onload = () => {
+    //      const imageDataUrl = String(reader.result);
+    //      if (imageDataUrl !== null) {
+    //        // Save the data URL to local storage with a unique key for each file
+    //        localStorage.setItem(`uploadedImageDataUrl${index}`, imageDataUrl);
 
-         // Save the data URL to local storage with a unique key for each file
-         localStorage.setItem(`uploadedImageDataUrl${index}`, imageDataUrl);
+    //        // Optionally, you can display the uploaded image on the page
+    //        const previewImage = document.createElement("img");
+    //        previewImage.src = imageDataUrl;
+    //        previewImage.style.maxWidth = "100%";
+    //        previewImage.style.marginTop = "10px";
+    //      }
+    //    };
 
-         // Optionally, you can display the uploaded image on the page
-         const previewImage = document.createElement("img");
-         previewImage.src = imageDataUrl;
-         previewImage.style.maxWidth = "100%";
-         previewImage.style.marginTop = "10px";
-        //  document.getElementById("previewImages").appendChild(previewImage);
-       };
-
-       reader.readAsDataURL(file);
-     });
+    //    reader.readAsDataURL(file);
+    //  });
    }
  };
 
