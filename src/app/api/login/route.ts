@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import User from "../../modals/user";
+import User from "../../models/user";
 import { NextApiResponse } from "next";
 
 export function GET(request: Request) {
