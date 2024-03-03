@@ -1,7 +1,7 @@
 import { NextApiResponse } from "next";
 import { NextResponse } from "next/server";
-import { Project } from "../../modals/user";
-import User from "../../modals/user";
+import { Project } from "../../models/user";
+import User from "../../models/user";
 
 export async function POST(req: Request, res: NextApiResponse) {
   try {
@@ -21,7 +21,9 @@ export async function POST(req: Request, res: NextApiResponse) {
     user.projects.push(dummyProject);
 
     res.status(200).json({ message: "Dummy project added successfully", user });
-  } catch (error) {}
+  } catch (error) {
+    res.status(200).json({ message: "ERROR ",  });
+  }
 }
 
 export function GET(req: Request, res: NextApiResponse) {
