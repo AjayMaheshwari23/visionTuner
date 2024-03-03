@@ -58,8 +58,6 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en">
-      <body className={inter.className}>
         <Layout className="dashboard">
           <Sider trigger={null} collapsible collapsed={collapsed}>
             <div className="demo-logo-vertical" />
@@ -105,7 +103,5 @@ export default function RootLayout({
             <Content>{children}</Content>
           </Layout>
         </Layout>
-      </body>
-    </html>
   );
 }

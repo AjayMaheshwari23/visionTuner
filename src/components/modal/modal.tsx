@@ -1,27 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import "../../styles/modal.css";
-import {
-  Modal,
-  FloatButton,
-  Button,
-  Form,
-  Input,
-  InputNumber,
-  Upload,
-  Steps,
-  Space,
-} from "antd";
-
+import { Modal, FloatButton, Button, Form, Steps } from "antd";
+import AnnotateTool from "../../components/annotateTool/page"
 import First from "./first";
 import Second from "./second";
+import ImageInput from "./imageInput";
 
-import {
-  PlusOutlined,
-  InboxOutlined,
-  MinusCircleOutlined,
-} from "@ant-design/icons";
-
+import { PlusOutlined } from "@ant-design/icons";
 
 const steps = [
   {
@@ -29,16 +15,17 @@ const steps = [
   },
   {
     title: "Annotate",
-  }, {
+  },
+  {
     title: "Create",
   },
 ];
 
 const ModalComp: React.FC = () => {
   const [open, setOpen] = useState(false);
-  const [data , setdata] = useState({});
+  const [data, setdata] = useState({});
   const [current, setCurrent] = useState(0);
-  const [confirmLoading, setConfirmLoading] = useState(false);
+  const [images, setimages] = useState([]);
 
   const [form] = Form.useForm();
 
@@ -73,10 +60,8 @@ const ModalComp: React.FC = () => {
     const formValues = form.getFieldsValue();
     console.log("Form values in handleOk:", formValues);
 
-    setConfirmLoading(true);
     setTimeout(() => {
       setOpen(false);
-      setConfirmLoading(false);
     }, 2000);
 
     onReset();
@@ -89,25 +74,49 @@ const ModalComp: React.FC = () => {
     setOpen(false);
   };
 
-  const next  = () => {
+  const next = () => {
     const formValues = form.getFieldsValue();
-    if(current===1) setdata(formValues);
-    setCurrent(current+1);
-  }
+    if (current === 1) setdata(formValues);
+    setCurrent(current + 1);
+  };
 
   const whichStep = [
     <>
       <First />
-      <Second />
     </>,
-    <Second />,
+    // <Second />,
+    <AnnotateTool />
   ];
 
   const items = steps.map((item) => ({ key: item.title, title: item.title }));
 
+  const [input, setinput] = useState<string[]>();
+
+  const handleFileChange = (e: any) => {
+    const files = e.target.files;
+    if (files) {
+      const newInput: string[] = [];
+
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const objectURL = URL.createObjectURL(file);
+        newInput.push(objectURL);
+      }
+
+      setinput(newInput);
+    }
+  };
+
   return (
     <>
-      <Modal title="New Project" open={open} footer={null} width={520} maskClosable={false} onCancel={handleCancel} >
+      <Modal
+        title="New Project"
+        open={open}
+        footer={null}
+        width={520}
+        maskClosable={false}
+        onCancel={handleCancel}
+      >
         <Steps current={current} items={items} className="stepsTop" />
 
         {/* Form Starts here */}
@@ -118,8 +127,39 @@ const ModalComp: React.FC = () => {
           onFinish={onFinish}
           style={{ maxWidth: 800 }}
         >
-
           {whichStep[current]}
+
+          <Form.Item
+            label="Upload Images"
+            style={{ display: current > 0 ? "none" : "" }}
+          >
+            <Button>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleFileChange}
+                multiple
+              />
+              <br />
+              <div id="previewImages"></div>
+            </Button>
+          </Form.Item>
+
+          <Form.Item
+            label="Annotations"
+            style={{ display: current > 0 ? "none" : "" }}
+          >
+            <Button>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleFileChange}
+                multiple
+              />
+              <br />
+              <div id="previewImages"></div>
+            </Button>
+          </Form.Item>
 
           <div className="Operationalbtns">
             <Button
@@ -137,11 +177,7 @@ const ModalComp: React.FC = () => {
             >
               Prev
             </Button> */}
-            <Button
-              type="dashed"
-              className="operationbtn"
-              onClick={next}
-            >
+            <Button type="dashed" className="operationbtn" onClick={next}>
               Next
             </Button>
             <Button

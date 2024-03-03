@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import User from "../../models/user";
+import User from "../../modals/user";
 import { NextApiResponse } from "next";
 
 export function GET(request: Request) {
@@ -19,10 +19,9 @@ type REgister = {
 };
 
 export async function POST(request: Request, response: NextApiResponse) {
-  
   try {
     const data: REgister = await request.json();
-    const { username , password } = data;
+    const { username, password } = data;
     const newUser = new User({
       username,
       password,
@@ -36,9 +35,12 @@ export async function POST(request: Request, response: NextApiResponse) {
       return NextResponse.json({ message: "User Does not exist", status: 400 });
     }
 
-    if(already.password !== password){
+    if (already.password !== password) {
       window.alert("Incorrect Credentials");
-      return NextResponse.json({ message: "Incorrect Credentials", status: 400 });
+      return NextResponse.json({
+        message: "Incorrect Credentials",
+        status: 400,
+      });
     }
 
     console.log("Successfully Logged in");
