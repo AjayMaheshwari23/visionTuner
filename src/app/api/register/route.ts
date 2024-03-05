@@ -4,12 +4,13 @@ import User from "../../models/user";
 import { NextApiResponse } from "next";
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+import { cookies } from "next/headers"
 
 export function GET(request: Request) {
   const users = [
     {
       name: "Ajay",
-      status: "working...",
+      status: "Working...",
     },
   ];
   return NextResponse.json(users);
@@ -56,8 +57,7 @@ export async function POST(request: Request, response: NextApiResponse) {
     };
 
     const jwtToken = jwt.sign(JTdata, process.env.JWT_SECRET);
-    // localStorage.setItem("jwtToken",jwtToken);
-    // console.log(jwtToken);
+    cookies().set("jwtToken" , jwtToken);
 
     console.log("Successfully Registered & logged In");
 

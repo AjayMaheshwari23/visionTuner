@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import User from "../../models/user";
 import { NextApiResponse } from "next";
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+import { cookies } from "next/headers";
 
 export function GET(request: Request) {
   const users = [
@@ -35,13 +38,27 @@ export async function POST(request: Request, response: NextApiResponse) {
       return NextResponse.json({ message: "User Does not exist", status: 400 });
     }
 
-    if (already.password !== password) {
-      window.alert("Incorrect Credentials");
+    const ok = await bcrypt.compare(password, already.password);
+
+    if (!ok) {
+      console.log("Incorrect Credentials");
       return NextResponse.json({
         message: "Incorrect Credentials",
         status: 400,
       });
     }
+
+    const dataT = {
+      user: {
+        id: already.id,
+      },
+    };
+
+    const jwtToken = jwt.sign(dataT, process.env.JWT_SECRET);
+    const oneday = 24 * 60 * 60 * 1000;
+    cookies().set("jwtToken", jwtToken, {
+      // expires: Date.now() - oneday,
+    });
 
     console.log("Successfully Logged in");
 
@@ -49,7 +66,6 @@ export async function POST(request: Request, response: NextApiResponse) {
       message: "User Logged in successfully",
       status: 200,
     });
-    
   } catch (error: any) {
     console.error("Error during Login:", error.message);
     return NextResponse.json({

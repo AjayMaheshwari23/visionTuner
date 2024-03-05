@@ -45,8 +45,8 @@ const LoginA: React.FC<Props> = ({ isFlipped, setIsFlipped }) =>
 
        const response = await fetch(url, requestOptions);
        setData(defaultData);
-
-       if (response.status === 200) {
+       const res = await response.json();
+       if (res.status === 200) {
          console.log("Successful Login");
          router.push("./dashboard/profile");
        }
