@@ -4,6 +4,7 @@ import { NextApiResponse } from "next";
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 import { cookies } from "next/headers";
+const jose = require("jose");
 
 export function GET(request: Request) {
   const users = [
@@ -54,7 +55,13 @@ export async function POST(request: Request, response: NextApiResponse) {
       },
     };
 
-    const jwtToken = jwt.sign(dataT, process.env.JWT_SECRET);
+    const secret = new TextEncoder().encode(process.env.JWT_SECRET);
+
+    const jwtToken = await new jose.SignJWT(dataT)
+      .setProtectedHeader({ alg: "HS256" })
+      .sign(secret);
+      
+    // const jwtToken = jwt.sign(dataT, process.env.JWT_SECRET);
     const oneday = 24 * 60 * 60 * 1000;
     cookies().set("jwtToken", jwtToken, {
       // expires: Date.now() - oneday,

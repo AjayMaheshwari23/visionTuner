@@ -5,6 +5,7 @@ import { NextApiResponse } from "next";
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 import { cookies } from "next/headers"
+const jose = require('jose');
 
 export function GET(request: Request) {
   const users = [
@@ -56,7 +57,13 @@ export async function POST(request: Request, response: NextApiResponse) {
       }
     };
 
-    const jwtToken = jwt.sign(JTdata, process.env.JWT_SECRET);
+
+     const secret = new TextEncoder().encode(process.env.JWT_SECRET);
+
+     const jwtToken = await new jose.SignJWT(JTdata)
+       .setProtectedHeader({ alg: "HS256" })
+       .sign(secret);
+
     cookies().set("jwtToken" , jwtToken);
 
     console.log("Successfully Registered & logged In");
