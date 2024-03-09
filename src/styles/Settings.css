@@ -1,0 +1,96 @@
+.container {
+    display: flex;
+   justify-content: center;
+   height: 100%;
+   width: 90%;
+   margin: auto;
+    flex-direction: column;
+    align-items: center;
+  }
+  .buttonsContainer {
+    display: flex;
+    width: 100%;
+    max-width: 1035px;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  @media (max-width: 991px) {
+    .div-2 {
+      max-width: 100%;
+      flex-wrap: wrap;
+    }
+  }
+  
+  @media (max-width: 991px) {
+    .div-3 {
+      max-width: 100%;
+      flex-wrap: wrap;
+      padding: 0 20px;
+    }
+  }
+  
+ .button {
+    border-radius: 20px;
+    background-color: #001529;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex: 1;
+    padding: 15px;
+  }
+  
+  .buttonText {
+    color: #ffffff;
+    text-align: center;
+    white-space: nowrap;
+    flex-grow: 1;
+    flex-basis: auto;
+    margin: auto 0;
+   font:  400 20px Inter, sans-serif;
+  }
+  
+  .buttonContainer-1 {
+    display: flex;
+    margin-top: 60px;
+    width: 100%;
+    max-width: 1035px;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  
+  .proContainer {
+    align-self: stretch;
+    display: flex;
+    margin-top:60px;
+    width: 100%;
+    justify-content: space-between;
+    gap: 20px;
+    font-size: 32px;
+    color: #000;
+    font-weight: 500;
+    white-space: nowrap;
+    text-align: center;
+  }
+  
+  .proButtons {
+    font-family: Inter, sans-serif;
+    border-radius: 15px;
+    background-color: #d9d9d9;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    flex: 1;
+    padding: 18px 50px;
+  };
+
+  .upbutton{
+    background-color: #f7eb0af5;
+    color: white;
+  };
+
+  .delbutton{
+    background-color: #ff0000;
+    color: #ffffff;
+  };
+  
