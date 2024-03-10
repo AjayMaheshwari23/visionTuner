@@ -3,7 +3,7 @@ import { Switch } from "antd";
 import "../../../styles/Settings.css"
 
 export default function settings(){
-  const onChange = (checked) => {
+  const onChange = (checked: any) => {
     console.log(`switch to ${checked}`);
   };
     return (
