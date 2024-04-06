@@ -21,7 +21,7 @@ const LoginA: React.FC<Props> = ({ isFlipped, setIsFlipped }) =>
   const router = useRouter();
   const onValueChange = (e: any) => {
     setData({ ...data, [e.target.name]: e.target.value });
-    console.log(data);
+    // console.log(data);
   };
 
   const onLogin = async (e: any) => {
@@ -34,7 +34,7 @@ const LoginA: React.FC<Props> = ({ isFlipped, setIsFlipped }) =>
 
     // API Call
      try {
-       const url = "/api/register";
+       const url = "/api/login";
        const requestOptions = {
          method: "POST",
          headers: {
@@ -42,10 +42,11 @@ const LoginA: React.FC<Props> = ({ isFlipped, setIsFlipped }) =>
          },
          body: JSON.stringify(data),
        };
+
        const response = await fetch(url, requestOptions);
        setData(defaultData);
-
-       if (response.status === 200) {
+       const res = await response.json();
+       if (res.status === 200) {
          console.log("Successful Login");
          router.push("./dashboard/profile");
        }
