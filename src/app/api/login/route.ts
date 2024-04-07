@@ -72,6 +72,7 @@ export async function POST(request: Request, response: NextApiResponse) {
     return NextResponse.json({
       message: "User Logged in successfully",
       status: 200,
+      user:already
     });
   } catch (error: any) {
     console.error("Error during Login:", error.message);
