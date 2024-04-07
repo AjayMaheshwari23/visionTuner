@@ -8,6 +8,7 @@ import React, {
   useEffect,
 } from "react";
 
+import User from "../app/models/user";
 import useAuth from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
 const jose = require("jose");
@@ -51,10 +52,9 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
 
   const router = useRouter();
   useEffect(() => {
-    const func = async () => 
-      {
-        console.log("I am running to fix things!");
-        
+    const func = async () => {
+      console.log("I am running to fix things!");
+
       const cookies = document.cookie.split("; ");
       const tokenCookie = cookies.find((cookie) =>
         cookie.startsWith("jwtToken=")
@@ -72,10 +72,10 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
       const userId = decoded.payload.user.id;
       const user = await useAuth(userId);
       // console.log(user);
-      setState( {
+      setState({
         ...state,
-        user:user
-      })
+        user: user,
+      });
 
       // const user = await User.findOne({ _id: userId });
       // const already = await User.findOne({ username: username });

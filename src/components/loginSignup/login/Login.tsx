@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import "../LoginSignUp";
 // import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useAppContext } from "@/app/AppContext";
+import { useAppContext } from "@/contexts/AppContext";
 
 type Props = {
   isFlipped: boolean;

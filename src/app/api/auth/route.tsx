@@ -9,7 +9,7 @@ export async function GET(request: Request) {
 
 
   const user = await User.findOne({ _id: userId });
-  console.log(userId);
+  // console.log(userId);
   
   return NextResponse.json(user);
 }

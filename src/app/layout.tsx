@@ -1,5 +1,5 @@
 import React from "react";
-import { AppProvider } from "./AppContext"; // Import the AppProvider
+import { AppProvider } from "../contexts/AppContext"; // Import the AppProvider
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";

@@ -1,6 +1,6 @@
 "use client";
 
-import { useAppContext } from "../../AppContext";
+import { useAppContext } from "../../../contexts/AppContext";
 
 export default function Profile() {
   const { state, setState } = useAppContext();

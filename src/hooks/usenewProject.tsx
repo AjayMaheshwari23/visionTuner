@@ -1,5 +1,5 @@
 const usenewProject = async () => {
-  console.log("let's try to add a new Project");
+  // console.log("let's try to add a new Project");
   
     try {
 
@@ -11,7 +11,7 @@ const usenewProject = async () => {
           },
         };
         const response = await fetch(url,requestOptions);
-        console.log(response);
+        // console.log(response);
 const data = await response.json(); 
     console.log(data); 
 
