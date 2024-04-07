@@ -3,5 +3,5 @@ import { cookies } from "next/headers";
 export async function POST(request: Request, response: NextApiResponse) 
 {
     cookies().delete('jwtToken');
-    return Response.json({ message: "Loggoed Out", status: 400 });
+    return Response.json({ message: "Loggoed Out", status: 200 });
 }

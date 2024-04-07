@@ -7,7 +7,7 @@ import First from "./first";
 import Second from "./second";
 import ImageInput from "./imageInput";
 import Third from "./third";
-
+import usenewProject from "@/hooks/usenewProject"
 import { PlusOutlined } from "@ant-design/icons";
 
 const steps = [
@@ -29,19 +29,15 @@ const ModalComp: React.FC = () => {
   const [imagePaths, setImagePaths] = useState<string[]>([]);
   const [spinning, setSpinning] = React.useState<boolean>(false);
 
-    const createProject = () => {
+    const createProject = async () => {
        setSpinning(true);
 
       //  Create new Project here
 
-       setTimeout(() => {
-
-        setSpinning(false);
+         await usenewProject();
+         setSpinning(false);
          setCurrent(0);
          setOpen(!open);
-
-
-       }, 3000);
 
        
     }

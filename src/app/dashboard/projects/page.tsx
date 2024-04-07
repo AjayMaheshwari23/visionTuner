@@ -1,15 +1,17 @@
-import { middleware } from "@/middleware";
+'use client'
 import ProjectCard from "../../../components/cards/ProjectCard";
 import ModalComp from "../../../components/modal/modal";
+import { useAppContext } from "@/contexts/AppContext";
 import "./projects.css";
 
-const projectsDummy = [1,2,3,4,5,6,7]
-
 const ProjectPage = () => {
+  const { state, setState } = useAppContext();
+  // const projects = [1,2,3];
+  const projects = state.user?.projects;
   return (
     <>
       <div className="ProjectMaindiv">
-        {projectsDummy.map(() => {
+        {projects?.map(() => {
           return <ProjectCard />;
         })}
       </div>
@@ -18,5 +20,4 @@ const ProjectPage = () => {
   );
 };
 
-ProjectPage.middleware = [middleware];
 export default ProjectPage;
