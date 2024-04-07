@@ -53,7 +53,7 @@ const Logoutbtn = ({props} : {props:any}) => {
         icon={<PoweroffOutlined />}
         loading={loading}
         onClick={logoutFunc}
-        style={{ width: "100%" }}
+        style={{ width: "100%" , height: "35px" }}
       >
         {collapsed ? "" : "Logout"}
       </Button>

@@ -101,7 +101,7 @@ export default function RootLayout({
               />
             </Header>
 
-            <Content>{children}</Content>
+            <Content style={ { overflow:"scroll" } }>{children}</Content>
           </Layout>
         </Layout>
   );

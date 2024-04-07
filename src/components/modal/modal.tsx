@@ -1,11 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import "../../styles/modal.css";
-import { Modal, FloatButton, Button, Form, Steps } from "antd";
+import { Modal, FloatButton, Button, Form, Steps, Spin } from "antd";
 import AnnotateTool from "../../components/annotateTool/page";
 import First from "./first";
 import Second from "./second";
 import ImageInput from "./imageInput";
+import Third from "./third";
 
 import { PlusOutlined } from "@ant-design/icons";
 
@@ -26,6 +27,24 @@ const ModalComp: React.FC = () => {
   const [data, setdata] = useState({});
   const [current, setCurrent] = useState(0);
   const [imagePaths, setImagePaths] = useState<string[]>([]);
+  const [spinning, setSpinning] = React.useState<boolean>(false);
+
+    const createProject = () => {
+       setSpinning(true);
+
+      //  Create new Project here
+
+       setTimeout(() => {
+
+        setSpinning(false);
+         setCurrent(0);
+         setOpen(!open);
+
+
+       }, 3000);
+
+       
+    }
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
@@ -98,6 +117,7 @@ const ModalComp: React.FC = () => {
     </>,
     // <Second />,
     <AnnotateTool />,
+    <Third />,
   ];
 
   const items = steps.map((item) => ({ key: item.title, title: item.title }));
@@ -213,12 +233,14 @@ const ModalComp: React.FC = () => {
               htmlType="submit"
               disabled={current === 2 ? false : true}
               className="operationbtn"
+              onClick={createProject}
             >
               Create
             </Button>
           </div>
         </Form>
         {/* Form Ends here */}
+        <Spin spinning={spinning} size="large" fullscreen />
       </Modal>
 
       <FloatButton
