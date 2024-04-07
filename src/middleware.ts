@@ -20,8 +20,8 @@ export async function middleware(req: NextRequest) {
     const secret = new TextEncoder().encode(process.env.JWT_SECRET);
     const decoded = await jose.jwtVerify(token?.value,secret);
     // console.log(decoded)
-    const userId = decoded.payload.user.id;
-    if(userId == null) throw new Error("UnAuthorised Access")
+    // const userId = decoded.payload.user.id;
+    // if(userId == null) throw new Error("UnAuthorised Access")
     
   } catch (error: any) {
     console.log("Login First " + error.message);
