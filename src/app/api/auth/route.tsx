@@ -5,9 +5,7 @@ import querystring from "querystring";
 export async function GET(request: Request) {
   const queryParams = querystring.parse(request.url.split("?")[1] || "");
 
-  const userId = queryParams.userId as string; // Access userId from parsed query parameters
-
-
+  const userId = queryParams.userId as string; 
   const user = await User.findOne({ _id: userId });
   // console.log(userId);
   
