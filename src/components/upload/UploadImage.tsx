@@ -27,10 +27,11 @@ const UploadImage = () => {
 
     const userId = state.user?.username;
     const projectId = state.user?.projects.length;
-    // console.log( { userId , projectId});
     
     try {
-      const url = `/api/upload?userId=${userId}`;
+      const url = `/api/upload?userId=${userId}&projectId=${projectId}`;
+      // console.log(url);
+      
       const response = await fetch(url, {
         method: "POST",
         body: formData,
@@ -55,7 +56,7 @@ const UploadImage = () => {
         multiple
         onChange={handleFileChange}
       />
-      <button onClick={handleSubmit}>Upload Images</button>
+      <button onClick={handleSubmit}>Upload Imags</button>
     </div>
   );
 };
