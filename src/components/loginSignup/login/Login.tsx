@@ -16,7 +16,7 @@ type Props = {
 const defaultData = { username: "", password: "" };
 
 const LoginA: React.FC<Props> = ({ isFlipped, setIsFlipped }) => {
-  const { state, setState } = useAppContext();
+  const { state, setState , addSuccess , addError } = useAppContext();
   const [data, setData] = React.useState(defaultData);
   const router = useRouter();
   const onValueChange = (e: any) => {
@@ -53,11 +53,14 @@ const LoginA: React.FC<Props> = ({ isFlipped, setIsFlipped }) => {
         user: res.user,
       });
 
+      
       if (res.status === 200) {
-        console.log("Successful Login");
+        addSuccess("Logged In successfully");
+        // console.log("Successful Login");
         router.push("./dashboard/profile");
       }
     } catch (error) {
+      addError("Internal Server Error : See Console");
       console.log(error);
     }
   };
