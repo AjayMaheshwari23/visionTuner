@@ -21,6 +21,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  Connection_db();
+  
   return (
     <AppProvider>
       <html lang="en">

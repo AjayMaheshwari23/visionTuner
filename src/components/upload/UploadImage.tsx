@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useAppContext } from "@/contexts/AppContext";
 
 const UploadImage = () => {
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const { state } = useAppContext();
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputFiles = e.target.files; 
@@ -23,8 +25,13 @@ const UploadImage = () => {
       formData.append(`file${index}`, file); 
     });
 
+    const userId = state.user?.username;
+    const projectId = state.user?.projects.length;
+    // console.log( { userId , projectId});
+    
     try {
-      const response = await fetch("/api/upload", {
+      const url = `/api/upload?userId=${userId}`;
+      const response = await fetch(url, {
         method: "POST",
         body: formData,
       });
