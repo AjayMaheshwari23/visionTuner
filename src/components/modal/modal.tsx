@@ -1,12 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import "../../styles/modal.css";
-import { Modal, FloatButton, Button, Form, Steps } from "antd";
-import AnnotateTool from "../../components/annotateTool/page"
+import { Modal, FloatButton, Button, Form, Steps, Spin } from "antd";
+import AnnotateTool from "../../components/annotateTool/page";
 import First from "./first";
 import Second from "./second";
 import ImageInput from "./imageInput";
-
+import Third from "./third";
+import usenewProject from "@/hooks/usenewProject"
 import { PlusOutlined } from "@ant-design/icons";
 
 const steps = [
@@ -25,7 +26,33 @@ const ModalComp: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [data, setdata] = useState({});
   const [current, setCurrent] = useState(0);
-  const [images, setimages] = useState([]);
+  const [imagePaths, setImagePaths] = useState<string[]>([]);
+  const [spinning, setSpinning] = React.useState<boolean>(false);
+
+    const createProject = async () => {
+       setSpinning(true);
+
+      //  Create new Project here
+
+         await usenewProject();
+         setSpinning(false);
+         setCurrent(0);
+         setOpen(!open);
+
+       
+    }
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    console.log("Files Uploaded");
+
+    if (files) {
+      const paths = Array.from(files).map((file) => URL.createObjectURL(file));
+      console.log(paths);
+
+      setImagePaths(paths);
+    }
+  };
 
   const [form] = Form.useForm();
 
@@ -85,27 +112,28 @@ const ModalComp: React.FC = () => {
       <First />
     </>,
     // <Second />,
-    <AnnotateTool />
+    <AnnotateTool />,
+    <Third />,
   ];
 
   const items = steps.map((item) => ({ key: item.title, title: item.title }));
 
-  const [input, setinput] = useState<string[]>();
+  // const [input, setinput] = useState<string[]>();
 
-  const handleFileChange = (e: any) => {
-    const files = e.target.files;
-    if (files) {
-      const newInput: string[] = [];
+  // const handleFileChange = (e: any) => {
+  //   const files = e.target.files;
+  //   if (files) {
+  //     const newInput: string[] = [];
 
-      for (let i = 0; i < files.length; i++) {
-        const file = files[i];
-        const objectURL = URL.createObjectURL(file);
-        newInput.push(objectURL);
-      }
+  //     for (let i = 0; i < files.length; i++) {
+  //       const file = files[i];
+  //       const objectURL = URL.createObjectURL(file);
+  //       newInput.push(objectURL);
+  //     }
 
-      setinput(newInput);
-    }
-  };
+  //     setinput(newInput);
+  //   }
+  // };
 
   return (
     <>
@@ -134,14 +162,30 @@ const ModalComp: React.FC = () => {
             style={{ display: current > 0 ? "none" : "" }}
           >
             <Button>
+              <label htmlFor="fileInput">Choose Images</label>
               <input
                 type="file"
+                id="fileInput"
                 accept="image/*"
                 onChange={handleFileChange}
                 multiple
+                style={{ display: "none" }}
               />
               <br />
-              <div id="previewImages"></div>
+              {/* <div id="previewImages">
+                {imagePaths.map((path, index) => (
+                  <img
+                    key={index}
+                    src={path}
+                    alt={`preview-${index}`}
+                    style={{
+                      maxWidth: "100px",
+                      maxHeight: "100px",
+                      marginRight: "5px",
+                    }}
+                  />
+                ))}
+              </div> */}
             </Button>
           </Form.Item>
 
@@ -185,12 +229,14 @@ const ModalComp: React.FC = () => {
               htmlType="submit"
               disabled={current === 2 ? false : true}
               className="operationbtn"
+              onClick={createProject}
             >
               Create
             </Button>
           </div>
         </Form>
         {/* Form Ends here */}
+        <Spin spinning={spinning} size="large" fullscreen />
       </Modal>
 
       <FloatButton

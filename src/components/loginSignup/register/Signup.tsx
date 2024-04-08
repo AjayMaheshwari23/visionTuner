@@ -43,9 +43,16 @@ const SignupA: React.FC<Props> = ({ isFlipped, setIsFlipped }) => {
       const response = await fetch(url, requestOptions);
       setData(defaultData);
 
-      if (response.status === 200) {
-        console.log(response);
+      const res = await response.json();
+
+      if (res.status === 200) 
+      {
+        localStorage.setItem("jwtToken",res.jwtToken);
+        // console.log(response);
         router.push("./dashboard/profile");
+      }else 
+      {
+        window.alert("Username or Email Already taken");
       }
     } catch (error) {
       console.log(error);
