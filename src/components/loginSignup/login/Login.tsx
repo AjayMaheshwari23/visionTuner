@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import "../LoginSignUp";
 // import axios from "axios";
 import { useRouter } from "next/navigation";
+import { useAppContext } from "@/contexts/AppContext";
 
 type Props = {
   isFlipped: boolean;
@@ -14,14 +15,13 @@ type Props = {
 
 const defaultData = { username: "", password: "" };
 
-const LoginA: React.FC<Props> = ({ isFlipped, setIsFlipped }) => 
-{
-
+const LoginA: React.FC<Props> = ({ isFlipped, setIsFlipped }) => {
+  const { state, setState , addSuccess , addError } = useAppContext();
   const [data, setData] = React.useState(defaultData);
   const router = useRouter();
   const onValueChange = (e: any) => {
     setData({ ...data, [e.target.name]: e.target.value });
-    console.log(data);
+    // console.log(data);
   };
 
   const onLogin = async (e: any) => {
@@ -33,26 +33,36 @@ const LoginA: React.FC<Props> = ({ isFlipped, setIsFlipped }) =>
     }
 
     // API Call
-     try {
-       const url = "/api/register";
-       const requestOptions = {
-         method: "POST",
-         headers: {
-           "Content-Type": "application/json",
-         },
-         body: JSON.stringify(data),
-       };
-       const response = await fetch(url, requestOptions);
-       setData(defaultData);
+    try {
+      const url = "/api/login";
+      const requestOptions = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      };
 
-       if (response.status === 200) {
-         console.log("Successful Login");
-         router.push("./dashboard/profile");
-       }
-     } catch (error) {
-       console.log(error);
-     }
+      const response = await fetch(url, requestOptions);
+      setData(defaultData);
+      const res = await response.json();
+      // console.log(res.user);
 
+      setState({
+        ...state,
+        user: res.user,
+      });
+
+      
+      if (res.status === 200) {
+        addSuccess("Logged In successfully");
+        // console.log("Successful Login");
+        router.push("./dashboard/profile");
+      }
+    } catch (error) {
+      addError("Internal Server Error : See Console");
+      console.log(error);
+    }
   };
   return (
     <div className={styles.front}>

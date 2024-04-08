@@ -6,8 +6,8 @@ export interface Project {
   description: string;
   categoryNumber: number;
   categories: string[];
-  images: string[];
-  annotations: string[];
+  images: string;
+  annotations: string;
 }
 
 interface User {
@@ -27,8 +27,8 @@ const projectSchema = new mongoose.Schema({
   description: { type: String, required: true },
   categoryNumber: { type: Number, required: true },
   categories: { type: [String], required: true },
-  images: { type: [String], required: true },
-  annotations: { type: [String], required: true },
+  images: { type: String, required: true },
+  annotations: { type: String, required: true },
 });
 
 const userSchema = new mongoose.Schema<UserDocument, UserModel>({

@@ -5,24 +5,28 @@ import User from "../../models/user";
 
 export async function POST(req: Request, res: NextApiResponse) {
   try {
-    const userEmail = "VT@gmail.com";
+    const userEmail = "ajay@gmail.com";
     const user = await User.findOne({ email: userEmail });
 
     const dummyProject: Project = {
       projectId: 1,
-      title: "Dummy Project",
-      description: "This is a dummy project for testing.",
+      title: "Dummy Project 1",
+      description: "This is a dummy project for testing 1.",
       categoryNumber: 2,
       categories: ["cat", "dog"],
-      images: [],
-      annotations: ["Annotation 1", "Annotation 2"],
+      images: "/storage/images1",
+      annotations: "storage/annotations1",
     };
 
-    user.projects.push(dummyProject);
+    
+    // user.projects.push(dummyProject);
+    // await user.save();
 
-    res.status(200).json({ message: "Dummy project added successfully", user });
+    return Response.json({ message: "Dummy project added successfully", status: 200 });
+    // res.status(200).json({ message: "Dummy project added successfully", user });
   } catch (error) {
-    res.status(200).json({ message: "ERROR ",  });
+    return Response.json({ message: "Internal Server Error", status: 200 });
+    // res.status(200).json({ message: "ERROR " });
   }
 }
 
