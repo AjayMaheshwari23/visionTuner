@@ -20,13 +20,17 @@ import {
 import { Layout, Menu, Button, theme } from "antd";
 
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 import "../../styles/Dashboard.css";
 import Projects from "../../components/Pages/Projects";
 
 const { Header, Sider, Content } = Layout;
-
+const DarkModeContext = createContext({
+  darkMode: false,
+  toggleDarkMode: () => {},
+});
+export const useDarkMode = () => useContext(DarkModeContext);
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -56,8 +60,25 @@ export default function RootLayout({
         break;
     }
   };
+  // const [darkMode, setDarkMode] = useState(localStorage.getItem('darkMode') === 'true' ? true : false);
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem("darkMode") === "true"
+  );
 
+  // Update dark mode state in response to changes in local storage
+  useEffect(() => {
+    const storedDarkMode = localStorage.getItem("darkMode") === "true";
+    if (storedDarkMode !== darkMode) {
+      setDarkMode(storedDarkMode);
+    }
+  }, [darkMode]);
+  const toggleDarkMode = () => {
+    const newDarkMode = !darkMode;
+    localStorage.setItem("darkMode", String(newDarkMode)); // Update local storage
+    setDarkMode(newDarkMode);
+  };
   return (
+    <DarkModeContext.Provider value={{ darkMode, toggleDarkMode }}>
         <Layout className="dashboard">
           <Sider trigger={null} collapsible collapsed={collapsed}>
             <div className="demo-logo-vertical" />
@@ -65,6 +86,7 @@ export default function RootLayout({
               theme="dark"
               mode="inline"
               defaultSelectedKeys={["1"]}
+              style={{boxShadow: "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px"}}
               onSelect={(e) => handleMenuItemClick(e.key)}
               items={[
                 {
@@ -87,13 +109,14 @@ export default function RootLayout({
           </Sider>
 
           <Layout>
-            <Header style={{ padding: 0, background: "white" }}>
+            <Header style={{ padding: 0, background: `${darkMode ? "black" : "white"}` ,boxShadow: "rgba(3, 102, 214, 0.3) 0px 0px 0px 3px"}}>
               <Button
                 type="text"
                 icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
                 onClick={() => setCollapsed(!collapsed)}
                 style={{
                   fontSize: "16px",
+                  color:`${!darkMode ? "black" : "white"}`,
                   width: 64,
                   height: 64,
                 }}
@@ -103,5 +126,6 @@ export default function RootLayout({
             <Content>{children}</Content>
           </Layout>
         </Layout>
+        </DarkModeContext.Provider>
   );
 }
