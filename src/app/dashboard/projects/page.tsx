@@ -3,6 +3,7 @@ import ProjectCard from "../../../components/cards/ProjectCard";
 import ModalComp from "../../../components/modal/modal";
 import { useAppContext } from "@/contexts/AppContext";
 import "./projects.css";
+import { Project } from "@/app/models/user";
 
 const ProjectPage = () => {
   const { state, setState } = useAppContext();
@@ -12,7 +13,7 @@ const ProjectPage = () => {
     <>
       <div className="ProjectMaindiv">
         {projects?.map((val,idx) => {
-          return <ProjectCard key={idx}/>;
+          return <ProjectCard project={val as Project} key={idx} />;
         })}
       </div>
       <ModalComp />
