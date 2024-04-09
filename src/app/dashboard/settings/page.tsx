@@ -29,30 +29,33 @@ export default function settings() {
   return (
     <>
       <div className="menu">
-      <div className="menu-header">
-      <Darkmode/>
-      </div>
-      <div className="menu-body">
-        <div className="section-container1">
-          <div className="grid-row">
-            
-           <Settingsbutton ButtonName={"Notifications"}/>
-           <Settingsbutton ButtonName={"Allow Background Training"}/>
-          </div>
-          <div className="grid-row">
-            
-           <Settingsbutton ButtonName={"Enable Api's"}/>
-           <Settingsbutton ButtonName={"GPU Throttling"}/>
-          </div>
-      </div>
-      <div className="section-container2">
-      <div className="pro-buttons">
-        <SettingsProButtton ButtonName={"Delete a Project"}/>
-
-        <SettingsProButtton ButtonName={"Upgrade to pro"}/>
+        <div className="menu-header">
+          <Darkmode />
         </div>
-      </div>
-      </div>
+        <div className="menu-body">
+          <div className="section-container1">
+            <div className="grid-row">
+              <Settingsbutton ButtonName={"Notifications"} />
+              <Settingsbutton ButtonName={"Allow Background Training"} />
+            </div>
+            <div className="grid-row">
+              <Settingsbutton ButtonName={"Enable Api's"} />
+              <Settingsbutton ButtonName={"GPU Throttling"} />
+            </div>
+
+            <div className="grid-row">
+              <Settingsbutton ButtonName={"Enable Api's"} />
+              <Settingsbutton ButtonName={"GPU Throttling"} />
+            </div>
+            
+          </div>
+          <div className="section-container2">
+            <div className="pro-buttons">
+              {/* <SettingsProButtton ButtonName={"Delete a Project"}/>
+        <SettingsProButtton ButtonName={"Upgrade to pro"}/> */}
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

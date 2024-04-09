@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@tensorflow/tfjs-node": "^4.17.0",
     "antd": "^5.14.2",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.4.5",

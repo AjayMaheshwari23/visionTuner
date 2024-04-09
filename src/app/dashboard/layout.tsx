@@ -15,6 +15,9 @@ import {
   UploadOutlined,
   UserOutlined,
   SettingOutlined,
+  AlertOutlined,
+  CustomerServiceOutlined,
+  TeamOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme } from "antd";
 
@@ -56,6 +59,18 @@ export default function RootLayout({
         router.push("/dashboard/settings");
         break;
 
+      case "4":
+        router.push("/dashboard/UpgradeToPro");
+        break;
+
+      case "5":
+        router.push("/dashboard/HelpAndSupport");
+        break;
+      
+        case "6":
+        router.push("/dashboard/AboutUs");
+        break;
+
       default:
         break;
     }
@@ -93,6 +108,21 @@ export default function RootLayout({
               key: "3",
               icon: <SettingOutlined />,
               label: "Settings",
+            },
+            {
+              key: "4",
+              icon: <AlertOutlined />,
+              label: "Upgrade To Pro",
+            },
+            {
+              key: "5",
+              icon: <CustomerServiceOutlined />,
+              label: "Support",
+            },
+            {
+              key: "6",
+              icon: <TeamOutlined />,
+              label: "About Us",
             },
           ]}
         />
