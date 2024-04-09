@@ -1,13 +1,29 @@
 "use client";
 import React, { useState } from "react";
 import "../../styles/modal.css";
-import { Modal, FloatButton, Button, Form, Steps, Spin } from "antd";
+import { Modal, FloatButton, Button, Form, Steps, Spin, message } from "antd";
 import AnnotateTool from "../../components/annotateTool/page";
 import First from "./first";
 import Third from "./third";
 import usenewProject from "@/hooks/usenewProject"
 import { PlusOutlined } from "@ant-design/icons";
 import UploadImage from "../upload/UploadImage";
+import { Project } from "@/app/models/user";
+import { useAppContext } from "@/contexts/AppContext";
+
+const convertToProject = (data: any): Project => {
+  const { Title_of_Project, Description, CategoryCount, categories_list } =
+    data;
+  return {
+    projectId: 0, // i will generate this on the server side
+    title: Title_of_Project || "",
+    description: Description || "",
+    categoryNumber: CategoryCount || 0,
+    categories: categories_list || [],
+    images: "",
+    annotations: "",
+  };
+};
 
 const steps = [
   {
@@ -27,18 +43,40 @@ const ModalComp: React.FC = () => {
   const [current, setCurrent] = useState(0);
   const [imagePaths, setImagePaths] = useState<string[]>([]);
   const [spinning, setSpinning] = React.useState<boolean>(false);
+  const { state, setState } = useAppContext();
 
-    const createProject = async () => {
-       setSpinning(true);
+  const createProject = async (projectData: Project) => {
+    setSpinning(true);
+    console.log("Creating New Prject Spiiner Triggered...");
+    
+    try {
+      const res = await usenewProject(projectData);
+      res.UpdatedUser;
+      if(res.status !== 200) message.error("Error Creating Project");
+      else 
+      {
+        message.success("Project Successfully Created");
+        // Refresh user here
+      }
 
+      // console.log(res.UpdatedUser);
+      setState({...state,user:res.UpdatedUser});
+      setCurrent(0);
+      setOpen(false);
 
-         await usenewProject();
-         setSpinning(false);
-         setCurrent(0);
-         setOpen(!open);
-
-       
+    } catch (error) {
+      console.error("Error creating project:", error);
+    } finally {
+      setSpinning(false);
     }
+  };
+
+  const createNewProject = () => 
+    {
+      console.log(data);
+      
+    createProject(convertToProject(data));
+  }
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
@@ -70,17 +108,6 @@ const ModalComp: React.FC = () => {
     setOpen(true);
   };
 
-  // const handleOk = () => {
-  //   const formValues = form.getFieldsValue();
-  //   console.log("Form values in handleOk:", formValues);
-
-  //   setTimeout(() => {
-  //     setOpen(false);
-  //   }, 2000);
-
-  //   onReset();
-  // };
-
   const handleCancel = () => {
     console.log("Clicked cancel button");
     setCurrent(0);
@@ -90,17 +117,13 @@ const ModalComp: React.FC = () => {
 
   const next = () => {
     const formValues = form.getFieldsValue();
-    if (current === 1) setdata(formValues);
+    //console.log(formValues);
+
+    if (current === 0) setdata(formValues);
     setCurrent(current + 1);
   };
 
-  const whichStep = [
-    <>
-      <First />
-    </>,
-    <AnnotateTool />,
-    <Third />,
-  ];
+  const whichStep = [<First />, <AnnotateTool />, <Third />];
 
   const items = steps.map((item) => ({ key: item.title, title: item.title }));
 
@@ -116,7 +139,6 @@ const ModalComp: React.FC = () => {
       >
         <Steps current={current} items={items} className="stepsTop" />
 
-        {/* Form Starts here */}
         <Form
           {...layout}
           form={form}
@@ -156,13 +178,13 @@ const ModalComp: React.FC = () => {
               htmlType="submit"
               disabled={current === 2 ? false : true}
               className="operationbtn"
-              onClick={createProject}
+              onClick={() => createNewProject()}
             >
               Create
             </Button>
           </div>
         </Form>
-        {/* Form Ends here */}
+
         <Spin spinning={spinning} size="large" fullscreen />
       </Modal>
 

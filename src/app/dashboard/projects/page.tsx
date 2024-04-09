@@ -11,8 +11,8 @@ const ProjectPage = () => {
   return (
     <>
       <div className="ProjectMaindiv">
-        {projects?.map(() => {
-          return <ProjectCard />;
+        {projects?.map((val,idx) => {
+          return <ProjectCard key={idx}/>;
         })}
       </div>
       <ModalComp />

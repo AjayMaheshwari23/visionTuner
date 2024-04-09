@@ -2,7 +2,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./dashboard.css";
-const inter = Inter({ subsets: ["latin"] });
 import Logoutbtn from "@/components/buttons/Logoutbtn";
 import { useAppContext } from "@/contexts/AppContext";
 // export const metadata: Metadata = {
@@ -15,7 +14,6 @@ import {
   MenuUnfoldOutlined,
   UploadOutlined,
   UserOutlined,
-  VideoCameraOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme } from "antd";
