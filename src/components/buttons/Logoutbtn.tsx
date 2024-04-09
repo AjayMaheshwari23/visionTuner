@@ -44,6 +44,8 @@ const Logoutbtn = ({props} : {props:any}) => {
     <div
       style={{
         position: "fixed",
+        display: "flex",
+        justifyContent : "center",
         bottom: 0,
         left: 0,
         width: collapsed ? "80px" : "200px",
@@ -56,7 +58,7 @@ const Logoutbtn = ({props} : {props:any}) => {
         icon={<PoweroffOutlined />}
         loading={loading}
         onClick={logoutFunc}
-        style={{ width: "100%" , height: "35px" }}
+        style={{ width: "100%" , height: "40px" , margin:"5px" }}
       >
         {collapsed ? "" : "Logout"}
       </Button>

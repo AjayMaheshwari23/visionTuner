@@ -5,6 +5,7 @@ const UploadImage = () => {
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const { state } = useAppContext();
   const [loading,setloading] = useState<boolean>(false);
+  const [done,setDone] = useState<boolean>(false);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputFiles = e.target.files; 
@@ -29,7 +30,8 @@ const UploadImage = () => {
     });
 
     const userId = state.user?.username;
-    const projectId = state.user?.projects.length;
+    var projectId = state.user?.projects.length as number;
+    if(projectId!=null) projectId++;
     
     setloading(true);
     try {
@@ -41,7 +43,9 @@ const UploadImage = () => {
         body: formData,
       });
 
-      if (response.ok) {
+      if (response.ok) 
+        {
+          setDone(true);
         console.log("Images uploaded successfully.");
         setSelectedFiles([]); 
       } else {
@@ -62,8 +66,8 @@ const UploadImage = () => {
         multiple
         onChange={handleFileChange}
       />
-      <Button loading={loading} onClick={handleSubmit}>
-        { loading ? "Uploading..." : "Upload" }
+      <Button loading={loading} onClick={handleSubmit} disabled={done}>
+        { loading ? "Uploading..." : ( done ? "Uploaded" : "Upload" ) }
       </Button>
     </div>
   );
