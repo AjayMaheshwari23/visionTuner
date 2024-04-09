@@ -4,8 +4,11 @@ import { Project } from "../../models/user";
 import User from "../../models/user";
 import { cookies } from "next/headers";
 const jose = require("jose");
+import Connection_db from "@/app/api/db/config";
+Connection_db();  
 
-export async function POST(req: Request, res: NextApiResponse) {
+export async function POST(req: Request, res: NextApiResponse) 
+{
   const token = cookies().get("jwtToken");
   try {
     const secret = new TextEncoder().encode(process.env.JWT_SECRET);

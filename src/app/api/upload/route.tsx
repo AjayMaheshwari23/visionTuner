@@ -3,6 +3,8 @@ import path from "path";
 import { writeFile } from "fs/promises";
 import queryString from "query-string";
 import { mkdirSync } from "fs";
+import Connection_db from "../db/config";
+Connection_db();
 
 export async function POST(req: Request, res: NextResponse) {
   if (req.method !== "POST") {
