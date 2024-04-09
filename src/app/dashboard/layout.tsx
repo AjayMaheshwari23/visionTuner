@@ -60,23 +60,9 @@ export default function RootLayout({
         break;
     }
   };
-  // const [darkMode, setDarkMode] = useState(localStorage.getItem('darkMode') === 'true' ? true : false);
-  const [darkMode, setDarkMode] = useState(
-    localStorage.getItem("darkMode") === "true"
-  );
+ 
 
-  // Update dark mode state in response to changes in local storage
-  useEffect(() => {
-    const storedDarkMode = localStorage.getItem("darkMode") === "true";
-    if (storedDarkMode !== darkMode) {
-      setDarkMode(storedDarkMode);
-    }
-  }, [darkMode]);
-  const toggleDarkMode = () => {
-    const newDarkMode = !darkMode;
-    localStorage.setItem("darkMode", String(newDarkMode)); // Update local storage
-    setDarkMode(newDarkMode);
-  };
+ 
   return (
     <Layout className="dashboard">
       <Sider
