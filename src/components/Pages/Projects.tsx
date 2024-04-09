@@ -1,14 +1,13 @@
-import ProjectCard from "../cards/ProjectCard";
+import { Project } from "@/app/models/user";
 
-const ProjectPage = () => {
+const ProjectPageIndividual = ( {project} : {project : Project}) => {
   return (
     <>
       <div className="maindivP">
-        <h1>Hello Projects</h1>
-        {/* <ProjectCard /> */}
+        <h1>{project.title}</h1>
       </div>
     </>
   );
 };
 
-export default ProjectPage;
+export default ProjectPageIndividual;
