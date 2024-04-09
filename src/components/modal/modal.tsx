@@ -41,7 +41,6 @@ const ModalComp: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [data, setdata] = useState({});
   const [current, setCurrent] = useState(0);
-  const [imagePaths, setImagePaths] = useState<string[]>([]);
   const [spinning, setSpinning] = React.useState<boolean>(false);
   const { state, setState } = useAppContext();
 
@@ -77,18 +76,6 @@ const ModalComp: React.FC = () => {
       
     createProject(convertToProject(data));
   }
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-    console.log("Files Uploaded");
-
-    if (files) {
-      const paths = Array.from(files).map((file) => URL.createObjectURL(file));
-      console.log(paths);
-
-      setImagePaths(paths);
-    }
-  };
 
   const [form] = Form.useForm();
 
