@@ -22,9 +22,7 @@ import { Layout, Menu, Button, theme } from "antd";
 
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
-
 import "../../styles/Dashboard.css";
-import Projects from "../../components/Pages/Projects";
 
 const { Header, Sider, Content } = Layout;
 
@@ -37,13 +35,15 @@ export default function RootLayout({
 }>) {
   const { state, setState } = useAppContext();
   // console.log(state);
+  const themeclrB = state.theme === "dark" ? "rgb(4,20,40)" : "white";
+  const themeclrW = state.theme === "dark" ? "white" : "rgb(4,20,40)";
+  const themeclrB2 = state.theme === "dark" ? "#333" : "white";
+  const borderClrW = state.theme === "dark" ? "rgb(160,150,150)" : "rgb(200,200,200)";
 
   const router = useRouter();
   const [collapsed, setCollapsed] = useState(false);
-  // const [key, setkey] = useState("1");
 
   const handleMenuItemClick = (key: string) => {
-    //setkey(key);
 
     switch (key) {
       case "1":
@@ -70,6 +70,7 @@ export default function RootLayout({
         collapsible
         collapsed={collapsed}
         theme={state.theme as SiderTheme}
+        style={{ borderRight: `0.1px dashed ${borderClrW}` }}
       >
         <div className="demo-logo-vertical" />
         <Menu
@@ -99,7 +100,13 @@ export default function RootLayout({
       </Sider>
 
       <Layout>
-        <Header style={{ padding: 0, background: "white" }}>
+        <Header
+          style={{
+            padding: 0,
+            background: themeclrB,
+            borderBottom: `0.1px dashed ${borderClrW}`,
+          }}
+        >
           <Button
             type="text"
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -108,11 +115,14 @@ export default function RootLayout({
               fontSize: "16px",
               width: 64,
               height: 64,
+              color: themeclrW,
             }}
           />
         </Header>
 
-        <Content style={{ overflow: "scroll" }}>{children}</Content>
+        <Content style={{ overflow: "scroll", backgroundColor: themeclrB2 }}>
+          {children}
+        </Content>
       </Layout>
     </Layout>
   );

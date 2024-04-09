@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useAppContext } from "@/contexts/AppContext";
-
+import { Button } from "antd";
 const UploadImage = () => {
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const { state } = useAppContext();
+  const [loading,setloading] = useState<boolean>(false);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputFiles = e.target.files; 
@@ -14,7 +15,9 @@ const UploadImage = () => {
 
   };
 
-  const handleSubmit = async () => {
+    const handleSubmit = async () => 
+    {
+
     if (selectedFiles.length === 0) {
       console.error("No files selected.");
       return;
@@ -28,6 +31,7 @@ const UploadImage = () => {
     const userId = state.user?.username;
     const projectId = state.user?.projects.length;
     
+    setloading(true);
     try {
       const url = `/api/upload?userId=${userId}&projectId=${projectId}`;
       // console.log(url);
@@ -45,18 +49,22 @@ const UploadImage = () => {
       }
     } catch (error) {
       console.error("Error uploading images:", error);
+    }finally{
+      setloading(false);
     }
   };
 
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: "row" }}>
       <input
         type="file"
         accept="image/*"
         multiple
         onChange={handleFileChange}
       />
-      <button onClick={handleSubmit}>Upload Imags</button>
+      <Button loading={loading} onClick={handleSubmit}>
+        { loading ? "Uploading..." : "Upload" }
+      </Button>
     </div>
   );
 };

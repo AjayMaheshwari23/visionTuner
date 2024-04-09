@@ -4,11 +4,10 @@ import "../../styles/modal.css";
 import { Modal, FloatButton, Button, Form, Steps, Spin } from "antd";
 import AnnotateTool from "../../components/annotateTool/page";
 import First from "./first";
-import Second from "./second";
-import ImageInput from "./imageInput";
 import Third from "./third";
 import usenewProject from "@/hooks/usenewProject"
 import { PlusOutlined } from "@ant-design/icons";
+import UploadImage from "../upload/UploadImage";
 
 const steps = [
   {
@@ -32,7 +31,6 @@ const ModalComp: React.FC = () => {
     const createProject = async () => {
        setSpinning(true);
 
-      //  Create new Project here
 
          await usenewProject();
          setSpinning(false);
@@ -61,17 +59,6 @@ const ModalComp: React.FC = () => {
     wrapperCol: { span: 16 },
   };
 
-  const formItemLayout = {
-    labelCol: {
-      xs: { span: 24 },
-      sm: { span: 4 },
-    },
-    wrapperCol: {
-      xs: { span: 24 },
-      sm: { span: 20 },
-    },
-  };
-
   const onFinish = (values: any) => {
     console.log(values);
   };
@@ -83,16 +70,16 @@ const ModalComp: React.FC = () => {
     setOpen(true);
   };
 
-  const handleOk = () => {
-    const formValues = form.getFieldsValue();
-    console.log("Form values in handleOk:", formValues);
+  // const handleOk = () => {
+  //   const formValues = form.getFieldsValue();
+  //   console.log("Form values in handleOk:", formValues);
 
-    setTimeout(() => {
-      setOpen(false);
-    }, 2000);
+  //   setTimeout(() => {
+  //     setOpen(false);
+  //   }, 2000);
 
-    onReset();
-  };
+  //   onReset();
+  // };
 
   const handleCancel = () => {
     console.log("Clicked cancel button");
@@ -111,29 +98,11 @@ const ModalComp: React.FC = () => {
     <>
       <First />
     </>,
-    // <Second />,
     <AnnotateTool />,
     <Third />,
   ];
 
   const items = steps.map((item) => ({ key: item.title, title: item.title }));
-
-  // const [input, setinput] = useState<string[]>();
-
-  // const handleFileChange = (e: any) => {
-  //   const files = e.target.files;
-  //   if (files) {
-  //     const newInput: string[] = [];
-
-  //     for (let i = 0; i < files.length; i++) {
-  //       const file = files[i];
-  //       const objectURL = URL.createObjectURL(file);
-  //       newInput.push(objectURL);
-  //     }
-
-  //     setinput(newInput);
-  //   }
-  // };
 
   return (
     <>
@@ -151,7 +120,6 @@ const ModalComp: React.FC = () => {
         <Form
           {...layout}
           form={form}
-          //   name="control-hooks"
           onFinish={onFinish}
           style={{ maxWidth: 800 }}
         >
@@ -161,48 +129,14 @@ const ModalComp: React.FC = () => {
             label="Upload Images"
             style={{ display: current > 0 ? "none" : "" }}
           >
-            <Button>
-              <label htmlFor="fileInput">Choose Images</label>
-              <input
-                type="file"
-                id="fileInput"
-                accept="image/*"
-                onChange={handleFileChange}
-                multiple
-                style={{ display: "none" }}
-              />
-              <br />
-              {/* <div id="previewImages">
-                {imagePaths.map((path, index) => (
-                  <img
-                    key={index}
-                    src={path}
-                    alt={`preview-${index}`}
-                    style={{
-                      maxWidth: "100px",
-                      maxHeight: "100px",
-                      marginRight: "5px",
-                    }}
-                  />
-                ))}
-              </div> */}
-            </Button>
+            <UploadImage />
           </Form.Item>
 
           <Form.Item
             label="Annotations"
             style={{ display: current > 0 ? "none" : "" }}
           >
-            <Button>
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleFileChange}
-                multiple
-              />
-              <br />
-              <div id="previewImages"></div>
-            </Button>
+            <UploadImage />
           </Form.Item>
 
           <div className="Operationalbtns">
@@ -214,13 +148,6 @@ const ModalComp: React.FC = () => {
             >
               Discard
             </Button>
-            {/* <Button
-              type="dashed"
-              className="operationbtn"
-              onClick={prev}
-            >
-              Prev
-            </Button> */}
             <Button type="dashed" className="operationbtn" onClick={next}>
               Next
             </Button>
