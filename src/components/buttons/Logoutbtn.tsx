@@ -2,10 +2,13 @@ import { useRouter } from "next/navigation";
 import { Button } from "antd";
 import { PoweroffOutlined } from "@ant-design/icons";
 import { useState } from "react";
+import { useAppContext } from "@/contexts/AppContext";
 
 const Logoutbtn = ({props} : {props:any}) => {
   const collapsed = props; // Destructing kar lo idhar 
   const [loading, setloading] = useState(false);
+  const {state} = useAppContext();
+  const ghostClr = state.theme === "dark" ? false : true;
   const router = useRouter();
 
   const logoutFunc = async () => {
@@ -49,7 +52,7 @@ const Logoutbtn = ({props} : {props:any}) => {
     >
       <Button
         type="primary"
-        danger
+        danger ghost={ghostClr}
         icon={<PoweroffOutlined />}
         loading={loading}
         onClick={logoutFunc}

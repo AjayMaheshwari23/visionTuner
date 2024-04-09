@@ -1,0 +1,85 @@
+.container {
+    display: flex;
+   justify-content: center;
+   height: 100%;
+   width: 100%;
+   margin: auto;
+  flex-direction: column;
+  align-items: center;
+  }
+  .buttonsContainer {
+    display: flex;
+    width: 100%;
+    max-width: 1035px;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+ .button {
+    border-radius: 20px;
+    background-color: #001529;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex: 1;
+    padding: 15px;
+  }
+  
+  .buttonText {
+    color: #ffffff;
+    text-align: left;
+    white-space: nowrap;
+    flex-grow: 1;
+    flex-basis: auto;
+    margin: auto 0;
+   font:  400 20px Inter, sans-serif;
+  }
+  
+  .buttonContainer-1 {
+    display: flex;
+    margin-top: 60px;
+    width: 100%;
+    max-width: 1035px;
+    justify-content: space-around;
+    gap: 20px;
+  }
+
+  
+  .proContainer {
+    align-self: stretch;
+    display: flex;
+    margin-top:60px;
+    width: 100%;
+    justify-content: space-between;
+    gap: 20px;
+    font-size: 32px;
+    color: #000;
+    font-weight: 500;
+    white-space: nowrap;
+    text-align: center;
+  }
+  
+  .proButtons {
+    font-family: Inter, sans-serif;
+    border-radius: 15px;
+    background-color: #d9d9d9;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    flex: 1;
+    padding: 18px 50px;
+  };
+  .ant-switch-inner{
+    background-color: #ffffff!important;
+  }
+
+
+
+  /* Dark mode css */
+
+
+  .dark-mode {
+    /* Define styles for dark mode */
+    background-color: #333;
+    color: #fff;
+  }
