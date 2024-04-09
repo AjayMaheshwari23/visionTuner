@@ -6,6 +6,9 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 import { cookies } from "next/headers"
 const jose = require('jose');
+import Connection_db from "@/app/api/db/config";
+
+Connection_db();
 
 export function GET(request: Request) {
   const users = [
