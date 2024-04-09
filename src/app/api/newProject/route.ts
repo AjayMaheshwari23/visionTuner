@@ -2,16 +2,8 @@ import { NextApiResponse } from "next";
 import { NextResponse } from "next/server";
 import { Project } from "../../models/user";
 import User from "../../models/user";
-var bodyParser = require("body-parser");
-// import { Request } from "express";
 import { cookies } from "next/headers";
 const jose = require("jose");
-
-// export const config = {
-//   api: {
-//     bodyParser: false,
-//   },
-// };
 
 export async function POST(req: Request, res: NextApiResponse) {
   const token = cookies().get("jwtToken");

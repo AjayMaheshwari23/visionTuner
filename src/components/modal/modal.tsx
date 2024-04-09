@@ -55,7 +55,7 @@ const ModalComp: React.FC = () => {
       if(res.status !== 200) message.error("Error Creating Project");
       else 
       {
-        message.success("Project SuccessFully Created");
+        message.success("Project Successfully Created");
         // Refresh user here
       }
 
