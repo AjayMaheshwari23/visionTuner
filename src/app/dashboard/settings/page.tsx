@@ -36,13 +36,13 @@ export default function settings() {
         <div className="section-container1">
           <div className="grid-row">
             
-           <Settingsbutton ButtonName={"Button 1 "}/>
-           <Settingsbutton ButtonName={"Button 2"}/>
+           <Settingsbutton ButtonName={"Notifications"}/>
+           <Settingsbutton ButtonName={"Allow Background Training"}/>
           </div>
           <div className="grid-row">
             
-           <Settingsbutton ButtonName={"Button 1 "}/>
-           <Settingsbutton ButtonName={"Button 2"}/>
+           <Settingsbutton ButtonName={"Enable Api's"}/>
+           <Settingsbutton ButtonName={"GPU Throttling"}/>
           </div>
       </div>
       <div className="section-container2">

@@ -35,10 +35,10 @@
   height: 100%;
   margin: auto;
   /* max-width: 20px; */
-  background-color: var(--c-bg-primary);
-  transition: background-color 0.15s ease;
-  border-radius: 10px 10px 0 0;
-  box-shadow: 0 0 2px rgba(#000, 0.05), 0 -4px 16px rgba(#000, 0.1);
+  /* background-color: var(--c-bg-primary); */
+  /* transition: background-color 0.15s ease; */
+  /* border-radius: 10px 10px 0 0; */
+  /* box-shadow: 0 0 2px rgba(#000, 0.05), 0 -4px 16px rgba(#000, 0.1); */
 }
 
 
@@ -83,7 +83,7 @@
 }
 
 .menu-body a:hover {
-  background-color: var(--c-bg-secondary);
+  /* background-color: var(--c-bg-secondary); */
 }
 
 .section-container1 {
