@@ -21,7 +21,7 @@ const LoadingBtn = (props: ButtonProps) => {
         onClick = { () => {
           setisloading(true);
           useSleep({ duration: 2000 }).then(() => {
-            console.log("fetching completed");
+            console.log("fetch");
             setisloading(false);
           });
         }}

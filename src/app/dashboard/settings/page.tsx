@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import { Switch } from "antd";
 import "../../../styles/Settings.css";
 import { useAppContext } from "@/contexts/AppContext";
+import Darkmode from "@/components/darkmodeButton/darkmode";
+import SettingsProButtton from "@/components/settingsprobutton/settingsprobutton";
+import Settingsbutton from "@/components/settingsbutton/settingsbutton";
 
 export default function settings() {
   const { state, setState } = useAppContext();
@@ -25,31 +28,31 @@ export default function settings() {
 
   return (
     <>
-      <div className={`container ${darkMode ? "dark-mode" : ""}`}>
-        <div className="buttonsContainer">
-          <div className="button">
-            <p className="buttonText">Dark Theme</p>
-            <Switch defaultChecked={darkMode} onChange={onChange} />
+      <div className="menu">
+      <div className="menu-header">
+      <Darkmode/>
+      </div>
+      <div className="menu-body">
+        <div className="section-container1">
+          <div className="grid-row">
+            
+           <Settingsbutton ButtonName={"Button 1 "}/>
+           <Settingsbutton ButtonName={"Button 2"}/>
           </div>
-          <div className="button">
-            <div className="buttonText">Enable Notifications</div>
-            <Switch defaultChecked={darkMode} />
+          <div className="grid-row">
+            
+           <Settingsbutton ButtonName={"Button 1 "}/>
+           <Settingsbutton ButtonName={"Button 2"}/>
           </div>
+      </div>
+      <div className="section-container2">
+      <div className="pro-buttons">
+        <SettingsProButtton ButtonName={"Delete a Project"}/>
+
+        <SettingsProButtton ButtonName={"Upgrade to pro"}/>
         </div>
-        <div className="buttonContainer-1">
-          <div className="button">
-            <div className="buttonText">Features-1</div>
-            <Switch defaultChecked={darkMode} />
-          </div>
-          <div className="button">
-            <div className="buttonText">Features-2</div>
-            <Switch defaultChecked={darkMode} />
-          </div>
-        </div>
-        <div className="proContainer">
-          <div className="proButtons">Delete a Project</div>
-          <div className="proButtons">Upgrade to Pro</div>
-        </div>
+      </div>
+      </div>
       </div>
     </>
   );
