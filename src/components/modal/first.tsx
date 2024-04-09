@@ -40,7 +40,7 @@ const First = () => {
     <>
       <Form.Item
         label="Title of Project"
-        name="Title of Project"
+        name="Title_of_Project"
         rules={[
           {
             required: true,
@@ -65,7 +65,7 @@ const First = () => {
       </Form.Item>
 
       <Form.List
-        name="categories list"
+        name="categories_list"
         rules={[
           {
             validator: async (_, names) => {
@@ -82,12 +82,12 @@ const First = () => {
               <Form.Item
                 {...formItemLayout}
                 label={"Category " + (1 + index)}
-                key={index}
+                key={index+100}
                 required={false}
                 {...layout}
               >
                 <Form.Item
-                  key={index}
+                  key={index+1000}
                   name={field.name}
                   validateTrigger={["onChange", "onBlur"]}
                   rules={[
