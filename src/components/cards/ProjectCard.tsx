@@ -3,13 +3,19 @@ import {
   CloudDownloadOutlined,
   DeleteOutlined,
   ExclamationCircleOutlined,
+  EditOutlined,
+  QuestionCircleOutlined,
 } from "@ant-design/icons";
-import { Card } from "antd";
+import { Button, Card, message,Popconfirm } from "antd";
 const { Meta } = Card;
 import { Project } from "@/app/models/user";
 import "../../styles/ProjectCard.css";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useAppContext } from "@/contexts/AppContext";
+
+import type { ConfigProviderProps } from "antd";
+type SizeType = ConfigProviderProps["componentSize"];
 
 const ProjectCard = ({ project }: { project: Project }) => 
 {
@@ -21,12 +27,50 @@ const ProjectCard = ({ project }: { project: Project }) =>
   const handleImageLoad = () => {
     setLoading(false); 
   };
+
+  const { state, setState } = useAppContext();
+
+  const deleteProject = async () => 
+  {
+    // console.log("Deleting project");
+    setLoading(true);
+    try {
+      
+      const response = await fetch(
+        `/api/newProject?projectId=${project.projectId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const res = await response.json();
+      if (res.status !== 200) {
+        console.log(res.message);
+        throw new Error("Failed to delete project");
+      }
+  
+      message.success("Successfully Deleted");
+      // console.log(res.user);
+      
+      setState({...state,user:res.user});
+
+    } catch (error) {
+      console.log(error);
+      message.error("Failed to delete project");
+    }finally{
+      // router.push("/dashboard/projects");
+      setLoading(false);
+    }
+
+  }
+
   return (
     <Card
-      onClick={() => router.push(`/dashboard/projects/${project.projectId}`)}
-      hoverable
       loading={loading}
-      style={{ width: "280px", margin: "15px", height: "315px" }}
+      style={{ width: "280px", margin: "15px", height: "365px" }}
       cover={
         <Image
           className="projectImage"
@@ -43,21 +87,45 @@ const ProjectCard = ({ project }: { project: Project }) =>
       actions={[
         <CloudDownloadOutlined key="Download" style={{ color: "blue" }} />,
         <ExclamationCircleOutlined key="Info" style={{ color: "#29b365" }} />,
-        <DeleteOutlined
-          key="Delete"
-          style={{ color: "red" }}
-          onClick={() => console.log("Project Deleted")}
-        />,
+        <>
+          <Popconfirm
+            title="Delete this Project"
+            description="Are you sure you want to delete ?"
+            icon={<QuestionCircleOutlined style={{ color: "red" }} />}
+            onConfirm={deleteProject}
+            okText="Yes"
+          >
+            <DeleteOutlined key="Delete" style={{ color: "red" }} />,
+          </Popconfirm>
+        </>,
       ]}
     >
-      {/* <div className="metaInfo">
-      <h2>Title of Project</h2>
-      <div className="metaDescription">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam,
-        quaerat.
+      <div className="metaInfo">
+        <div className="Btn_n_title">
+          <h2>{project.title}</h2>
+          <Button
+            type="primary"
+            shape="circle"
+            icon={<EditOutlined />}
+            size={"large" as SizeType}
+            onClick={() =>
+              router.push(`/dashboard/projects/${project.projectId}`)
+            }
+          />
+        </div>
+        <div
+          className="metaDescription"
+          style={{
+            width: "100%",
+            height: "70px",
+            overflowY: "auto",
+            scrollbarWidth: "none",
+          }}
+        >
+          {project.description}
+        </div>
       </div>
-    </div> */}
-      <div
+      {/* <div
         style={{
           width: "100%",
           height: "70px",
@@ -66,7 +134,7 @@ const ProjectCard = ({ project }: { project: Project }) =>
         }}
       >
         <Meta title={project.title} description={project.description} />
-      </div>
+      </div> */}
     </Card>
   );
 };
