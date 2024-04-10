@@ -38,7 +38,7 @@ export default function RootLayout({
   // console.log(state);
   const themeclrB = state.theme === "dark" ? "rgb(4,20,40)" : "white";
   const themeclrW = state.theme === "dark" ? "white" : "rgb(4,20,40)";
-  const themeclrB2 = state.theme === "dark" ? "#333" : "white";
+  const themeclrB2 = state.theme === "dark" ? "#001529" : "white";
   const borderClrW = state.theme === "dark" ? "rgb(160,150,150)" : "rgb(200,200,200)";
 
   const router = useRouter();
@@ -150,7 +150,7 @@ export default function RootLayout({
           />
         </Header>
 
-        <Content style={{ overflow: "scroll", backgroundColor: themeclrB2 }}>
+        <Content style={{  backgroundColor: themeclrB2 }}>
           {children}
         </Content>
       </Layout>
