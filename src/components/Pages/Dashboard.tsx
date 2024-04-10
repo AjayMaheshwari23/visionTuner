@@ -12,12 +12,11 @@ import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 
 import "../../styles/Dashboard.css";
-import Projects from "./Projects";
+import Projects from "./ProjectPageIndividual";
 
 const { Header, Sider, Content } = Layout;
 
 const Dashboard: React.FC = () => {
-
   const router = useRouter();
   const [collapsed, setCollapsed] = useState(false);
   const [key, setkey] = useState("1");
@@ -25,7 +24,7 @@ const Dashboard: React.FC = () => {
   const loadComponent = () => {
     switch (key) {
       case "1":
-        return <Projects />;
+        return <></>;
 
       case "2":
         return <h1> Key = 2 </h1>;
@@ -35,8 +34,7 @@ const Dashboard: React.FC = () => {
     }
   };
 
-  const handleMenuItemClick = (key: string) => 
-  {
+  const handleMenuItemClick = (key: string) => {
     setkey(key);
 
     switch (key) {
@@ -44,7 +42,6 @@ const Dashboard: React.FC = () => {
         //router.push("/profile");
         break;
       case "2":
-
         // router.push("/projects");
         break;
 
@@ -64,7 +61,10 @@ const Dashboard: React.FC = () => {
         <Menu
           theme="dark"
           mode="inline"
-          style={{boxShadow: "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px"}}
+          style={{
+            boxShadow:
+              "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
+          }}
           defaultSelectedKeys={["1"]}
           onSelect={(e) => handleMenuItemClick(e.key)}
           items={[
