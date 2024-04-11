@@ -95,7 +95,7 @@ const ProjectCard = ({ project }: { project: Project }) =>
             onConfirm={deleteProject}
             okText="Yes"
           >
-            <DeleteOutlined key="Delete" style={{ color: "red" }} />,
+            <DeleteOutlined key="Delete btn" style={{ color: "red" }} />
           </Popconfirm>
         </>,
       ]}

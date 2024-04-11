@@ -1,20 +1,5 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    list-style: none;
-    font-family: "Open Sans", sans-serif;
-  }
-  
-  body {
-    display: grid;
-    place-items: center;
-    min-height: 100vh;
-    background-color: #171717;
-  }
-  
   .pricing-plans {
-    gap: 32px;
+        gap: 32px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
