@@ -6,13 +6,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    /* background-image: url("../../public/assets/images/profile.jpeg"); */
+    background-color: rgb(79, 153, 218);
+    overflow: hidden;
 }
 
 .card {
     border: 2px solid rgb(0, 0, 0);
-    width: 80%;
+    width: 60%;
     padding: 20px 20px 20px 20px;
     font-size: xx-large;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(50px);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    color: #fff;
+    border-radius: 20px;
+    padding :30px 40px;
+    overflow: hidden;
 }
 
 .col{

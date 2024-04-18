@@ -1,44 +1,75 @@
 "use client";
 import '../../../../src/styles/profile.css';
 import { useAppContext } from "../../../contexts/AppContext";
-import { Card,Col,Row,Input,Button} from 'antd'
+import { Card,Col,Row,Input,Button,Image,Upload } from 'antd';
+import { PlusOutlined } from '@ant-design/icons';
 import React , { useState } from 'react';
-const { Meta } = Card;
-import { InputText } from 'primereact/inputtext';
-import { Dialog } from 'primereact/dialog';
-import project from '../../../../public/assets/images/project.png'  
-import { profile } from 'console';
 
+const getBase64 = (file : any) =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = (error) => reject(error);
+});
 const Profile = () => {
   const { state, setState } = useAppContext();
-  const [image,setImage] = useState("");
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewImage, setPreviewImage] = useState('');
+  const [fileList, setFileList] = useState([
+    
+  ]);
+  const handlePreview = async (file : any) => {
+    if (!file.url && !file.preview) {
+      file.preview = await getBase64(file.originFileObj);
+    }
+    setPreviewImage(file.url || file.preview);
+    setPreviewOpen(true);
+  };
+  const handleChange = ({ fileList: newFileList}) => setFileList(newFileList);
+  const uploadButton = (
+    <button
+      style={{
+        border: 0,
+        background: 'none',
+      }}
+      type="button"
+    >
+      <PlusOutlined />
+      <div
+        style={{
+          marginTop: 8,
+        }}
+      >
+        Upload
+      </div>
+    </button>
+  );
   return(
     <div className="container">
       <div className='card'>
-        <div className='profile_img text-center p-4'>
-          <div className="flex flex-column justify-content-center align-item-center">
-
-            <img 
-              style={{
-                width: '200px',
-                height: '200px',
-                borderRadius: '50%',
-                objectFit: 'cover',
-                border: '4px solid blue',
-              }} 
-              src={project} alt=""/>
-
-            <InputText type="file" accept="/image/*" onChange={(event)=>{
-              const file = event.target.files[0];
-              if(file && file.type.substring(0,5)==="image") {
-                setImage(file);
-              }else{
-                setImage(null);
-              }
-            }}
-            />
-          </div>
-        </div>
+      <Upload
+        action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+        listType="picture-circle"
+        fileList={fileList}
+        onPreview={handlePreview}
+        onChange={handleChange}
+      >
+        {fileList.length >= 8 ? null : uploadButton}
+      </Upload>
+      {previewImage && (
+        <Image
+          wrapperStyle={{
+            display: 'none',
+          }}
+          preview={{
+            visible: previewOpen,
+            onVisibleChange: (visible) => setPreviewOpen(visible),
+            afterOpenChange: (visible) => !visible && setPreviewImage(''),
+          }}
+          src={previewImage}
+        />
+      )}
         <Row>
           <Col span={12} className='col'>{state.user?.username}</Col>
           <Col span={12} className='col'><Input.Password placeholder="Old Password"/></Col>
