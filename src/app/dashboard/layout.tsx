@@ -2,7 +2,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./dashboard.css";
-const inter = Inter({ subsets: ["latin"] });
 import Logoutbtn from "@/components/buttons/Logoutbtn";
 import { useAppContext } from "@/contexts/AppContext";
 // export const metadata: Metadata = {
@@ -15,16 +14,16 @@ import {
   MenuUnfoldOutlined,
   UploadOutlined,
   UserOutlined,
-  VideoCameraOutlined,
   SettingOutlined,
+  AlertOutlined,
+  CustomerServiceOutlined,
+  TeamOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme } from "antd";
 
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
-
+import { createContext, useContext, useEffect, useState } from "react";
 import "../../styles/Dashboard.css";
-import Projects from "../../components/Pages/Projects";
 
 const { Header, Sider, Content } = Layout;
 
@@ -37,13 +36,15 @@ export default function RootLayout({
 }>) {
   const { state, setState } = useAppContext();
   // console.log(state);
+  const themeclrB = state.theme === "dark" ? "rgb(4,20,40)" : "white";
+  const themeclrW = state.theme === "dark" ? "white" : "rgb(4,20,40)";
+  const themeclrB2 = state.theme === "dark" ? "#001529" : "white";
+  const borderClrW = state.theme === "dark" ? "rgb(160,150,150)" : "rgb(200,200,200)";
 
   const router = useRouter();
   const [collapsed, setCollapsed] = useState(false);
-  // const [key, setkey] = useState("1");
 
   const handleMenuItemClick = (key: string) => {
-    //setkey(key);
 
     switch (key) {
       case "1":
@@ -58,11 +59,25 @@ export default function RootLayout({
         router.push("/dashboard/settings");
         break;
 
+      case "4":
+        router.push("/dashboard/UpgradeToPro");
+        break;
+
+      case "5":
+        router.push("/dashboard/HelpAndSupport");
+        break;
+      
+        case "6":
+        router.push("/dashboard/AboutUs");
+        break;
+
       default:
         break;
     }
   };
+ 
 
+ 
   return (
     <Layout className="dashboard">
       <Sider
@@ -70,6 +85,7 @@ export default function RootLayout({
         collapsible
         collapsed={collapsed}
         theme={state.theme as SiderTheme}
+        style={{ borderRight: `0.1px dashed ${borderClrW}` }}
       >
         <div className="demo-logo-vertical" />
         <Menu
@@ -93,13 +109,34 @@ export default function RootLayout({
               icon: <SettingOutlined />,
               label: "Settings",
             },
+            {
+              key: "4",
+              icon: <AlertOutlined />,
+              label: "Upgrade To Pro",
+            },
+            {
+              key: "5",
+              icon: <CustomerServiceOutlined />,
+              label: "Support",
+            },
+            {
+              key: "6",
+              icon: <TeamOutlined />,
+              label: "About Us",
+            },
           ]}
         />
         <Logoutbtn props={collapsed} />
       </Sider>
 
       <Layout>
-        <Header style={{ padding: 0, background: "white" }}>
+        <Header
+          style={{
+            padding: 0,
+            background: themeclrB,
+            borderBottom: `0.1px dashed ${borderClrW}`,
+          }}
+        >
           <Button
             type="text"
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -108,11 +145,14 @@ export default function RootLayout({
               fontSize: "16px",
               width: 64,
               height: 64,
+              color: themeclrW,
             }}
           />
         </Header>
 
-        <Content style={{ overflow: "scroll" }}>{children}</Content>
+        <Content style={{  backgroundColor: themeclrB2 }}>
+          {children}
+        </Content>
       </Layout>
     </Layout>
   );

@@ -8,11 +8,11 @@ import React, {
   useEffect,
 } from "react";
 
+import { message } from "antd";
 import User from "../app/models/user";
 import useAuth from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
 const jose = require("jose");
-import { env } from "process";
 
 interface AppState {
   theme: string;
@@ -24,6 +24,9 @@ interface AppState {
 interface AppContextType {
   state: AppState;
   setState: Dispatch<SetStateAction<AppState>>;
+  addSuccess: (message: string) => void;
+  addError: (message: string) => void;
+  addWarning: (message: string) => void;
 }
 
 const initialAppState: AppState = {
@@ -49,6 +52,20 @@ interface AppProviderProps {
 
 export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [state, setState] = useState<AppState>(initialAppState);
+
+   const addSuccess = (messagee: string) => {
+     console.log("I called notification");
+
+     message.success(messagee);
+   };
+
+   const addError = (messagee: string) => {
+     message.error(messagee);
+   };
+
+   const addWarning = (messagee: string) => {
+     message.warning(messagee);
+   };
 
   const router = useRouter();
   useEffect(() => {
@@ -90,6 +107,9 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const value: AppContextType = {
     state,
     setState,
+    addSuccess,
+    addError,
+    addWarning,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

@@ -9,16 +9,23 @@
     "lint": "next lint"
   },
   "dependencies": {
+
     "@ant-design/icons": "^5.3.6",
     "@tensorflow/tfjs-node": "^4.17.0",
+
     "antd": "^5.14.2",
     "bcryptjs": "^2.4.3",
+    "cloudinary": "^2.1.0",
     "dotenv": "^16.4.5",
     "jose": "^5.2.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.2.0",
     "next": "14.1.0",
+
     "primereact": "^10.6.2",
+
+    "query-string": "^9.0.0",
+
     "querystring": "^0.2.1",
     "react": "^18",
     "react-dom": "^18"

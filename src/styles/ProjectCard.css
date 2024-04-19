@@ -6,13 +6,30 @@
   text-overflow: clip;
 }
 
+.ProjectCard{
+  transition: transform 0.3s ease;
+  border: 2px solid black;
+}
+
+.ProjectCard:hover{
+  transform: scale(1.01);
+}
+
 .metaDescription {
-  width: 250px;
-  overflow-wrap: break-word;
-  text-align: center;
+  width: "100%";
+  text-align: left;
 }
 
 .projectImage {
   width: 400px;
   height: 150px;
+}
+
+.Btn_n_title{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding-bottom: 10px;
 }

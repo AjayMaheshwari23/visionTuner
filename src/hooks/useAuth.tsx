@@ -1,6 +1,6 @@
 const useAuth = async (userId: string) => {
   try {
-    // Append userId as a query parameter to the URL
+
     const url = `/api/auth?userId=${userId}`;
 
     const requestOptions = {
