@@ -1,27 +1,34 @@
-import React, { useState, useRef } from "react";
+import { CldUploadButton, CloudinaryUploadWidgetResults } from "next-cloudinary";
+import UploadImage from "../upload/UploadImage";
+import { ImageObj } from "../upload/UploadImage";
+import { useRef, useState } from "react";
 import { useAppContext } from "@/contexts/AppContext";
-import { Button, message } from "antd";
-import {
-  CldUploadButton,
-  CloudinaryUploadWidgetResults,
-} from "next-cloudinary";
+import { Button , message } from "antd";
 
 let ImageId = 0;
 
-export interface ImageObj {
-  id: number;
-  url: string;
+// export interface ImageObj {
+//   id: number;
+//   url: string;
+// }
+
+
+interface UploaderProps {
+  images: ImageObj[];
+  setImages: React.Dispatch<React.SetStateAction<ImageObj[]>>;
 }
 
-const UploadImage = () => {
-  const [selectedFiles, setSelectedFiles] = useState<ImageObj[]>([]);
+const Uploader = ({ images, setImages }: UploaderProps) => 
+{
+
+    // const [selectedFiles, setSelectedFiles] = useState<ImageObj[]>([]);
   const { state } = useAppContext();
   const [loading, setLoading] = useState<boolean>(false);
   const [done, setDone] = useState<boolean>(false);
 
   // Use a ref to keep track of the latest state value
   const selectedFilesRef = useRef<ImageObj[]>([]);
-  selectedFilesRef.current = selectedFiles;
+  selectedFilesRef.current = images;
 
   const handleSubmit = async () => {
     setLoading(true);
@@ -33,7 +40,7 @@ const UploadImage = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(selectedFiles),
+        body: JSON.stringify(images),
       };
 
       const response = await fetch(url, options);
@@ -72,28 +79,25 @@ const UploadImage = () => {
       };
 
       // Use the ref to access the latest state value
-      setSelectedFiles((prevSelectedFiles) => [
-        ...prevSelectedFiles,
-        newImageObject,
-      ]);
+      setImages((prevSelectedFiles) => [...prevSelectedFiles, newImageObject]);
       console.log(selectedFilesRef.current);
     }
   };
 
   return (
     <>
-      <div style={{ display: "flex", flexDirection: "row" }}>
+    <div style={{ display: "flex", flexDirection: "row" }}>
         <CldUploadButton
           uploadPreset="visionTuner_UploadPreset"
           onSuccess={(res: CloudinaryUploadWidgetResults) => extractId(res)}
           onError={(err) => console.log("ERROR OCCURRED -> " + err)}
         />
       </div>
-      <Button loading={loading} onClick={handleSubmit} disabled={done}>
+      {/* <Button loading={loading} onClick={handleSubmit} disabled={done}>
         {loading ? "Uploading..." : done ? "Uploaded" : "Upload"}
-      </Button>
+      </Button> */}
     </>
   );
 };
 
-export default UploadImage;
+export default Uploader;

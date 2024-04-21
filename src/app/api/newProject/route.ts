@@ -20,7 +20,7 @@ export async function POST(req: Request, res: NextApiResponse)
       const data: Project = await req.json();
       // console.log(data);
       
-    const { title, description, categoryNumber, categories }: Project = data;
+    const { title, description, categoryNumber, categories , images , annotations }: Project = data;
 
     const Newid = user.projects.length + 1;
     const NewProject: Project = {
@@ -29,8 +29,8 @@ export async function POST(req: Request, res: NextApiResponse)
       description: description,
       categoryNumber: categoryNumber,
       categories: categories,
-      images: `public/uploads/${user.username}/${Newid}/Images`,
-      annotations: `public/uploads/${user.username}/${Newid}/Annotations`,
+      images: images,
+      annotations: annotations,
     };
     // console.log(NewProject);
 
