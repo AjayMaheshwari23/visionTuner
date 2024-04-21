@@ -64,6 +64,7 @@ const Profile: React.FC = () => {
           fileList={fileList}
           onPreview={handlePreview}
           onChange={handleChange}
+          style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}
         >
           {fileList.length >= 8 ? null : uploadButton}
         </Upload>
