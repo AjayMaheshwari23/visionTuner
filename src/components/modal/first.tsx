@@ -6,9 +6,6 @@ import {
   Form,
   Input,
   InputNumber,
-  Upload,
-  Steps,
-  Space,
 } from "antd";
 
 const layout = {
@@ -27,15 +24,17 @@ const formItemLayout = {
   },
 };
 
-
-
 import {
   PlusOutlined,
-  InboxOutlined,
   MinusCircleOutlined,
 } from "@ant-design/icons";
 
-const First = () => {
+interface FirstProps {
+  setdata : React.Dispatch<React.SetStateAction<{}>>;
+}
+
+const First = ({ setdata }: FirstProps) => 
+  {
   return (
     <>
       <Form.Item
@@ -82,12 +81,12 @@ const First = () => {
               <Form.Item
                 {...formItemLayout}
                 label={"Category " + (1 + index)}
-                key={index+100}
+                key={index + 100}
                 required={false}
                 {...layout}
               >
                 <Form.Item
-                  key={index+1000}
+                  key={index + 1000}
                   name={field.name}
                   validateTrigger={["onChange", "onBlur"]}
                   rules={[
@@ -133,7 +132,6 @@ const First = () => {
           </>
         )}
       </Form.List>
-
     </>
   );
 };
