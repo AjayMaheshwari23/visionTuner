@@ -4,7 +4,7 @@ import "../../styles/modal.css";
 import { Modal, FloatButton, Button, Form, Steps, Spin, message } from "antd";
 import AnnotateTool from "../../components/annotateTool/page";
 import First from "./first";
-import Third from "./Third";
+import Third from "./third";
 import usenewProject from "@/hooks/usenewProject"
 import { PlusOutlined } from "@ant-design/icons";
 import Uploader from "./Uploader";
