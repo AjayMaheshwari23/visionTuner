@@ -21,7 +21,7 @@ const usenewProject = async (project: Project) => {
     const response = await fetch(url, requestOptions);
     // console.log(response);
     const data = await response.json();
-    // console.log(data);
+    console.log(data);
     return data;
 
   } catch (err) {
