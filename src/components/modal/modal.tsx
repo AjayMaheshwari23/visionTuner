@@ -11,6 +11,7 @@ import Uploader from "./Uploader";
 import { Project } from "@/app/models/user";
 import { useAppContext } from "@/contexts/AppContext";
 import { ImageObj } from "../upload/UploadImage";
+import { useRouter } from "next/navigation";
 
 const steps = [
   {
@@ -34,6 +35,7 @@ interface Data {
 const ModalComp: React.FC = () => 
   {
 
+    const router = useRouter();
   const [open, setOpen] = useState(false);
   const [data, setdata] = useState<Data>({});
   const [images, setImages] = useState<ImageObj[]>([]);
@@ -52,6 +54,8 @@ const ModalComp: React.FC = () =>
       categories: categories_list || [],
       images: op,
       annotations: op,
+      model:"",
+      createdAt : new Date(),
     };
   };
 
@@ -75,6 +79,7 @@ const ModalComp: React.FC = () =>
       setState({...state,user:res.UpdatedUser});
       setCurrent(0);
       setOpen(false);
+      router.push(`/dashboard/projects/${res.UpdatedUser.projects.length}`);
 
     } catch (error) {
       console.error("Error creating project:", error);
@@ -87,6 +92,8 @@ const ModalComp: React.FC = () =>
     {
       // console.log(data);
       const proj = convertToProject();
+      // console.log(proj);
+      
       proj.images = images;
       createProject(proj);
   }

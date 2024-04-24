@@ -10,6 +10,8 @@ export interface Project {
   categories: string[];
   images: ImageObj[];
   annotations: ImageObj[];
+  model:string;
+  createdAt: Date; 
 }
 
 interface User {
@@ -36,6 +38,8 @@ const projectSchema = new mongoose.Schema<Project>({
   categories: { type: [String], required: true },
   images: { type: [imageObjSchema], required: true },
   annotations: { type: [imageObjSchema], required: true },
+  model : { type:String , required:false },
+  createdAt : { type:Date , default:Date.now  }
 });
 
 const userSchema = new mongoose.Schema<UserDocument, UserModel>({
