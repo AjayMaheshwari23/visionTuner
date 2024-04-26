@@ -8,7 +8,7 @@ import Third from "./third";
 import usenewProject from "@/hooks/usenewProject"
 import { PlusOutlined } from "@ant-design/icons";
 import Uploader from "./Uploader";
-import { Project } from "@/app/models/user";
+import { Project, Annotationbox , AnnotationObj } from "@/app/models/user";
 import { useAppContext } from "@/contexts/AppContext";
 import { ImageObj } from "../upload/UploadImage";
 import { useRouter } from "next/navigation";
@@ -39,6 +39,7 @@ const ModalComp: React.FC = () =>
   const [open, setOpen] = useState(false);
   const [data, setdata] = useState<Data>({});
   const [images, setImages] = useState<ImageObj[]>([]);
+  const [annotations, setannotations] = useState<AnnotationObj[]>([]);
   const [current, setCurrent] = useState(0);
   const [spinning, setSpinning] = React.useState<boolean>(false);
   const { state, setState } = useAppContext();
@@ -46,6 +47,7 @@ const ModalComp: React.FC = () =>
   const convertToProject = () => {
     const { Title_of_Project, Description, CategoryCount, categories_list } = data ;
     const op : ImageObj[] = [];
+    const op2: AnnotationObj[] = [];
     return {
       projectId: 0, // i will generate this on the server side
       title: Title_of_Project || "",
@@ -53,7 +55,7 @@ const ModalComp: React.FC = () =>
       categoryNumber: CategoryCount || 0,
       categories: categories_list || [],
       images: op,
-      annotations: op,
+      annotations: op2,
       model:"",
       createdAt : new Date(),
     };
@@ -95,6 +97,13 @@ const ModalComp: React.FC = () =>
       // console.log(proj);
       
       proj.images = images;
+      proj.images.forEach(ele => {
+        const x : Annotationbox = { tl:0.111 , tr:0.221 , bl:0.33242341 , br:0.25435321 }
+        const arr = [x]
+        annotations.push({ id:ele.id , coordinates:arr })
+      });
+
+      proj.annotations = annotations;
       createProject(proj);
   }
 
@@ -141,7 +150,9 @@ const ModalComp: React.FC = () =>
 
   const whichStep = [
     <First setdata={setdata} />,
-    <Uploader images={images} setImages={setImages} />,
+    <>
+    <Uploader images={images} setImages={setImages} />
+    </>,
     <Third images={images} data={data} />,
   ];
    

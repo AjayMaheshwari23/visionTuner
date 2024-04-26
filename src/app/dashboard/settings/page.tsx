@@ -44,7 +44,7 @@ export default function settings() {
             </div>
 
             <div className="grid-row">
-              <Settingsbutton ButtonName={"Enable Api's"} />
+              <Settingsbutton ButtonName={"Auto-start Training"} />
               <Settingsbutton ButtonName={"GPU Throttling"} />
             </div>
             
