@@ -1,0 +1,23 @@
+.grid-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.button {
+  width: 400px;
+  font-size: 16px;
+  padding: 18px 25px; /* Adjust padding as needed */
+  background-color: #3498db; /* Set background color */
+  color: white; /* Set text color */
+  border: none;
+  border-radius: 6px;
+  cursor: default;
+}
+/* Responsive CSS */
+@media (max-width: 768px) {
+  .button {
+    width: 100%;
+  }
+}
