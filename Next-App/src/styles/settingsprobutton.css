@@ -1,0 +1,11 @@
+.pro-button {
+  width: 400px;
+  font-size: 17px;
+  text-align: center;
+  padding: 18px 25px; /* Adjust padding as needed */
+  background-color: #c7b96a; /* Set background color */
+  color: white; /* Set text color */
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}

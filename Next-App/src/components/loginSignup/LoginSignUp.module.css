@@ -1,0 +1,226 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
+/* *, *:before, *:after {
+  box-sizing: border-box;
+} */
+
+
+.container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.container:hover .top:before,
+.container:hover .top:after,
+.container:hover .bottom:before,
+.container:hover .bottom:after,
+.container:active .top:before,
+.container:active .top:after,
+.container:active .bottom:before,
+.container:active .bottom:after {
+  margin-left: 300px;
+  transform-origin: -300px 50%;
+  transition-delay: 0s;
+}
+
+.container:hover .center,
+.container:active .center {
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+
+.top:before,
+.top:after,
+.bottom:before,
+.bottom:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 200vmax;
+  height: 200vmax;
+  top: 50%;
+  left: 50%;
+  margin-top: -100vmax;
+  transform-origin: 0 50%;
+  transition: all 0.5s cubic-bezier(0.445, 0.05, 0, 1);
+  z-index: 10;
+  opacity: 0.65;
+  transition-delay: 0.2s;
+}
+
+.top:before {
+  transform: rotate(45deg);
+  background: #e46569;
+}
+
+.top:after {
+  transform: rotate(135deg);
+  background: #ecaf81;
+}
+
+.bottom:before {
+  transform: rotate(-45deg);
+  background: #60b8d4;
+}
+
+.bottom:after {
+  transform: rotate(-135deg);
+  background: #3745b5;
+}
+
+.center {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  top: 55%;
+  left: 50%;
+  margin-left: -200px;
+  margin-top: -280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.445, 0.05, 0, 1);
+  transition-delay: 0s;
+  color: #333;
+}
+
+.center input {
+  width: 100%;
+  height: 50%;
+  padding: 15px;
+  margin: 5px;
+  border-radius: 1px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+}
+.btn {
+  margin: 10%;
+  text-align: center;
+
+}
+
+.btn {
+  width: 200px;
+  font-size: 25px;
+  font-weight: 600;
+  color: #f1e4e4;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-left: 8vh;
+  height: 50px;
+  /* text-align:center; */
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 50px;
+  moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.btn:hover {
+  background-position: 100% 0;
+  moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn {
+  background-image: linear-gradient(to right, #fc6076, #ff9a44, #ef9d43, #e75516);
+  box-shadow: 0 4px 15px 0 rgba(252, 104, 110, 0.75);
+}
+
+.f_social_icon {
+  /* line-height: 43px; */
+  background: transparent;
+  /* border: 1px solid #e2e2eb; */
+  justify-content: center;
+  display: flex;
+  /* font-size: 20px; */
+}
+
+.social {
+  align-items: center;
+  justify-items: center;
+  margin-top: 20px;
+  margin-left: 10px;
+  border-radius: 50%;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 15px;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.social:hover {
+  transform: translateY(-5px);
+}
+
+.facebook {
+  background: #0b34ec;
+  border-color: #0b34ec;
+  color: white;
+}
+
+.twitter {
+  background: #2ca6ed;
+  border-color: #2ca6ed;
+  color: white;
+}
+
+.google {
+  background: #e92525;
+  border-color: #e92525;
+  color: white;
+}
+
+.linkedin {
+  background: #29d1dd;
+  border-color: #29d1dd;
+  color: white;
+}
+
+
+.flip-card{
+  perspective: 1000px;
+  position: relative;
+  transform-style: preserve-3d ;
+  transition: transform 0.5s;
+}
+
+.flip-card.flipped{
+  transform: rotateY(180deg);
+}
+.flipInner{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d ;
+}
+
+.front,.back{
+  position: absolute;
+  /* backface-visibility: hidden; */
+}
+.flip{
+  transform: rotateY(180deg);
+}
+.front{
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+.back{
+  /* transform: rotateY(180deg); */
+}
+

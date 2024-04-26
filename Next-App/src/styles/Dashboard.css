@@ -1,0 +1,18 @@
+.dashboard {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.ant-layout {
+  display: flex; 
+}
+
+.ant-layout-sider {
+  flex: 0 0 auto; 
+  overflow: hidden; 
+}
+
+.ant-layout-content {
+  flex: 1; 
+  overflow-y: auto; 
+}
