@@ -2,6 +2,18 @@ import mongoose, { Document, Model } from "mongoose";
 
 import { ImageObj } from "@/components/upload/UploadImage";
 
+export interface Annotationbox{
+  tl: number;
+  tr: number;
+  bl: number;
+  br: number;
+}
+
+export interface AnnotationObj {
+  id: number;
+  coordinates: Annotationbox[];
+}
+
 export interface Project {
   projectId: number;
   title: string;
@@ -9,9 +21,9 @@ export interface Project {
   categoryNumber: number;
   categories: string[];
   images: ImageObj[];
-  annotations: ImageObj[];
-  model:string;
-  createdAt: Date; 
+  annotations: AnnotationObj[];
+  model: string;
+  createdAt: Date;
 }
 
 interface User {
@@ -30,6 +42,18 @@ const imageObjSchema = new mongoose.Schema<ImageObj>({
   url: { type: String, required: true },
 });
 
+const AnnotationboxSchema = new mongoose.Schema<Annotationbox>({
+  tl:{ type: Number, required:true},
+  tr:{ type: Number, required:true},
+  bl:{ type: Number, required:true},
+  br:{ type: Number, required:true}
+})
+
+const annotationObjSchema = new mongoose.Schema<AnnotationObj>({
+  id: { type: Number, required: true },
+  coordinates: { type: [AnnotationboxSchema], required: true },
+});
+
 const projectSchema = new mongoose.Schema<Project>({
   projectId: { type: Number, required: true },
   title: { type: String, required: true },
@@ -37,9 +61,9 @@ const projectSchema = new mongoose.Schema<Project>({
   categoryNumber: { type: Number, required: true },
   categories: { type: [String], required: true },
   images: { type: [imageObjSchema], required: true },
-  annotations: { type: [imageObjSchema], required: true },
-  model : { type:String , required:false },
-  createdAt : { type:Date , default:Date.now  }
+  annotations: { type: [annotationObjSchema], required: true },
+  model: { type: String, required: false },
+  createdAt: { type: Date, default: Date.now },
 });
 
 const userSchema = new mongoose.Schema<UserDocument, UserModel>({
