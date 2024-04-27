@@ -1,0 +1,10 @@
+{
+  "/api/logout/route": "app/api/logout/route.js",
+  "/page": "app/page.js",
+  "/dashboard/projects/[projectId]/page": "app/dashboard/projects/[projectId]/page.js",
+  "/dashboard/projects/page": "app/dashboard/projects/page.js",
+  "/dashboard/settings/page": "app/dashboard/settings/page.js",
+  "/dashboard/UpgradeToPro/page": "app/dashboard/UpgradeToPro/page.js",
+  "/dashboard/AboutUs/page": "app/dashboard/AboutUs/page.js",
+  "/dashboard/HelpAndSupport/page": "app/dashboard/HelpAndSupport/page.js"
+}

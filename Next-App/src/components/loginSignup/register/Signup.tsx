@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import "../LoginSignUp";
 import { useRouter } from "next/navigation";
+import { message } from "antd";
 
 type Props = {
   isFlipped: boolean;
@@ -44,12 +45,13 @@ const SignupA: React.FC<Props> = ({ isFlipped, setIsFlipped }) => {
       setData(defaultData);
 
       const res = await response.json();
+      message.success("Account successfully created")
 
       if (res.status === 200) 
       {
         localStorage.setItem("jwtToken",res.jwtToken);
         // console.log(response);
-        router.push("./dashboard/profile");
+        setIsFlipped(!isFlipped);
       }else 
       {
         window.alert("Username or Email Already taken");

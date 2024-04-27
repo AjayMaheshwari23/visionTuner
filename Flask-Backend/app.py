@@ -1,11 +1,13 @@
 import os
 import tempfile
 import requests
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request , send_from_directory,abort,current_app
 from flask_cors import CORS
 import yaml
 from ultralytics import YOLO
 from flask import send_file
+import shutil
+
 
 model_path = "yolov8n.pt"
 
@@ -14,6 +16,37 @@ CORS(app)  # Allow CORS for all routes
 
 # Base URL for the images
 base_image_url = "https://res.cloudinary.com/dy3umrh6j/image/upload/v1712834199/"
+
+
+DOWNLOAD_DIRECTORY = ""
+
+@app.route('/get-files/<path:path>',methods = ['GET','POST'])
+def get_files(path):
+    try:
+        return send_from_directory(DOWNLOAD_DIRECTORY, path, as_attachment=True)
+    except FileNotFoundError:
+        abort(404)
+
+
+def delete_runs_directory():
+    # print("Deleting runs directory ... ")
+    runs_directory = os.path.join(current_app.root_path, 'runs')
+    
+    # Check if the 'runs' directory exists
+    if os.path.exists(runs_directory):
+        shutil.rmtree(runs_directory)
+        print("Deleted 'runs' directory")
+
+def move_last_pt_file(username,projectId):
+    # absolute path 
+    last_pt_file = os.path.join(current_app.root_path, 'runs', 'detect', 'train', 'weights', 'last.pt')
+
+    if os.path.exists(last_pt_file):
+        destination_directory = os.path.join(current_app.root_path, username, projectId)
+        os.makedirs(destination_directory, exist_ok=True)  # exist dekh lena 
+        destination_file = os.path.join(destination_directory, 'last.pt')
+        shutil.move(last_pt_file, destination_file)
+        print("Moved 'last.pt' file to", destination_file)
 
 @app.route('/api/train', methods=['POST'])
 def handle_data():
@@ -81,6 +114,7 @@ def handle_data():
             # Find annotations for this image
             matching_annotations = [annotation for annotation in annotations if annotation['id'] == image_id]
             cnt+=1
+
             # Write coordinates to text file
             with open(annotation_filename, 'w') as annotation_file:
                 for annotation_data in matching_annotations:
@@ -94,8 +128,10 @@ def handle_data():
         model = YOLO('yolov8n.pt')
         results = model.train(data='data.yaml',epochs=1)
         # print(results)
-        model_path = 'runs/detect/train/weights/last.pt'
-        model_link = f'http://localhost:5000/{model_path}'
+        
+        move_last_pt_file(username,projectId)
+        delete_runs_directory()
+        model_link = f"{username}/{projectId}/last.pt"
         
         return jsonify({'model_link': model_link}), 200
     
