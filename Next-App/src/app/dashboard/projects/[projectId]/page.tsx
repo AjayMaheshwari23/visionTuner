@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import ProjectPageIndividual from "@/components/Pages/ProjectPageIndividual";
 import ExampleComponent from "@/components/flask/Example";
 import { Project } from "@/app/models/user";
+import {BackwardOutlined } from "@ant-design/icons"
 
 export default function Page() {
   const { state } = useAppContext();
@@ -19,7 +20,9 @@ export default function Page() {
   );
   const [CurProject, setCurProject] = useState<Project | undefined>(def);
   const [loading, setLoading] = useState(false);
-  const [modelCreated, setmodelCreated] = useState(false);
+  const [modelCreated, setmodelCreated] = useState(
+    (CurProject?.model != "") as boolean
+  );
 
   useEffect(() => {
     // Wait until state is available from useAppContext
@@ -30,23 +33,24 @@ export default function Page() {
       // console.log(project);
       
       setCurProject(project);
-      setmodelCreated((CurProject?.model == "") as boolean);
+      setmodelCreated((CurProject?.model != "") as boolean);
     }
   }, [state, projectId]);
 
   return (
     <>
-      <Button onClick={() => router.back()}> Go Back </Button>
+      <Button style={ { margin:"10px" } } onClick={() => router.back()} icon={<BackwardOutlined /> }> Go Back </Button>
       <div>
-        {loading ? (
-          <Spin size="large">
-            {/* <div className="content" > Creating Your Project</div> */}
-          </Spin>
-        ) : (
-          <>Model Successfully created...</>
-        )}
-        {CurProject && <ExampleComponent project={CurProject} loading={loading} setloading={setLoading} />}
         {CurProject && <ProjectPageIndividual project={CurProject} />}
+        {CurProject && (
+          <ExampleComponent
+            project={CurProject}
+            loading={loading}
+            setloading={setLoading}
+            setmodelCreated={setmodelCreated}
+            modelCreated={modelCreated}
+          />
+        )}
       </div>
     </>
   );

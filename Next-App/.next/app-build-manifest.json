@@ -1,0 +1,58 @@
+{
+  "pages": {
+    "/dashboard/projects/[projectId]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/dashboard/projects/[projectId]/page.css",
+      "static/chunks/app/dashboard/projects/[projectId]/page.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
+    ],
+    "/dashboard/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/dashboard/layout.css",
+      "static/chunks/app/dashboard/layout.js"
+    ],
+    "/dashboard/projects/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/dashboard/projects/page.css",
+      "static/chunks/app/dashboard/projects/page.js"
+    ],
+    "/dashboard/settings/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/dashboard/settings/page.css",
+      "static/chunks/app/dashboard/settings/page.js"
+    ],
+    "/dashboard/UpgradeToPro/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/dashboard/UpgradeToPro/page.css",
+      "static/chunks/app/dashboard/UpgradeToPro/page.js"
+    ],
+    "/dashboard/HelpAndSupport/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/dashboard/HelpAndSupport/page.css",
+      "static/chunks/app/dashboard/HelpAndSupport/page.js"
+    ],
+    "/dashboard/AboutUs/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/dashboard/AboutUs/page.css",
+      "static/chunks/app/dashboard/AboutUs/page.js"
+    ],
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/page.css",
+      "static/chunks/app/page.js"
+    ]
+  }
+}
