@@ -89,6 +89,7 @@ const Dashboard: React.FC = () => {
 
       <Layout>
         <Header style={{ padding: 0, background: "white" }}>
+          {/* <img src='/public/assets/logos/logo_VT.png'/> */}
           <Button
             type="text"
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
