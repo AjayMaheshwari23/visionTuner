@@ -1,8 +1,0 @@
-{
-  "/page": "app/page.js",
-  "/icon.png/route": "app/icon.png/route.js",
-  "/api/register/route": "app/api/register/route.js",
-  "/api/login/route": "app/api/login/route.js",
-  "/api/logout/route": "app/api/logout/route.js",
-  "/dashboard/profile/page": "app/dashboard/profile/page.js"
-}
