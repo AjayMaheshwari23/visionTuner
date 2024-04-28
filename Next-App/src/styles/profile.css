@@ -1,36 +1,114 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-
-.container {
+.box {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-image: url("../../public/assets/images/profile.jpeg"); */
-    background-color: rgb(79, 153, 218);
-    overflow: hidden;
+    margin: 0;
+    font: normal 16px 'Roboto Slab', sans-serif;
+    /* background-color: #d2d6de; */
 }
 
-.card {
-    border: 2px solid rgb(0, 0, 0);
-    width: 60%;
-    padding: 20px 20px 20px 20px;
-    font-size: xx-large;
-    background: transparent;
-    border: 2px solid rgba(255,255,255,0.2);
-    backdrop-filter: blur(50px);
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    color: #fff;
-    border-radius: 20px;
-    padding :30px 40px;
-    overflow: hidden;
+.inst{
+    display: flex;
+    justify-content:space-between;
+    background-color: #cac6c6;
+    padding: 10px 0px 10px 0px;
+    
 }
 
-.col{
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 300;
-    font-style: normal;
-    font-variation-settings:
-        "slnt" 0;
+.inside{
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    font-weight: 700;
+    margin-left: 30px;
+}
+.profile-wrapper {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+}
+
+.user-photo {
+    border-radius: 10px;
+    width: auto;
+    height: auto;
+    box-shadow: 0 0 1px 2px rgba(75, 62, 115, .1);
+}
+
+.row{
+    display: flex;
+}
+
+.left {
+    width: 350px;
+    padding: 0;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 47px -4px rgba(75, 62, 115, 1);
+    -moz-box-shadow: 0px 0px 47px -4px rgba(75, 62, 115, 1);
+    box-shadow: 0px 0px 47px -4px rgba(75, 62, 115, 1);
+}
+
+div.links .linkTag {
+    color: #8e8e8e;
+    transition: color 0.3s;
+}
+
+div.links .linkTag:hover {
+    color: #343a40;
+    transition: color 0.3s;
+}
+
+div.links .linkTag:active {
+    color: #6c757d;
+}
+
+.right {
+    border-left: solid 1px rgba(75, 62, 115, .4);
+    height: 330px;
+    /* margin-top: 10px; */
+    -webkit-box-shadow: 0px 0px 47px -4px rgba(75, 62, 115, 1);
+    -moz-box-shadow: 0px 0px 47px -4px rgba(75, 62, 115, 1);
+    box-shadow: 0px 0px 47px -4px rgba(75, 62, 115, 1);
+    background-color: #fff;
+    width: 350px;
+    padding: 0;
+    border-radius: 0 10px 10px 0;
+    padding: 20px 0px 0px 0px;
+}
+
+.right>h1 {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.right>h2 {
+    font-size: 20px;
+}
+
+.right>h3 {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .user-photo {
+        box-shadow: none;
+    }
+
+    .right {
+        border-radius: 0 0 10px 10px;
+        padding-top: 15px;
+        margin-top: -10px;
+    }
+
+    .profile-wrapper {
+        max-width: 350px;
+    }
+
+    .row{
+        flex-direction: column;
+    }
 }

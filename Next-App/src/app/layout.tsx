@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
 
   Connection_db();
-  
+
   return (
     <AppProvider>
       <html lang="en">
