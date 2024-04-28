@@ -12,9 +12,9 @@ const LoginSignUp: React.FC = () => {
     setIsFlipped(!isFlipped);
     console.log(isFlipped);
   };
-
+  {" "}
   return (
-    <div className={styles.bodyi}>
+    <div>
       <div className={styles.container}>
         <div className={styles.top}></div>
         <div className={styles.bottom}></div>

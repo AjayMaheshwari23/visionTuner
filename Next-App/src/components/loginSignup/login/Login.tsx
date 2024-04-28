@@ -138,8 +138,8 @@ const LoginA: React.FC<Props> = ({ isFlipped, setIsFlipped }) => {
         onClick={() => {
           setIsFlipped(!isFlipped);
         }}
-      >
-        Create my account{" "}
+      >{" "}
+        Create my account
       </Link>
     </div>
   );
