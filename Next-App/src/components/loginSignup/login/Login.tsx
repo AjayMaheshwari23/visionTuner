@@ -6,6 +6,8 @@ import React, { useState } from "react";
 import "../LoginSignUp";
 // import axios from "axios";
 import { useRouter } from "next/navigation";
+import { message , Button , ConfigProvider} from "antd";
+import { TinyColor } from '@ctrl/tinycolor';
 import { useAppContext } from "@/contexts/AppContext";
 
 type Props = {
@@ -15,7 +17,32 @@ type Props = {
 
 const defaultData = { username: "", password: "" };
 
+const colors2 = ['#fc6076', '#ff9a44', '#ef9d43', '#e75516'];
+const getHoverColors = (colors:any) =>
+  colors.map((color : any) => new TinyColor(color).lighten(5).toString());
+const getActiveColors = (colors:any) =>
+  colors.map((color:any) => new TinyColor(color).darken(5).toString());
+
 const LoginA: React.FC<Props> = ({ isFlipped, setIsFlipped }) => {
+
+    // design
+    const [loadings, setLoadings] = useState<boolean[]>([]);
+    const enterLoading = (index:any) => {
+      setLoadings((prevLoadings) => {
+        const newLoadings = [...prevLoadings];
+        newLoadings[index] = true;
+        return newLoadings;
+      });
+      setTimeout(() => {
+        setLoadings((prevLoadings) => {
+          const newLoadings = [...prevLoadings];
+          newLoadings[index] = false;
+          return newLoadings;
+        });
+      }, 6000);
+    };
+
+  // data
   const { state, setState , addSuccess , addError } = useAppContext();
   const [data, setData] = React.useState(defaultData);
   const router = useRouter();
@@ -26,7 +53,7 @@ const LoginA: React.FC<Props> = ({ isFlipped, setIsFlipped }) => {
 
   const onLogin = async (e: any) => {
     e.preventDefault();
-
+    enterLoading(0);
     if (!data.username || !data.password) {
       alert("Please fill all mandatory fields.");
       return;
@@ -89,10 +116,21 @@ const LoginA: React.FC<Props> = ({ isFlipped, setIsFlipped }) => {
                 <Link href="#" className={`${styles.social} ${styles.google}`}><FaGoogle size={23} /></Link>
                 <Link href="#" className={`${styles.social} ${styles.linkedin}`}><FaLinkedinIn size={23} /></Link> */}
       </div>
-      <button className={styles.btn} onClick={(e) => onLogin(e)}>
-        {" "}
-        Log In{" "}
-      </button>
+      <ConfigProvider
+      theme={{
+        components: {
+          Button: {
+            colorPrimaryHover: `linear-gradient(90deg, ${getHoverColors(colors2).join(', ')})`,
+            colorPrimaryActive: `linear-gradient(90deg, ${getActiveColors(colors2).join(', ')})`,
+            lineWidth: 0,
+          },
+        },
+      }}
+    >
+      <Button type="primary" size="large"  className={styles.btn} loading={loadings[0]} onClick={(e) => onLogin(e)}>
+        Login
+      </Button>
+    </ConfigProvider>
       <br />
       <Link
         href="#"
