@@ -1,0 +1,40 @@
+/*!********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./src/styles/profile.css ***!
+  \********************************************************************************************************************************************************************************************************************************************************************/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-image: url("../../public/assets/images/profile.jpeg"); */
+    background-color: rgb(79, 153, 218);
+    overflow: hidden;
+}
+
+.card {
+    border: 2px solid rgb(0, 0, 0);
+    width: 60%;
+    padding: 20px 20px 20px 20px;
+    font-size: xx-large;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.2);
+    -webkit-backdrop-filter: blur(50px);
+            backdrop-filter: blur(50px);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    color: #fff;
+    border-radius: 20px;
+    padding :30px 40px;
+    overflow: hidden;
+}
+
+.col{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings:
+        "slnt" 0;
+}

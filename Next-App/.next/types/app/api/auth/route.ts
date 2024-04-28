@@ -1,4 +1,4 @@
-// File: /Users/ajaymaheshwari/Desktop/IIITL/6th sem/Mini Project/visionTuner/Next-App/src/app/api/auth/route.tsx
+// File: /home/mahek/Desktop/visionTuner/Next-App/src/app/api/auth/route.tsx
 import * as entry from '../../../../../src/app/api/auth/route.js'
 import type { NextRequest } from 'next/server.js'
 
