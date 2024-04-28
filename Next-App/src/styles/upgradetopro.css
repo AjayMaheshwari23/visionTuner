@@ -75,7 +75,9 @@
     font-size: 14px;
     font-weight: lighter;
   }
-  
+  .pricing-card .features {
+    list-style: none;
+  }
   .pricing-card .features li {
     padding-bottom: 16px;
     color: #ffffff;
@@ -119,3 +121,9 @@
   .dark > .pricing-card{
     background-color: #A5D7E8;
   } 
+  .qrimage-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+  }

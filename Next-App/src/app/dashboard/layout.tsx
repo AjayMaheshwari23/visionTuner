@@ -143,8 +143,7 @@ export default function RootLayout({
             onClick={() => setCollapsed(!collapsed)}
             style={{
               fontSize: "16px",
-              width: 64,
-              height: 64,
+             marginLeft:"10px",
               color: themeclrW,
             }}
           />

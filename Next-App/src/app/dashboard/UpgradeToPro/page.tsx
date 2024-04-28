@@ -151,11 +151,12 @@ const UpgradeToPro = () => {
         </ul>
         <button className="cta-btn">SELECT</button>
       </div>
-      <Modal title="Basic Modal" open={isModalOpen} onCancel={handleCancel} footer={[
+      <Modal title="Pay Using QR" open={isModalOpen} onCancel={handleCancel} footer={[
           
         ]} >
-          
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi maiores doloribus omnis similique dolores fugiat ipsam harum autem laudantium ea. Esse quam eveniet, fugiat quos nisi explicabo qui laudantium iure!</p>
+          <div className='qrimage-container'>
+        <img src='../assets/images/qr-image.jpg' style={{height: "300px"}}/>
+        </div>
       </Modal>
     </section>
     )
