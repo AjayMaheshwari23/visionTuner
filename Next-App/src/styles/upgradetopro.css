@@ -1,8 +1,8 @@
 body {
-  background: #001529;
+  background: #041428;
 }
 #pricing {
-  background: #001529;
+  background: #041428;
   margin-bottom: 50px;
 }
 
@@ -10,17 +10,23 @@ body {
 
 .container{
   display: flex;
-  justify-content: center;
-
+  justify-content: space-evenly;
+  gap: 70px;
+  align-items: center;
+  height: 80vh;
+  padding-left: 35px;
+  padding-right: 35px;
 }
 
 #cash{
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
 #equity{
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 .switcher-box {
@@ -84,14 +90,22 @@ body {
   color: #fff;
   text-align: center;
 }
+
 .table-data {
+  text-align: center;
+  max-width: 450px;
   padding: 32px;
-  border: 1px solid transparent;
-  border-radius: 30px;
+  border: 1px solid#1677ff;
+  border-radius: 25px;
   background-image: linear-gradient(#020c1a, #020c1a),
     linear-gradient(263.86deg, #345cef -0.33%, #9234ef 93.97%);
   background-origin: border-box;
   background-clip: padding-box, border-box;
+  transition: transform 0.3s ease;
+}
+
+.table-data:hover{
+  transform: scale(1.1);
 }
 .table-data h3 {
   color: #fff;
