@@ -29,16 +29,15 @@
     justify-content: center;
 }
 
-.img{
+.img {
     border-radius: 50%;
     width: 200px;
     height: 200px;
+    transition: transform 300ms ease-in-out;
 }
-.img:hover{
-    position: relative;
-    transform: translateY(10px) scale(1.15);
-    transform-origin: 50% bottom;
-    transition: transform 300ms cubic-bezier(0.2, 0, 0.2, 0.8);
+
+.img:hover {
+    transform: scale(1.15);
 }
 
 h2{
