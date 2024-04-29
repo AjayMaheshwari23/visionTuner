@@ -1,4 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = { test: /\\.(png|jp(e*)g|svg|gif)$/, use: ['file-loader'], };
 
 export default nextConfig;
