@@ -40,7 +40,7 @@
 
 .top:before {
   transform: rotate(45deg);
-  background: #e46569;
+  background: var(--login-bg-clr);
 }
 
 .top:after {
