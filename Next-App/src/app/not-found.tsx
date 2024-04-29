@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 const Page404: React.FC = () => {
   const router = useRouter();
   const onclick = () => {
-    router.push("/dashboard");
+    router.push("/dashboard/profile");
   }
   return (
     <div className="flex-container">
