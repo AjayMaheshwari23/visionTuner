@@ -2,7 +2,7 @@ body {
   background: #041428;
 }
 #pricing {
-  background: #041428;
+  /* background: #041428; */
   margin-bottom: 50px;
 }
 
@@ -87,8 +87,9 @@ body {
   -o-transform: translatex(28px);
 }
 .table-data h4 {
-  color: #fff;
+  /* color: #ffffff; */
   text-align: center;
+  font-size: large;
 }
 
 .table-data {
@@ -97,8 +98,9 @@ body {
   padding: 32px;
   border: 1px solid#1677ff;
   border-radius: 25px;
-  background-image: linear-gradient(#020c1a, #020c1a),
-    linear-gradient(263.86deg, #345cef -0.33%, #9234ef 93.97%);
+  /* background-color: #E6F4FF; */
+  /* background-image: linear-gradient(#020c1a, #020c1a), */
+    /* linear-gradient(263.86deg, #345cef -0.33%, #9234ef 93.97%); */
   background-origin: border-box;
   background-clip: padding-box, border-box;
   transition: transform 0.3s ease;
@@ -108,20 +110,22 @@ body {
   transform: scale(1.1);
 }
 .table-data h3 {
-  color: #fff;
+  /* color: #fff; */
   padding-top: 24px;
+  font-size: medium;
 }
 #pricing .table-data p {
   text-align: left;
   padding-top: 24px;
   font-size: 16px;
   line-height: 24px;
-  color: #fff;
+  /* color: #fff; */
 }
 .table-data h3 span {
+  margin-left: 10px;
   font-size: 14px;
   line-height: 21px;
-  padding: 4px 10px;
+  padding: 8px;
   background: linear-gradient(
     263.86deg,
     rgba(52, 92, 239, 0.2) -0.33%,
@@ -134,7 +138,7 @@ body {
   padding-bottom: 24px;
   position: relative;
 }
-.table-data p:not(:last-child)::after {
+.table-data p:not(:nth-last-child(2))::after {
   position: absolute;
   content: "";
   width: 130px;
@@ -151,3 +155,4 @@ body {
 .tab-content.show {
   display: block;
 }
+

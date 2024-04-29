@@ -5,7 +5,28 @@ import { useAppContext } from "@/contexts/AppContext";
 import { Modal } from "antd";
 import Upgradebutton from "../../../components/buttons/Upgradebutton";
 
+
+
 const UpgradeToPro = () => {
+
+  const { state, setState } = useAppContext();
+  const [darkMode, setdarkMode] = useState(state.theme === "dark");
+
+  const onChange = () => {
+    if (darkMode) {
+      setState({
+        ...state,
+        theme: "light",
+      });
+    } else {
+      setState({
+        ...state,
+        theme: "dark",
+      });
+    }
+    setdarkMode(!darkMode);
+  };
+  
   return (
     <section id="pricing">
       <div className="container">
@@ -13,15 +34,15 @@ const UpgradeToPro = () => {
           <div className="row">
             <div className="col-lg-6">
               <div className="table-data">
-                <h4>Recommended</h4>
-                <h3 className="table-price">£1700</h3>
+                <h4>Basic</h4>
+                <h3 className="table-price">£5<span>per month</span></h3>
                 <p>
                   After you agree to jump on a call with best matching talents &
                   advisors. Full money back if you‘re not convinced after those
                   interviews.
                 </p>
                 <h3 className="table-price">
-                  £15k <span>+25% payable post funding if applicable</span>
+                  £50 <span>per year</span>
                 </h3>
                 <p>
                   Upon talent / advisor joins your startup and agrees on the
@@ -36,9 +57,9 @@ const UpgradeToPro = () => {
           <div className="row">
             <div className="col-lg-6">
               <div className="table-data">
-                <h4>Equity Recommended</h4>
+                <h4>Pro</h4>
                 <h3 className="table-price">
-                  £1700 <span>In cash</span>
+                  £15<span>per month</span>
                 </h3>
                 <p>
                   After you agree to jump on a call with best matching talents &
@@ -46,13 +67,15 @@ const UpgradeToPro = () => {
                   interviews.
                 </p>
                 <h3 className="table-price">
-                  £15k <span>In equity</span>
+                  £150<span>per year</span>
                 </h3>
                 <p>
                   Upon talent / advisor joins your startup and agrees on the
                   proposal which we define together for advisor / talent.
                 </p>
-                <Upgradebutton />
+                <div>
+                 <Upgradebutton />
+                </div>
               </div>
             </div>
           </div>
@@ -61,9 +84,9 @@ const UpgradeToPro = () => {
           <div className="row">
             <div className="col-lg-6">
               <div className="table-data">
-                <h4>Equity Recommended</h4>
+                <h4>Premium</h4>
                 <h3 className="table-price">
-                  £1700 <span>In cash</span>
+                  £30 <span>per month</span>
                 </h3>
                 <p>
                   After you agree to jump on a call with best matching talents &
@@ -71,7 +94,7 @@ const UpgradeToPro = () => {
                   interviews.
                 </p>
                 <h3 className="table-price">
-                  £15k <span>In equity</span>
+                  £300 <span>per year</span>
                 </h3>
                 <p>
                   Upon talent / advisor joins your startup and agrees on the

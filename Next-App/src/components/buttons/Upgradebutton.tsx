@@ -1,4 +1,4 @@
-import { Button, Modal } from "antd";
+import { Button, Modal, QRCode } from "antd";
 import { useState } from "react";
 
 const Upgradebutton = () => {
@@ -12,15 +12,15 @@ const Upgradebutton = () => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+  const newLocal = "";
   return (
     <>
-      <Button type="primary" onClick={showModal}>
-        Open Modal
+    
+      <Button className="upgradebutton" type="primary" onClick={showModal} style={{width:"150px",height:"45px",fontSize:"20px"}}>
+        select
       </Button>
-      <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+      <Modal className="upgradebutton" title="Pay Using QR" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+        <img src="/assets/images/qr-image.jpg" alt="" style={{height:"300px",paddingLeft:"70px"}}/>
       </Modal>
     </>
   );
