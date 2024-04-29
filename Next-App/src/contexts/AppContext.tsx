@@ -83,25 +83,20 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
       }
 
       const token = tokenCookie?.substring("jwtToken=".length);
-      // console.log(token);
       const secret = new TextEncoder().encode("visionTuner");
       const decoded = await jose.jwtVerify(token, secret);
       const userId = decoded.payload.user.id;
       const user = await useAuth(userId);
-      // console.log(user);
       setState({
         ...state,
         user: user,
       });
 
-      // const user = await User.findOne({ _id: userId });
-      // const already = await User.findOne({ username: username });
-      // console.log(user);
+      
     };
 
     func();
 
-    // useAuth(token);
   }, []);
 
   const value: AppContextType = {

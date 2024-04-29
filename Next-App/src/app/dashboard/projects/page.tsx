@@ -7,7 +7,6 @@ import { Project } from "@/app/models/user";
 
 const ProjectPage = () => {
   const { state, setState } = useAppContext();
-  // const projects = [1,2,3];
   const projects = state.user?.projects;
   return (
     <div>

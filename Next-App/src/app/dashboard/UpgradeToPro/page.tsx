@@ -6,159 +6,51 @@ import { Modal } from 'antd';
 
 
 const UpgradeToPro = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-  const { state, setState } = useAppContext();
-  const isDarkTheme = state.theme === "dark";
-  const classNames = `pricing-plans ${isDarkTheme ? 'dark' : ''}`;
-    return (
-        <section className={classNames}>
-      <div className="pricing-card basic">
-        <div className="heading">
-          <h4>BASIC</h4>
+  return (
+    <section id="pricing">
+      <div className="container">
+        <div className="row">
+          <div className="offset-lg-1 col-lg-10">
+            {/* <div className="switcher-box">
+              <span>Cash</span>
+              <div className="switcher text-center">
+                <input type="checkbox" className="toggle" />
+              </div>
+              <span>Equity</span>
+            </div> */}
+            <div className="pricing-table pt-65">
+              <div className="container" id="cash">
+                <div className="row">
+                  <div className="col-lg-6">
+                    <div className="table-data">
+                      <h4>Recommended</h4>
+                      <h3 className="table-price">£1700</h3>
+                      <p>After you agree to jump on a call with best matching talents & advisors. Full money back if you‘re not convinced after those interviews.</p>
+                      <h3 className="table-price">£15k <span>+25% payable post funding if applicable</span></h3>
+                      <p>Upon talent / advisor joins your startup and agrees on the proposal which we define together for advisor / talent.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="container" id="equity">
+                <div className="row">
+                  <div className="col-lg-6">
+                    <div className="table-data">
+                      <h4>Equity Recommended</h4>
+                      <h3 className="table-price">£1700 <span>In cash</span></h3>
+                      <p>After you agree to jump on a call with best matching talents & advisors. Full money back if you‘re not convinced after those interviews.</p>
+                      <h3 className="table-price">£15k <span>In equity</span></h3>
+                      <p>Upon talent / advisor joins your startup and agrees on the proposal which we define together for advisor / talent.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <p className="price">
-          $2
-          <sub>/month</sub>
-        </p>
-        <ul className="features">
-          <li>
-            <i className="fa-solid fa-check"></i>
-            <strong>1 domain</strong> name
-          </li>
-          <li>
-            <i className="fa-solid fa-check"></i>
-            <strong>10 GB</strong> of disk space
-          </li>
-          <li>
-            <i className="fa-solid fa-check"></i>
-            <strong>100GB </strong>of bandwidth
-          </li>
-          <li>
-            <i className="fa-solid fa-check"></i>
-            <strong>1 MySQL</strong> database
-          </li>
-          <li>
-            <i className="fa-solid fa-check"></i>
-            <strong>5 email</strong> accounts
-          </li>
-          <li>
-            <i className="fa-solid fa-check"></i>
-            <strong>cPanel</strong> control panel
-          </li>
-          <li>
-            <i className="fa-solid fa-check"></i>
-            <strong>Free SSL</strong> certificate
-          </li>
-          <li>
-            <i className="fa-solid fa-check"></i>
-            <strong>24/7</strong> support
-          </li>
-        </ul>
-        <button className="cta-btn" onClick={showModal}>SELECT</button>
       </div>
-      <div className="pricing-card standard">
-        <div className="heading">
-          <h4>STANDARD</h4>
-        </div>
-        <p className="price">
-          $5
-          <sub>/month</sub>
-        </p>
-        <ul className="features">
-          <li>
-            <i className="fa-solid fa-check"></i>
-            <strong>Unlimited</strong> domain name
-          </li>
-          <li>
-            <i className="fa-solid fa-check"></i>
-            <strong>50 GB</strong> of disk space
-          </li>
-          <li>
-            <i className="fa-solid fa-check"></i>
-            <strong>500GB </strong>of bandwidth
-          </li>
-          <li>
-            <i className="fa-solid fa-check"></i>
-            <strong>10 MySQL</strong> database
-          </li>
-          <li>
-            <i className="fa-solid fa-check"></i>
-            <strong>50 email</strong> accounts
-          </li>
-          <li>
-            <i className="fa-solid fa-check"></i>
-            <strong>cPanel</strong> control panel
-          </li>
-          <li>
-            <i className="fa-solid fa-check"></i>
-            <strong>Free SSL</strong> certificate
-          </li>
-          <li>
-            <i className="fa-solid fa-check"></i>
-            <strong>24/7</strong> support
-          </li>
-        </ul>
-        <button className="cta-btn">SELECT</button>
-      </div>
-      <div className="pricing-card premium">
-        <div className="heading">
-          <h4>PREMIUM</h4>
-        </div>
-        <p className="price">
-          $10
-          <sub>/month</sub>
-        </p>
-        <ul className="features">
-          <li>
-            <i className="fa-solid fa-check"></i>
-            <strong>100 GB</strong> of disk space
-          </li>
-          <li>
-            <i className="fa-solid fa-check"></i>
-            <strong>1TB </strong>of bandwidth
-          </li>
-          <li>
-            <i className="fa-solid fa-check"></i>
-            <strong>Unlimited MySQL</strong> database
-          </li>
-          <li>
-            <i className="fa-solid fa-check"></i>
-            <strong>Unlimited email</strong> accounts
-          </li>
-          <li>
-            <i className="fa-solid fa-check"></i>
-            <strong>cPanel</strong> control panel
-          </li>
-          <li>
-            <i className="fa-solid fa-check"></i>
-            <strong>Free SSL</strong> certificate
-          </li>
-          <li>
-            <i className="fa-solid fa-check"></i>
-            <strong>24/7 priority</strong> support
-          </li>
-          <li>
-            <i className="fa-solid fa-check"></i>
-            <strong>Advanced</strong> security features
-          </li>
-        </ul>
-        <button className="cta-btn">SELECT</button>
-      </div>
-      <Modal title="Basic Modal" open={isModalOpen} onCancel={handleCancel} footer={[
-          
-        ]} >
-          
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi maiores doloribus omnis similique dolores fugiat ipsam harum autem laudantium ea. Esse quam eveniet, fugiat quos nisi explicabo qui laudantium iure!</p>
-      </Modal>
     </section>
-    )
+  );
 }
 
 export default UpgradeToPro;

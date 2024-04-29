@@ -1,3 +1,4 @@
+
 import { NextResponse } from "next/server";
 import User from "../../models/user";
 import { NextApiResponse } from "next";
@@ -33,7 +34,6 @@ export async function POST(request: Request, response: NextApiResponse) {
       password,
     });
 
-    // console.log(newUser.username , newUser.email , newUser.password);
 
     const already = await User.findOne({ username: username });
     if (!already) {
@@ -63,10 +63,9 @@ export async function POST(request: Request, response: NextApiResponse) {
       .setProtectedHeader({ alg: "HS256" })
       .sign(secret);
       
-    // const jwtToken = jwt.sign(dataT, process.env.JWT_SECRET);
+    
     const oneday = 24 * 60 * 60 * 1000;
     cookies().set("jwtToken", jwtToken, {
-      // expires: Date.now() - oneday,
     });
 
     console.log("Successfully Logged in");

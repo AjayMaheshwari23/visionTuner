@@ -90,12 +90,10 @@ const ExampleComponent: React.FC<ExampleComponentProps> = ({
         alignItems: "center",
       }}
     >
-      {/* disabled={modelCreated || loading} */}
       <Button
         type="primary"
         icon={<PoweroffOutlined />}
         loading={loading}
-        // disabled={modelCreated}
         onClick={sendData}
       >
         {loading ? "Training..." : "Start Training"}
@@ -109,7 +107,6 @@ const ExampleComponent: React.FC<ExampleComponentProps> = ({
         <></>
       )}
 
-      {/* {message && <p>{message}</p>} */}
       {error && <p style={{ color: "red" }}>{error}</p>}
       <Button
         disabled={loading}

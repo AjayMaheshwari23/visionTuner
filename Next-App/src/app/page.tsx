@@ -1,4 +1,3 @@
-// ALWAYS server Compo
 import Connection_db from "./api/db/config";
 import LoginSignUp from '../components/loginSignup/LoginSignUp'
 

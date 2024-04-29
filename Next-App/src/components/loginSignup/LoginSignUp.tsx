@@ -1,13 +1,11 @@
 "use client";
 import styles from "../../styles/LoginSignUp.module.module.css";
 import React, { useState } from "react";
-// import { FaFacebook, FaTwitter, FaLinkedinIn, FaGoogle } from "react-icons/fa";
 import LoginA from "./login/Login";
 import SignupA from "./register/Signup";
 
 const LoginSignUp: React.FC = () => {
   const [isFlipped, setIsFlipped] = useState(false);
-  // frontend
   const handleClick = () => {
     setIsFlipped(!isFlipped);
     console.log(isFlipped);

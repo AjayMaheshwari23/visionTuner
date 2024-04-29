@@ -9,7 +9,6 @@ export async function GET(request: Request) {
   const parsedd = queryString.parse(request.url.slice(queryIndex) || "");
   const userId = parsedd.userId;
   const user = await User.findOne({ _id: userId });
-  // console.log(userId);
   
   return NextResponse.json(user);
 }

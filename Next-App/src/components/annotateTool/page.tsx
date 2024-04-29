@@ -19,7 +19,6 @@ const AnnotateTool = ({ images , setImages }: AnnotationProps) => {
   const [annotationType, setAnnotationType] = useState("");
   const [annotations, setAnnotations] = useState<any[]>([]);
 
-  // Add 'pen' and 'rectangle' tool functionality
   const handleToolChange = (tool: string) => {
     setSelectedTool(tool);
   };
@@ -53,7 +52,6 @@ const AnnotateTool = ({ images , setImages }: AnnotationProps) => {
    }));
 
    setImages(images);
-  // console.log(images);
 
 
   useEffect(() => {

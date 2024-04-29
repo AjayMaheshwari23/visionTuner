@@ -140,12 +140,9 @@
 }
 
 .f_social_icon {
-  /* line-height: 43px; */
   background: transparent;
-  /* border: 1px solid #e2e2eb; */
   justify-content: center;
   display: flex;
-  /* font-size: 20px; */
 }
 
 .social {
@@ -210,7 +207,6 @@
 
 .front,.back{
   position: absolute;
-  /* backface-visibility: hidden; */
 }
 .flip{
   transform: rotateY(180deg);
@@ -221,6 +217,5 @@
 }
 
 .back{
-  /* transform: rotateY(180deg); */
 }
 

@@ -20,7 +20,7 @@ const AuthFirst = <P extends object>(WrappedComponent: React.ComponentType<P>) =
         
       } catch (error) {
         console.error("JWT verification failed:", error);
-        router.push("/login"); // Redirect to login page if token verification fails
+        router.push("/login");
       }
     }, []);
 

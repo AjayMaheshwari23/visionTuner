@@ -4,15 +4,11 @@ import { useEffect } from "react";
 
 interface Props {
     images: ImageObj[];
-    // setImages : React.Dispatch<React.SetStateAction<ImageObj[]>>
     data:any
 }
 
 const Third = ( { images , data  } : Props ) => 
     {
-        // console.log(images);
-        // console.log(data);
-        //  Everything Here 
           const {
             Title_of_Project,
             Description,
@@ -34,7 +30,6 @@ const Third = ( { images , data  } : Props ) =>
             </>
           );
         })}
-        {/* <AnnotateTool images={images} setImages={setImages} /> */}
       </>
     );
 }

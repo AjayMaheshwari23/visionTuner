@@ -7,12 +7,6 @@ import { Button , message } from "antd";
 
 let ImageId = 0;
 
-// export interface ImageObj {
-//   id: number;
-//   url: string;
-// }
-
-
 interface UploaderProps {
   images: ImageObj[];
   setImages: React.Dispatch<React.SetStateAction<ImageObj[]>>;
@@ -21,12 +15,10 @@ interface UploaderProps {
 const Uploader = ({ images, setImages }: UploaderProps) => 
 {
 
-    // const [selectedFiles, setSelectedFiles] = useState<ImageObj[]>([]);
   const { state } = useAppContext();
   const [loading, setLoading] = useState<boolean>(false);
   const [done, setDone] = useState<boolean>(false);
 
-  // Use a ref to keep track of the latest state value
   const selectedFilesRef = useRef<ImageObj[]>([]);
   selectedFilesRef.current = images;
 
@@ -78,7 +70,6 @@ const Uploader = ({ images, setImages }: UploaderProps) =>
         url: res.info.public_id,
       };
 
-      // Use the ref to access the latest state value
       setImages((prevSelectedFiles) => [...prevSelectedFiles, newImageObject]);
       console.log(selectedFilesRef.current);
     }
@@ -93,9 +84,6 @@ const Uploader = ({ images, setImages }: UploaderProps) =>
           onError={(err) => console.log("ERROR OCCURRED -> " + err)}
         />
       </div>
-      {/* <Button loading={loading} onClick={handleSubmit} disabled={done}>
-        {loading ? "Uploading..." : done ? "Uploaded" : "Upload"}
-      </Button> */}
     </>
   );
 };

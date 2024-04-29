@@ -29,7 +29,7 @@ interface Data {
   Title_of_Project?: string;
   Description?: string;
   CategoryCount?: number;
-  categories_list?: any[]; // Or specify a more specific type
+  categories_list?: any[]; 
 }
 
 const ModalComp: React.FC = () => 
@@ -49,7 +49,7 @@ const ModalComp: React.FC = () =>
     const op : ImageObj[] = [];
     const op2: AnnotationObj[] = [];
     return {
-      projectId: 0, // i will generate this on the server side
+      projectId: 0, 
       title: Title_of_Project || "",
       description: Description || "",
       categoryNumber: CategoryCount || 0,
@@ -63,7 +63,6 @@ const ModalComp: React.FC = () =>
 
   const createProject = async (projectData: Project) => {
     setSpinning(true);
-    // console.log(projectData);
     
     console.log("Creating New Prject Spiiner Triggered...");
     
@@ -74,10 +73,8 @@ const ModalComp: React.FC = () =>
       else
       {
         message.success("Project Successfully Created");
-        // Refresh karna idhar user ko
       }
 
-      // console.log(res.UpdatedUser);
       setState({...state,user:res.UpdatedUser});
       setCurrent(0);
       setOpen(false);
@@ -92,9 +89,7 @@ const ModalComp: React.FC = () =>
 
   const createNewProject = () => 
     {
-      // console.log(data);
       const proj = convertToProject();
-      // console.log(proj);
       
       proj.images = images;
       proj.images.forEach(ele => {
@@ -115,7 +110,6 @@ const ModalComp: React.FC = () =>
   };
 
   const onFinish = (values: any) => {
-    // console.log(values);
   };
   const onReset = () => {
     form.resetFields();
@@ -133,15 +127,9 @@ const ModalComp: React.FC = () =>
   };
 
   const next = () => {
-    // console.log("Modal  se -> ");
-    // console.log(form);
-    // console.log(form.getFieldsValue());
-    // console.log(formValues);
     
     if (current == 0) 
       {
-        // console.log("Mein chala");
-        
         const formValues = form.getFieldsValue();
         setdata(formValues);
       }

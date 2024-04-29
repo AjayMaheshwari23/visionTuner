@@ -40,7 +40,6 @@ export async function POST(request: Request, response: NextApiResponse) {
       password: hashPass,
     });
 
-    // console.log(newUser.username , newUser.email , newUser.password);
 
     const already =
       (await User.findOne({ email: email })) ||

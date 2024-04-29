@@ -8,11 +8,6 @@ const Login = () => {
     
     const handleLogin = () => 
     {
-        // try{
-        //     const res = fetch();
-        // }catch(error){
-
-        // }
 
       console.log("Logging in with:", { username, password });
     };

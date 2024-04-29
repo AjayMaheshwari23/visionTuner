@@ -111,10 +111,6 @@ const LoginA: React.FC<Props> = ({ isFlipped, setIsFlipped }) => {
         onChange={(e) => onValueChange(e)}
       />
       <div className={styles.f_social_icon}>
-        {/* <Link href="#" className={`${styles.social} ${styles.facebook}`}><FaFacebook size={23} /></Link>
-                <Link href="#" className={`${styles.social} ${styles.twitter}`}><FaTwitter size={23} /></Link>
-                <Link href="#" className={`${styles.social} ${styles.google}`}><FaGoogle size={23} /></Link>
-                <Link href="#" className={`${styles.social} ${styles.linkedin}`}><FaLinkedinIn size={23} /></Link> */}
       </div>
       <ConfigProvider
       theme={{
