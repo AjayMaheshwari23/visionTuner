@@ -22,14 +22,14 @@ const AboutUs: React.FC = () => {
       <h1><b>About Us</b></h1>
       <br />
       <p style={{fontSize:'17px'}}>VisionTuner streamlines the often tedious process of managing, annotating, and preparing image datasets. This frees up valuable time for developers to focus on the more exciting parts – building and refining their cutting-edge computer vision models.</p>
-      <p style={{fontSize:'17px'}}>VisionTuner acts as a catalyst for accelerating the development of computer vision applications. Developers can spend less time wrestling with coding, data preparation and more time bringing their innovative ideas to life.</p>
+      {/* <p style={{fontSize:'17px'}}>VisionTuner acts as a catalyst for accelerating the development of computer vision applications. Developers can spend less time wrestling with coding, data preparation and more time bringing their innovative ideas to life.</p> */}
       <p style={{fontSize:'17px'}}>VisionTuner empowers a wider range of practitioners to delve into the world of computer vision by simplifying the development process. This allows  more individuals to contribute to the creation of groundbreaking visual intelligence solutions.</p>
       <br />
       <h1><b>Our Amazing Team</b></h1>
       <br/><br/>
       <Row className='images1'>
         <Col span={8} className='yes'>
-          <Image src={Ajay} alt='Ajay' className='img'/>
+          <Image src={Ajay} alt='Ajay' className='img' />
           <br/>
           <h2><b>Ajay Maheshwari</b></h2>
           <p>Backend and Integration Developer</p>

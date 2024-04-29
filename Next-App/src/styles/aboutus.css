@@ -52,3 +52,10 @@ p{
 h1{
     font-size: 35px;
 }
+
+h1:hover{
+    position: relative;
+    transform: translateY(5px) scale(1.15);
+    transform-origin: 20% bottom;
+    transition: transform 300ms cubic-bezier(0.2, 0, 0.2, 0.2);
+}
