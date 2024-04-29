@@ -1,129 +1,139 @@
-  .pricing-plans {
-        gap: 32px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-    align-items: center;
-    padding: 50px;
-    height: 100%;
-  }
-  
-  .pricing-card {
-    background-color: #0985e3d8;
-    --col: #e4e4e7;
-    position: relative;
-    min-width: 360px;
-    padding: 20px;
-    padding-bottom: 60px;
-    border-radius: 10%;
-    border: 1px solid #262626;
-    /* background-color: #26262620; */
-    box-shadow: 0 0 32px transparent;
-    text-align: center;
-  }
-  
-  .pricing-card.basic {
-    --col: white;
-  }
-  
-  .pricing-card.standard {
-    --col: white;
-  }
-  
-  .pricing-card.premium {
-    --col: white;
-  }
-  
-  .pricing-card:hover {
-    border-color: var(--col);
-    /* background-color: #26262680; */
-    /* box-shadow: 0 0 32px #171717; */
-    transform: translateY(-12px) scale(1.02);
-    transition: all 0.5s ease;
-  }
-  
-  .pricing-card > *:not(:last-child) {
-    margin-bottom: 32px;
-  }
-  
-  .pricing-card .heading h4 {
-    padding-bottom: 12px;
-    color: white;
-    font-size: 24px;
-    font-weight: normal;
-  }
-  
-  .pricing-card .heading p {
-    color: #a3a3a3;
-    font-size: 14px;
-    font-weight: lighter;
-  }
-  
-  .pricing-card .price {
-    position: relative;
-    color: white;
-    font-size: 60px;
-    font-weight: bold;
-  }
-  
-  .pricing-card .price sub {
-    position: absolute;
-    bottom: 14px;
-    color: white;
-    font-size: 14px;
-    font-weight: lighter;
-  }
-  .pricing-card .features {
-    list-style: none;
-  }
-  .pricing-card .features li {
-    padding-bottom: 16px;
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: lighter;
-    text-align: left;
-  }
-  
-  .pricing-card .features li i,
-  .pricing-card .features li strong {
-    color: white;
-    font-size: 16px;
-    text-align: left;
-  }
-  
-  .pricing-card .features li strong {
-    padding-left: 24px;
-  }
-  
-  .pricing-card .cta-btn {
-    position: absolute;
-    bottom: 32px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    padding: 12px;
-    border-radius: 4px;
-    border: 1px solid var(--col);
-    background-color: #001529;
-    color: #e4e4e7;
-    font-size: 20px;
-    font-weight: bold;
-  }
-  
-  .pricing-card .cta-btn:active {
-    background-color: transparent;
-    color: var(--col);
-    transition: all 0.3s ease;
-  }
-  
-  .dark > .pricing-card{
-    background-color: #A5D7E8;
-  } 
-  .qrimage-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 10px;
-  }
+body {
+  background: #001529;
+}
+#pricing {
+  background: #001529;
+  margin-bottom: 50px;
+}
+
+
+
+.container{
+  display: flex;
+  justify-content: center;
+
+}
+
+#cash{
+  display: flex;
+  justify-content: center;
+}
+
+#equity{
+  display: flex;
+  justify-content: center;
+}
+.switcher-box {
+  margin-top: 48px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  margin-bottom: 45px;
+}
+.switcher-box span {
+  color: #fff;
+  padding: 0 12px;
+  font-size: 18px;
+  line-height: 32px;
+}
+.switcher input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+.switcher input[type="checkbox"]:focus {
+  outline: 0;
+}
+
+.switcher .toggle {
+  width: 59px;
+  height: 30px;
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  border: 2px solid #654fec;
+  transition: all 0.2s ease;
+  border-radius: 43px;
+  -webkit-border-radius: 43px;
+  -moz-border-radius: 43px;
+  -ms-border-radius: 43px;
+  -o-border-radius: 43px;
+}
+.switcher .toggle:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(263.86deg, #345cef -0.33%, #9234ef 93.97%);
+  box-shadow: 0 1px 2px rgba(44, 44, 44, 0.2);
+  transition: all 0.2s cubic-bezier(0.5, 0.1, 0.75, 1.35);
+}
+.switcher .toggle:checked:after {
+  transform: translatex(28px);
+  -webkit-transform: translatex(28px);
+  -moz-transform: translatex(28px);
+  -ms-transform: translatex(28px);
+  -o-transform: translatex(28px);
+}
+.table-data h4 {
+  color: #fff;
+  text-align: center;
+}
+.table-data {
+  padding: 32px;
+  border: 1px solid transparent;
+  border-radius: 30px;
+  background-image: linear-gradient(#020c1a, #020c1a),
+    linear-gradient(263.86deg, #345cef -0.33%, #9234ef 93.97%);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+.table-data h3 {
+  color: #fff;
+  padding-top: 24px;
+}
+#pricing .table-data p {
+  text-align: left;
+  padding-top: 24px;
+  font-size: 16px;
+  line-height: 24px;
+  color: #fff;
+}
+.table-data h3 span {
+  font-size: 14px;
+  line-height: 21px;
+  padding: 4px 10px;
+  background: linear-gradient(
+    263.86deg,
+    rgba(52, 92, 239, 0.2) -0.33%,
+    rgba(146, 52, 239, 0.2) 93.97%
+  );
+  border-radius: 4px;
+  font-weight: 400;
+}
+.table-data p:not(:last-child) {
+  padding-bottom: 24px;
+  position: relative;
+}
+.table-data p:not(:last-child)::after {
+  position: absolute;
+  content: "";
+  width: 130px;
+  height: 1px;
+  background: #474c61;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.tab-content {
+  display: none;
+}
+.tab-content.show {
+  display: block;
+}

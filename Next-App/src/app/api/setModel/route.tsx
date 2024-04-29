@@ -11,7 +11,6 @@ Connection_db();
 
 export async function POST(request: Request, response: NextApiResponse) {
   try {
-    // Log the incoming data
     console.log("Received data:", request.body);
 
     const data = await request.json();
@@ -19,25 +18,20 @@ export async function POST(request: Request, response: NextApiResponse) {
 
     const user = await User.findOne({ username });
 
-    // Check if the user exists
     if (!user) {
       throw new Error("User not found");
     }
 
-    // Find the project with the given projectId in the user's projects array
     const projectIndex = user.projects.findIndex(
       (projectt: Project) => projectt.projectId === project.projectId
     );
 
-    // Check if the project exists
     if (projectIndex === -1) {
       throw new Error("Project not found");
     }
 
-    // Update the model field of the specified project
     user.projects[projectIndex].model = model_link;
 
-    // Save the updated user document
     await user.save();
 
     return NextResponse.json({
@@ -45,7 +39,6 @@ export async function POST(request: Request, response: NextApiResponse) {
       user:user
     });
   } catch (error: any) {
-    // Log the error
     console.error("Error during Uploaded:", error.message);
 
     return NextResponse.json({

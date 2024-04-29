@@ -4,7 +4,6 @@ import { useState } from "react";
 
 const ImageInput = () => {
     const [input, setinput] = useState<string[]>();
-    // const [input, setinput] = useState<SetStateAction<string[]>>([]);
 
 
     const handleFileChange = (e:any) => {

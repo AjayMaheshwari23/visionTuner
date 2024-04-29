@@ -1,4 +1,3 @@
-// server comp
 import "./page.css";
 import Dashboard from "@/components/Pages/Dashboard";
 import Connection_db from "../api/db/config";

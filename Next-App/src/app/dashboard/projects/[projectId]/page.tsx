@@ -25,12 +25,10 @@ export default function Page() {
   );
 
   useEffect(() => {
-    // Wait until state is available from useAppContext
     if (state) {
       const project = state.user?.projects.find(
         (project) => project.projectId === projectId
       );
-      // console.log(project);
       
       setCurProject(project);
       setmodelCreated((CurProject?.model != "") as boolean);

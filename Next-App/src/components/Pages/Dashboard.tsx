@@ -39,14 +39,11 @@ const Dashboard: React.FC = () => {
 
     switch (key) {
       case "1":
-        //router.push("/profile");
         break;
       case "2":
-        // router.push("/projects");
         break;
 
       case "3":
-        // router.push("/nav3");
         break;
 
       default:

@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useAppContext } from "@/contexts/AppContext";
 
 const Logoutbtn = ({props} : {props:any}) => {
-  const collapsed = props; // Destructing kar lo idhar 
+  const collapsed = props;
   const [loading, setloading] = useState(false);
   const {state} = useAppContext();
   const ghostClr = state.theme === "dark" ? false : true;
@@ -13,7 +13,6 @@ const Logoutbtn = ({props} : {props:any}) => {
 
   const logoutFunc = async () => {
     setloading(true);
-    // API Call
     try {
       const url = "/api/logout";
       const requestOptions = {
@@ -27,7 +26,6 @@ const Logoutbtn = ({props} : {props:any}) => {
 
       if (response.status === 200) {
         console.log("Successfully logged out");
-        // Redirect to the home page
         router.push("/");
       } else {
         console.log("Error during logging out");

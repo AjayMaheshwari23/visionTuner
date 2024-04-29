@@ -32,7 +32,6 @@ const ProjectCard = ({ project }: { project: Project }) =>
 
   const deleteProject = async () => 
   {
-    // console.log("Deleting project");
     setLoading(true);
     try {
       
@@ -53,7 +52,6 @@ const ProjectCard = ({ project }: { project: Project }) =>
       }
   
       message.success("Successfully Deleted");
-      // console.log(res.user);
       
       setState({...state,user:res.user});
 
@@ -61,7 +59,6 @@ const ProjectCard = ({ project }: { project: Project }) =>
       console.log(error);
       message.error("Failed to delete project");
     }finally{
-      // router.push("/dashboard/projects");
       setLoading(false);
     }
 
@@ -125,16 +122,6 @@ const ProjectCard = ({ project }: { project: Project }) =>
           {project.description}
         </div>
       </div>
-      {/* <div
-        style={{
-          width: "100%",
-          height: "70px",
-          overflowY: "auto",
-          scrollbarWidth: "none",
-        }}
-      >
-        <Meta title={project.title} description={project.description} />
-      </div> */}
     </Card>
   );
 };

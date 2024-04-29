@@ -12,12 +12,11 @@ const useAuth = async (userId: string) => {
 
     const response = await fetch(url, requestOptions);
     const res = await response.json();
-    // console.log(res);
 
     return res; 
   } catch (error) {
     console.log(error);
-    return null; // Return null or handle the error as needed
+    return null;
   }
 };
 

@@ -49,12 +49,6 @@ export default function settings() {
             </div>
             
           </div>
-          <div className="section-container2">
-            <div className="pro-buttons">
-              {/* <SettingsProButtton ButtonName={"Delete a Project"}/>
-        <SettingsProButtton ButtonName={"Upgrade to pro"}/> */}
-            </div>
-          </div>
         </div>
       </div>
     </>

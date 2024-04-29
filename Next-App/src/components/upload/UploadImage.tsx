@@ -19,7 +19,6 @@ const UploadImage = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [done, setDone] = useState<boolean>(false);
 
-  // Use a ref to keep track of the latest state value
   const selectedFilesRef = useRef<ImageObj[]>([]);
   selectedFilesRef.current = selectedFiles;
 
@@ -71,7 +70,6 @@ const UploadImage = () => {
         url: res.info.public_id,
       };
 
-      // Use the ref to access the latest state value
       setSelectedFiles((prevSelectedFiles) => [
         ...prevSelectedFiles,
         newImageObject,
