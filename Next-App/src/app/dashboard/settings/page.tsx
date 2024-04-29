@@ -35,8 +35,8 @@ export default function settings() {
         <div className="menu-body">
           <div className="section-container1">
             <div className="grid-row">
-              <Settingsbutton ButtonName={"Notifications"}id={"1"} />
-              <Settingsbutton ButtonName={"Allow Background Training"}id={"2"} />
+              <Settingsbutton ButtonName={"Notifications"}id={"2"} />
+              <Settingsbutton ButtonName={"Allow Background Training"}id={"1"} />
             </div>
             <div className="grid-row">
               <Settingsbutton ButtonName={"Enable Api's"}id={"3"} />

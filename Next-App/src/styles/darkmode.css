@@ -1,24 +1,3 @@
-:root {
-  --c-text-primary: #191919;
-  --c-text-secondary: #737374;
-  --c-border-primary: #ccc;
-  --c-bg-body: #ccc;
-  --c-bg-primary: #fff;
-  --c-bg-secondary: #d4d8dd;
-  --c-bg-button: #fff;
-  --slider-shadow: inset 0 1px 1px #ddd, 0 2px 3px #ccc;
-}
-
-:root.dark-theme {
-  --c-text-primary: #eee;
-  --c-text-secondary: #d3d5db;
-  --c-border-primary: #454545;
-  --c-bg-body: #494a50;
-  --c-bg-primary: #323339;
-  --c-bg-secondary: #222128;
-  --c-bg-button: #494a50;
-  --slider-shadow: inset 0 1px 1px #767676;
-}
 
 
 
