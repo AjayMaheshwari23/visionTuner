@@ -10,7 +10,9 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 const Profile: React.FC = () => {
 const {state} = useAppContext();
   return (
-    <div className='box'>
+    <div className='box1'>
+      <h1 style={{color:'white' , fontSize: '50px'}}>Welcome {state.user?.username} !!</h1>
+      <br/><br/>
       <div className="row">
         <div className="col-md-6 left">
           <img className="user-photo" itemProp="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq3sw977MwnMVHUEauxeOrlsDk2GbzDLwgKnIduysy3w&s" alt="Upload Image" style={{width: '100%',height:'100%',objectFit:'cover'}}/>
