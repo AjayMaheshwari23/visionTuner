@@ -1,28 +1,29 @@
-.box {
+.boxs {
     width: 100%;
     margin: auto;
     height: 100%;
     color: white;
-    padding:20px 20px 10px 20px;
+    padding: 20px 20px 10px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.images1{
+.images1 {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content:space-around;
+    justify-content: space-around;
 }
 
-.images2{
+.images2 {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content:space-around;
+    justify-content: space-around;
 }
-.yes{
+
+.yes {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,21 +41,17 @@
     transform: scale(1.15);
 }
 
-h2{
+.boxs h2 {
     font-size: 24px;
 }
-p{
+
+.boxs p {
     font-style: italic;
     font-size: 15px;
-    color:rgb(216, 216, 216);
-}
-h1{
-    font-size: 35px;
+    color: rgb(216, 216, 216);
+    text-align: center;
 }
 
-h1:hover{
-    position: relative;
-    transform: translateY(5px) scale(1.15);
-    transform-origin: 20% bottom;
-    transition: transform 300ms cubic-bezier(0.2, 0, 0.2, 0.2);
+.boxs h1 {
+    font-size: 35px;
 }

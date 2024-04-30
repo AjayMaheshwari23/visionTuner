@@ -1,0 +1,25 @@
+.container{
+    width:100%;
+    height: 100%;    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.box{
+    width: 50%;
+    height: 50%;
+    background-color: white;
+    border-radius: 30px;
+    padding: 20px 20px 20px 20px;
+}
+
+.btns{
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit{
+    border-radius: 50%;
+}
