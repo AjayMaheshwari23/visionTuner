@@ -81,7 +81,7 @@ export default function RootLayout({
         collapsible
         collapsed={collapsed}
         theme={state.theme as SiderTheme}
-        style={{ borderRight: `0.1px dashed ${borderClrW}` }}
+        style={{ borderRight: `0.1px solid ${borderClrW}` }}
       >
         <div className="demo-logo-vertical" />
         <Menu
@@ -130,7 +130,7 @@ export default function RootLayout({
           style={{
             padding: 0,
             background: themeclrB,
-            borderBottom: `0.1px dashed ${borderClrW}`,
+            borderBottom: `0.1px solid ${borderClrW}`,
           }}
         >
           <Button
