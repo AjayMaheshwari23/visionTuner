@@ -22,17 +22,17 @@ interface Rectangle {
 const AnnotateTool = () => {
 
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    const [rectangles, setRectangles] = useState<Rectangle[]>([
-        {
-            id: 0,
-            x: 0,
-            y: 0,
-            width: 20,
-            height: 20,
-            name: '',  
-        }
-    ]);
-    // const [rectangles, setRectangles] = useState<Rectangle[]>([]);
+    // const [rectangles, setRectangles] = useState<Rectangle[]>([
+    //     {
+    //         id: 0,
+    //         x: 0,
+    //         y: 0,
+    //         width: 20,
+    //         height: 20,
+    //         name: '',  
+    //     }
+    // ]);
+    const [rectangles, setRectangles] = useState<Rectangle[]>([]);
     const [selectedRectangle, setSelectedRectangle] = useState<number | null>(null);
     const [isDragging, setIsDragging] = useState<boolean>(false);
     const [dragStartCoords, setDragStartCoords] = useState<{ x: number; y: number } | null>(null);
@@ -231,9 +231,9 @@ const AnnotateTool = () => {
                 <div className="imageView">
                     <div className='content'>
                         <h3>Name: </h3>
-                        {/* <Select
+                        <Select
                             placeholder='Object Name'
-                            onChange={(e) => setName(e.target.value)}
+                            onChange={(e) => setName(e)}
                             style={{width:'60%'}}
                             allowClear
                         >
@@ -242,14 +242,14 @@ const AnnotateTool = () => {
                             <Option value='Cat'>Cat</Option>
                             <Option value='Dog'>Dog</Option>
                             <Option value='Person'>Person</Option>
-                        </Select> */}
-                        <input
+                        </Select>
+                        {/* <input
                             id="nameInput"
                             type="text"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             style={{ height: '30px', width: '50%', borderRadius: '20px', paddingLeft: '10px' }}
-                        />
+                        /> */}
                         
                         
                         <Checkbox checked={showCoordinates} onChange={(e) => setShowCoordinates(e.target.checked)}> Show Coordinates </Checkbox>
