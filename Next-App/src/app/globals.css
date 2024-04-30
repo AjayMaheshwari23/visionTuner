@@ -34,3 +34,6 @@ margin: 0 !important;
   padding: 0;
 }
 
+.ant-card-actions{
+  border-bottom: 2px solid black;
+}

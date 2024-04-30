@@ -6,9 +6,9 @@ import { DownloadOutlined, PoweroffOutlined } from "@ant-design/icons";
 
 interface ExampleComponentProps {
   project: Project;
-  loading: boolean;
+  loading: number;
   modelCreated: boolean;
-  setloading: React.Dispatch<React.SetStateAction<boolean>>;
+  setloading: React.Dispatch<React.SetStateAction<number>>;
   setmodelCreated: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -19,6 +19,8 @@ const ExampleComponent: React.FC<ExampleComponentProps> = ({
   setloading,
   setmodelCreated,
 }) => {
+  console.log("Loading in example " , loading);
+  
   const { state , setState } = useAppContext();
   const username = state.user?.username;
 
@@ -26,7 +28,7 @@ const ExampleComponent: React.FC<ExampleComponentProps> = ({
   const [error, setError] = useState("");
 
   const sendData = async () => {
-    setloading(true);
+    setloading(1);
     try {
       const response = await fetch("http://localhost:5000/api/train", {
         method: "POST",
@@ -60,15 +62,15 @@ const ExampleComponent: React.FC<ExampleComponentProps> = ({
       }
 
       
-      message.success("Model file downloaded successfully");
+      message.success("Model created successfully");
       setError("");
     } catch (error) {
       setError("Network error");
       setMessage("");
       console.error("Error:", error);
     } finally {
-      setmodelCreated(true);
-      setloading(false);
+      setloading(2);
+      // setmodelCreated(true);
     }
   };
 
@@ -93,13 +95,14 @@ const ExampleComponent: React.FC<ExampleComponentProps> = ({
       <Button
         type="primary"
         icon={<PoweroffOutlined />}
-        loading={loading}
+        loading={loading==1}
+        disabled={loading==2 || loading==1}
         onClick={sendData}
       >
-        {loading ? "Training..." : "Start Training"}
+        {loading==1 ? "Training..." : "Start Training"}
       </Button>
 
-      {loading ? (
+      {loading==1 ? (
         <>
           <Spin size="large"></Spin>
         </>
@@ -109,7 +112,7 @@ const ExampleComponent: React.FC<ExampleComponentProps> = ({
 
       {error && <p style={{ color: "red" }}>{error}</p>}
       <Button
-        disabled={loading}
+        disabled={loading==0 || loading==1}
         type="primary"
         icon={<DownloadOutlined />}
         onClick={downloadModel}

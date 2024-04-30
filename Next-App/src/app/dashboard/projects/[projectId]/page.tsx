@@ -8,6 +8,8 @@ import ProjectPageIndividual from "@/components/Pages/ProjectPageIndividual";
 import ExampleComponent from "@/components/flask/Example";
 import { Project } from "@/app/models/user";
 import {BackwardOutlined } from "@ant-design/icons"
+import Curves from '@/components/Curves/Curves'
+import Curves2 from '@/components/Curves/Curves2'
 
 export default function Page() {
   const { state } = useAppContext();
@@ -19,9 +21,10 @@ export default function Page() {
     (project) => project.projectId === projectId
   );
   const [CurProject, setCurProject] = useState<Project | undefined>(def);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(0);
+
   const [modelCreated, setmodelCreated] = useState(
-    (CurProject?.model != "") as boolean
+    (CurProject?.model === "") as boolean
   );
 
   useEffect(() => {
@@ -31,7 +34,10 @@ export default function Page() {
       );
       
       setCurProject(project);
-      setmodelCreated((CurProject?.model != "") as boolean);
+      console.log(CurProject?.model);
+      
+      const op = (CurProject?.model != "") as boolean;
+      if (op) setLoading(2);
     }
   }, [state, projectId]);
 
@@ -49,6 +55,8 @@ export default function Page() {
             modelCreated={modelCreated}
           />
         )}
+        {loading==2 && <Curves2 loading={loading} username={state.user?.username} projectId={CurProject?.projectId} />}
+        {loading==2 && <Curves loading={loading} username={state.user?.username} projectId={CurProject?.projectId} />}
       </div>
     </>
   );
