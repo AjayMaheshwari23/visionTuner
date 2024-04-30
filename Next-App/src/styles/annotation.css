@@ -4,14 +4,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
-}
+}   
 
 .box{
-    width: 50%;
-    height: 50%;
-    background-color: white;
-    border-radius: 30px;
+    width: 90%;
+    height: 62%;
+    position: relative;
+    background-color: rgba(153, 221, 204, 0.884);
+    border-radius: 20px;
     padding: 20px 20px 20px 20px;
 }
 
@@ -23,3 +23,36 @@
 .edit{
     border-radius: 50%;
 }
+
+.imageView{
+    display: flex;
+    flex-direction: column;
+}
+.canvas{
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.content{
+    display: flex;
+    justify-content: space-between;
+}
+
+.rectangle-list{
+    display: flex;
+    flex-wrap:wrap;
+}
+.yes{
+    display: flex;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+/* AnnotationTool.css */
+.annotation-tool {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
