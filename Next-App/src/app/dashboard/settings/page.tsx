@@ -17,11 +17,13 @@ export default function settings() {
         ...state,
         theme: "light",
       });
+      document.documentElement.setAttribute('data-theme','dark')
     } else {
       setState({
         ...state,
         theme: "dark",
       });
+      document.documentElement.setAttribute('data-theme','light')
     }
     setdarkMode(!darkMode);
   };

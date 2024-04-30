@@ -2,8 +2,9 @@
 
 
 :root{
- --border-clr: black;  
- --c-text-primary: #191919;
+  --border-clr: black;  
+  --c-text-primary: #191919;
+  --c-dark-text-primary: white;
   --c-text-secondary: #737374;
   --c-border-primary: #ccc;
   --c-bg-body: #ccc;
@@ -16,8 +17,9 @@
 }
 
 
-:root.dark-theme {
+:root {
   --c-text-primary: #eee;
+  --c-dark-text-primary: white;
   --c-text-secondary: #d3d5db;
   --c-border-primary: #454545;
   --c-bg-body: #494a50;
