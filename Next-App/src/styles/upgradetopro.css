@@ -31,7 +31,7 @@ body {
 
 
 .card-heading{
-  color: var(--c-dark-text-primary);
+  color: black;
   text-align: center;
   font-size: large;
 }
@@ -54,7 +54,7 @@ body {
   transform: scale(1.1);
 }
 .item-heading {
-  color: var(--c-text-primary);
+  color: black;
   padding-top: 15px;
   padding-bottom: 15px;
   font-size: large;
@@ -70,7 +70,7 @@ body {
   margin-left: 10px;
   font-size: 14px;
   line-height: 21px;
-  color: var(--c-text-primary);
+  color: black;
   padding: 8px;
   background: linear-gradient(
     263.86deg,
@@ -108,7 +108,7 @@ body {
   padding-top: 24px;
   font-size: 16px;
   line-height: 24px;
-  color: #eae1e1  !important; /* Set your desired color for dark mode */
+  color: white  !important; /* Set your desired color for dark mode */
 }
 
 .item-heading-dark span{
@@ -126,7 +126,7 @@ body {
   font-weight: 400;
 } 
 .item-heading-dark {
-  color: var(--c-dark-text-primary);
+  color: white;
   text-align: center;
   padding-top: 15px;
   padding-bottom: 15px;
@@ -134,7 +134,7 @@ body {
 }
 
 .card-heading-dark{
-  color: var(--c-dark-text-primary);
+  color: white;
   padding-top: 24px;
   font-size: large;
 }
