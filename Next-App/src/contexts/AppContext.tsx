@@ -30,7 +30,7 @@ interface AppContextType {
 }
 
 const initialAppState: AppState = {
-  theme: "dark",
+  theme: "light",
   user: undefined,
   type: "success",
   content: "Default Message",
