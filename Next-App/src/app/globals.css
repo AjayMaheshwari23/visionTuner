@@ -35,3 +35,6 @@ margin: 0 !important;
 
 }
 
+.ant-card-actions{
+  border-bottom: 2px solid black;
+}
