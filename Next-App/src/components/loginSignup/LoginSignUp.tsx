@@ -1,5 +1,5 @@
 "use client";
-import styles from "../../styles/LoginSignUp.module.module.css";
+import styles from "./LoginSignUp.module.css";
 import React, { useState } from "react";
 import LoginA from "./login/Login";
 import SignupA from "./register/Signup";
