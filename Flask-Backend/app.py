@@ -72,7 +72,7 @@ def move_last_pt_file(username,projectId):
 def handle_data():
     try:
         data = request.json
-        
+        print(request)
         username = data['username']
         projectId = str( data['project']['projectId'] )
         annotations = data['project']['annotations']

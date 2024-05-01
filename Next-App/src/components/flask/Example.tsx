@@ -64,12 +64,13 @@ const ExampleComponent: React.FC<ExampleComponentProps> = ({
       
       message.success("Model Trained successfully");
       setError("");
+      setloading(2);
     } catch (error) {
       setError("Network error");
       setMessage("");
+      setloading(0);
       console.error("Error:", error);
     } finally {
-      setloading(2);
       // setmodelCreated(true);
     }
   };

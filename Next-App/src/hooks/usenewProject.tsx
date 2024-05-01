@@ -5,6 +5,8 @@ const usenewProject = async (project: Project) => {
   try {
     console.log("Request arrived at usenewProject Hook");
     
+    console.log(project);
+    
     const url = "/api/newProject";
     const requestOptions = {
       method: "POST",

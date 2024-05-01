@@ -85,7 +85,7 @@ function Curves({ loading , username, projectId }: CurveProps)
               src={URL.createObjectURL(blob)}
               alt={`Curve ${index}`}
               width={500}
-              height={500}
+              height={400}
             />
           </div>
         ))}

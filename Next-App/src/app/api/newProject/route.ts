@@ -16,7 +16,10 @@ export async function POST(req: Request, res: NextApiResponse) {
     const decoded = await jose.jwtVerify(token?.value, secret);
     const user = await User.findOne({ _id: decoded.payload.user.id });
     const data: Project = await req.json();
-    console.log(data);
+    // console.log("On API i recieved" + data);
+    // data.annotations.forEach((element) => {
+    //   console.log(element.coordinates[0]);
+    // });
 
     const {
       title,
