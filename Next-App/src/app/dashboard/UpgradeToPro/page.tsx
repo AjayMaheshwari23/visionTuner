@@ -22,7 +22,7 @@ const UpgradeToPro = () => {
             <div className="col-lg-6">
               <div className="table-data">
                 <h4 className={!darkMode ? "card-heading": "card-heading-dark"}>Basic</h4>
-                <h3 className={!darkMode ? "item-heading": "item-heading-dark"}>£5<span>per month</span></h3>
+                <h3 className={!darkMode ? "item-heading": "item-heading-dark"}>&#8377;5<span>per month</span></h3>
                 <ul className={!darkMode ? "item-text": "item-text-dark"}>
                   <p>Fine-tuning of object detection and classification models</p>
                   <p>Access to basic pre-trained models</p>
@@ -31,7 +31,7 @@ const UpgradeToPro = () => {
                   <p>Basic evaluation tools and metrics</p>
                 </ul>
                 <h3 className={!darkMode ? "item-heading": "item-heading-dark"}>
-                  £50 <span>per year</span>
+                &#8377; 50 <span>per year</span>
                 </h3>
                 {/* <p className={!darkMode ? "item-text": "item-text-dark"}>
                   Upon talent / advisor joins your startup and agrees on the
@@ -48,7 +48,7 @@ const UpgradeToPro = () => {
               <div className="table-data">
                 <h4 className={!darkMode ? "card-heading": "card-heading-dark"}>Pro</h4>
                 <h3 className={!darkMode ? "item-heading": "item-heading-dark"}>
-                  £15<span>per month</span>
+                &#8377;15<span>per month</span>
                 </h3>
                 <ul className={!darkMode ? "item-text": "item-text-dark"}>
                   <p>Integration with cloud-based services for scalability</p>
@@ -58,7 +58,7 @@ const UpgradeToPro = () => {
                   <p>All features from the Basic Plan</p>
                 </ul>
                 <h3 className={!darkMode ? "item-heading": "item-heading-dark"}>
-                  £150<span>per year</span>
+                &#8377;150<span>per year</span>
                 </h3>
                 {/* <p className={!darkMode ? "item-text": "item-text-dark"}>
                   Upon talent / advisor joins your startup and agrees on the
@@ -77,7 +77,7 @@ const UpgradeToPro = () => {
               <div className="table-data">
                 <h4 className={!darkMode ? "card-heading": "card-heading-dark"}>Premium</h4>
                 <h3 className={!darkMode ? "item-heading": "item-heading-dark"}>
-                  £30 <span>per month</span>
+                &#8377;30 <span>per month</span>
                 </h3>
                 <ul className={!darkMode ? "item-text": "item-text-dark"}>
                   <p>All features from the Pro Plan</p>
@@ -87,7 +87,7 @@ const UpgradeToPro = () => {
                   <p>On-premises deployment option</p>
                 </ul>
                 <h3 className={!darkMode ? "item-heading": "item-heading-dark"}>
-                  £300 <span>per year</span>
+                &#8377;300 <span>per year</span>
                 </h3>
                 {/* <p className={!darkMode ? "item-text": "item-text-dark"}>
                   Upon talent / advisor joins your startup and agrees on the

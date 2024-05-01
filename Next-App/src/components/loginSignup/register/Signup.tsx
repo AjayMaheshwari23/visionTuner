@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import "../LoginSignUp";
 import { useRouter } from "next/navigation";
-import { message , Button , ConfigProvider} from "antd";
+import { message, Button, ConfigProvider } from "antd";
 import { TinyColor } from '@ctrl/tinycolor';
 
 type Props = {
@@ -14,16 +14,16 @@ type Props = {
 
 const defaultData = { username: "", email: "", password: "" };
 const colors2 = ['#fc6076', '#ff9a44', '#ef9d43', '#e75516'];
-const getHoverColors = (colors:any) =>
-  colors.map((color : any) => new TinyColor(color).lighten(5).toString());
-const getActiveColors = (colors:any) =>
-  colors.map((color:any) => new TinyColor(color).darken(5).toString());
+const getHoverColors = (colors: any) =>
+  colors.map((color: any) => new TinyColor(color).lighten(5).toString());
+const getActiveColors = (colors: any) =>
+  colors.map((color: any) => new TinyColor(color).darken(5).toString());
 
 
 const SignupA: React.FC<Props> = ({ isFlipped, setIsFlipped }) => {
   // design
   const [loadings, setLoadings] = useState<boolean[]>([]);
-  const enterLoading = (index:any) => {
+  const enterLoading = (index: any) => {
     setLoadings((prevLoadings) => {
       const newLoadings = [...prevLoadings];
       newLoadings[index] = true;
@@ -73,12 +73,10 @@ const SignupA: React.FC<Props> = ({ isFlipped, setIsFlipped }) => {
       const res = await response.json();
       message.success("Account successfully created")
 
-      if (res.status === 200) 
-      {
-        localStorage.setItem("jwtToken",res.jwtToken);
+      if (res.status === 200) {
+        localStorage.setItem("jwtToken", res.jwtToken);
         setIsFlipped(!isFlipped);
-      }else 
-      {
+      } else {
         window.alert("Username or Email Already taken");
       }
     } catch (error) {
@@ -87,7 +85,7 @@ const SignupA: React.FC<Props> = ({ isFlipped, setIsFlipped }) => {
   };
   return (
     <div className={styles.back}>
-      <h1> Sign Up </h1>
+      <h1 style={{display:'flex',justifyContent:'center'}}> Sign Up </h1>
       <input
         type="text"
         placeholder="username"
@@ -113,29 +111,27 @@ const SignupA: React.FC<Props> = ({ isFlipped, setIsFlipped }) => {
         onChange={(e) => onValueChange(e)}
       />
       <div className={styles.f_social_icon}>
-        
+
       </div>
       <ConfigProvider
-      theme={{
-        components: {
-          Button: {
-            colorPrimaryHover: `linear-gradient(90deg, ${getHoverColors(colors2).join(', ')})`,
-            colorPrimaryActive: `linear-gradient(90deg, ${getActiveColors(colors2).join(', ')})`,
-            lineWidth: 0,
+        theme={{
+          components: {
+            Button: {
+              colorPrimaryHover: `linear-gradient(90deg, ${getHoverColors(colors2).join(', ')})`,
+              colorPrimaryActive: `linear-gradient(90deg, ${getActiveColors(colors2).join(', ')})`,
+              lineWidth: 0,
+            },
           },
-        },
-      }}
-    >
-      <Button type="primary" size="large"  className={styles.btn} loading={loadings[0]} onClick={(e) => onRegister(e)}>
-        SignUp
-      </Button>
-    </ConfigProvider>
-
-    
+        }}
+      >
+        <Button type="primary" size="large" className={styles.btn} loading={loadings[0]} onClick={(e) => onRegister(e)}>
+          SignUp
+        </Button>
+      </ConfigProvider>
       <br />
       <Link
         href="#"
-        className={styles.flipbutton}
+        style={{display:'flex', justifyContent:'center'}}
         onClick={() => {
           setIsFlipped(!isFlipped);
         }}

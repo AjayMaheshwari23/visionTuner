@@ -94,7 +94,7 @@ const LoginA: React.FC<Props> = ({ isFlipped, setIsFlipped }) => {
   };
   return (
     <div className={styles.front}>
-      <h1> Log In </h1>
+      <h1 style={{display:'flex',justifyContent:'center'}}> Log In </h1>
       <input
         type="text"
         placeholder="username"
@@ -131,7 +131,7 @@ const LoginA: React.FC<Props> = ({ isFlipped, setIsFlipped }) => {
       <br />
       <Link
         href="#"
-        className={styles.flipbutton}
+        style={{display:'flex',justifyContent:'center'}}
         onClick={() => {
           setIsFlipped(!isFlipped);
         }}
