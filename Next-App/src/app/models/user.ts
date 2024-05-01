@@ -2,7 +2,9 @@ import mongoose, { Document, Model } from "mongoose";
 
 import { ImageObj } from "@/components/upload/UploadImage";
 
-export interface Annotationbox{
+export interface Annotationbox
+{
+  class:number;
   tl: number;
   tr: number;
   bl: number;
@@ -43,6 +45,7 @@ const imageObjSchema = new mongoose.Schema<ImageObj>({
 });
 
 const AnnotationboxSchema = new mongoose.Schema<Annotationbox>({
+  class:{type:Number, required:true},
   tl:{ type: Number, required:true},
   tr:{ type: Number, required:true},
   bl:{ type: Number, required:true},

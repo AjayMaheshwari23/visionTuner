@@ -62,7 +62,7 @@ const ExampleComponent: React.FC<ExampleComponentProps> = ({
       }
 
       
-      message.success("Model created successfully");
+      message.success("Model Trained successfully");
       setError("");
     } catch (error) {
       setError("Network error");

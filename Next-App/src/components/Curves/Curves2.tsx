@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
 
 interface CurveProps {
-  loading:number,
+  loading: number;
   username: string | undefined;
   projectId: number | undefined;
 }
 
-const fileNames = ["confusion_matrix.png"];
+// const fileNames = ["confusion_matrix.png"];
 
-function Curves2({ loading , username, projectId }: CurveProps) 
-{
-    console.log("Loading in Curves ", loading);
-  const [files, setFiles] = useState<Blob[]>([]);
+function Curves2({ loading, username, projectId }: CurveProps) {
+  console.log("Loading in Curves ", loading);
+  const [files, setFiles] = useState<Blob>();
 
   useEffect(() => {
     if (username && projectId) {
@@ -24,13 +23,13 @@ function Curves2({ loading , username, projectId }: CurveProps)
             throw new Error("Network response was not ok");
           }
           const blob = await response.blob();
-          setFiles((prevFiles) => [...prevFiles, blob]);
+          setFiles(blob);
         } catch (error) {
           console.error("There was a problem fetching file:", error);
         }
       };
 
-      fileNames.forEach(fetchFile);
+      fetchFile("confusion_matrix.png");
     }
   }, [username, projectId]);
 
@@ -45,16 +44,14 @@ function Curves2({ loading , username, projectId }: CurveProps)
           margin: "70px",
         }}
       >
-        {files.slice(0).map((blob, index) => (
-          <div key={index}>
-            <img
-              src={URL.createObjectURL(blob)}
-              alt={`Curve ${index}`}
-              width={1000}
-              height={700}
-            />
-          </div>
-        ))}
+        <div key={1}>
+          {files && <img
+            src={URL.createObjectURL(files)}
+            alt={`Curve 1`}
+            width={1000}
+            height={700}
+          />}
+        </div>
       </div>
     )
   );
