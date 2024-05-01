@@ -33,7 +33,7 @@ const clrs = [
   "orange",
 ];
 
-interface AnnoProps {
+interface AnnotationProps {
   images: ImageObj[];
   data: Data;
   annotations: AnnotationObj[];
@@ -43,12 +43,7 @@ interface AnnoProps {
 const base_image_url =
   "https://res.cloudinary.com/dy3umrh6j/image/upload/v1712834199/";
 
-const AnnotateTool = ({
-  images,
-  data,
-  annotations,
-  setannotations,
-}: AnnoProps) => {
+const AnnotateTool = ( {images,data,annotations,setannotations}: AnnotationProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [rectangles, setRectangles] = useState<Rectangle[]>([]);
   const [selectedRectangle, setSelectedRectangle] = useState<number | null>(
