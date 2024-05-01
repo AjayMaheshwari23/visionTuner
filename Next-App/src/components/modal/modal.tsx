@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/modal.css";
 import { Modal, FloatButton, Button, Form, Steps, Spin, message } from "antd";
-import AnnotateTool from "../../components/annotateTool/page";
+import AnnotateTool from "../annotateTool/page";
 import First from "./first";
 import Third from "./third";
 import usenewProject from "@/hooks/usenewProject";
@@ -12,6 +12,16 @@ import { Project, Annotationbox, AnnotationObj } from "@/app/models/user";
 import { useAppContext } from "@/contexts/AppContext";
 import { ImageObj } from "../upload/UploadImage";
 import { useRouter } from "next/navigation";
+
+const imge: ImageObj[] = [];
+imge.push({ id: 0, url: "visionTuner/fnlb5odmowi2dojvwl7r" });
+imge.push({ id: 1, url: "visionTuner/m20a3xbguvokqivjmpdg" });
+imge.push({ id: 2, url: "visionTuner/ajyqhoivwftqz37xuom6" });
+
+const defaultOpen = true;
+
+const defaultData: Data = {};
+defaultData.categories_list = ["A", "B", "C"];
 
 const steps = [
   {
@@ -25,7 +35,7 @@ const steps = [
   },
 ];
 
-interface Data {
+export interface Data {
   Title_of_Project?: string;
   Description?: string;
   CategoryCount?: number;
@@ -35,8 +45,8 @@ interface Data {
 const ModalComp: React.FC = () => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
-  const [data, setdata] = useState<Data>({});
-  const [images, setImages] = useState<ImageObj[]>([]);
+  const [data, setdata] = useState<Data>(defaultData);
+  const [images, setImages] = useState<ImageObj[]>(imge);
   const [annotations, setannotations] = useState<AnnotationObj[]>([]);
   const [current, setCurrent] = useState(0);
   const [spinning, setSpinning] = React.useState<boolean>(false);
@@ -134,6 +144,8 @@ const ModalComp: React.FC = () => {
     }
     setCurrent(current + 1);
   };
+
+  // setImages(imge);
 
   const whichStep = [
     <First setdata={setdata} />,
