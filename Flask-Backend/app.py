@@ -27,6 +27,7 @@ def get_files(path):
     except FileNotFoundError:
         abort(404)
 
+# ["F1_curve.png","F1_curve.png","P_curve.png","R_curve.png","PR_curve.png","confusion_matrix.png"]
 
 def delete_runs_directory():
     runs_directory = os.path.join(current_app.root_path, 'runs')
@@ -34,6 +35,26 @@ def delete_runs_directory():
     if os.path.exists(runs_directory):
         shutil.rmtree(runs_directory)
         print("Deleted 'runs' directory")
+
+
+def move_files(username, projectId):
+    source_directory = os.path.join(current_app.root_path, 'runs', 'detect', 'train')
+    destination_directory = os.path.join(current_app.root_path, username, projectId)
+
+    os.makedirs(destination_directory, exist_ok=True)
+
+    files_to_move = ["F1_curve.png", "F1_curve.png", "P_curve.png", "R_curve.png", "PR_curve.png", "confusion_matrix.png"]
+
+    for file_name in files_to_move:
+        source_file_path = os.path.join(source_directory, file_name)
+        destination_file_path = os.path.join(destination_directory, file_name)
+
+        if os.path.exists(source_file_path):
+            shutil.move(source_file_path, destination_file_path)
+            print(f"Moved '{file_name}' to {destination_file_path}")
+        else:
+            print(f"File '{file_name}' not found at {source_file_path}")
+
 
 def move_last_pt_file(username,projectId):
     
@@ -45,6 +66,7 @@ def move_last_pt_file(username,projectId):
         destination_file = os.path.join(destination_directory, 'last.pt')
         shutil.move(last_pt_file, destination_file)
         print("Moved 'last.pt' file to", destination_file)
+        move_files(username, projectId)
 
 @app.route('/api/train', methods=['POST'])
 def handle_data():
@@ -91,7 +113,6 @@ def handle_data():
         os.makedirs(new_train_path_An, exist_ok=True)
         os.makedirs(new_val_path_An, exist_ok=True)
         os.makedirs(new_test_path_An, exist_ok=True)
-        
        
         cnt = 0
         images_data = data['project']['images']
