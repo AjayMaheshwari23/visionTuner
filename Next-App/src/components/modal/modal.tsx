@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/modal.css";
 import { Modal, FloatButton, Button, Form, Steps, Spin, message } from "antd";
-import AnnotateTool from "../annotateTool/page";
+import AnnotateTool from "../../app/dashboard/testing/page";
 import First from "./first";
 import Third from "./third";
 import usenewProject from "@/hooks/usenewProject";
