@@ -28,9 +28,10 @@ import {
   PlusOutlined,
   MinusCircleOutlined,
 } from "@ant-design/icons";
+import { Data } from "./modal";
 
 interface FirstProps {
-  setdata : React.Dispatch<React.SetStateAction<{}>>;
+  setdata : React.Dispatch<React.SetStateAction<Data>>;
 }
 
 const First = ({ setdata }: FirstProps) => 

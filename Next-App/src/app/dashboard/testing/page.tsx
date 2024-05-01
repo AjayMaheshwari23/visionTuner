@@ -37,13 +37,18 @@ interface AnnotationProps {
   images: ImageObj[];
   data: Data;
   annotations: AnnotationObj[];
-  setannotations: Dispatch<React.SetStateAction<AnnotationObj[]>>;
+  setannotations: React.Dispatch<React.SetStateAction<AnnotationObj[]>>;
 }
 
 const base_image_url =
   "https://res.cloudinary.com/dy3umrh6j/image/upload/v1712834199/";
 
-const AnnotateTool = ( {images,data,annotations,setannotations}: AnnotationProps) => {
+const AnnotateTool = ({
+  images,
+  data,
+  annotations,
+  setannotations,
+}: AnnotationProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [rectangles, setRectangles] = useState<Rectangle[]>([]);
   const [selectedRectangle, setSelectedRectangle] = useState<number | null>(
@@ -209,11 +214,10 @@ const AnnotateTool = ( {images,data,annotations,setannotations}: AnnotationProps
   const addRectangle = () => {
     const id =
       rectangles.length > 0 ? rectangles[rectangles.length - 1].id + 1 : 0;
-    if (name == "") 
-      {
-        message.warning("Please select a category");
-        return;
-      }
+    if (name == "") {
+      message.warning("Please select a category");
+      return;
+    }
     const newRectangle: Rectangle = {
       id,
       x: 0,
@@ -231,7 +235,7 @@ const AnnotateTool = ( {images,data,annotations,setannotations}: AnnotationProps
     setRectangles(updatedRectangles);
   };
 
-  const nextfun = (ok:boolean) => {
+  const nextfun = (ok: boolean) => {
     console.log(rectangles);
     const updatedAnnotations = [...annotations];
 
@@ -270,10 +274,9 @@ const AnnotateTool = ( {images,data,annotations,setannotations}: AnnotationProps
       }
       setannotations(updatedAnnotations);
     });
-    if (ok)
-    {
-        setRectangles([]);
-        setidx((idx) => idx + 1);
+    if (ok) {
+      setRectangles([]);
+      setidx((idx) => idx + 1);
     }
   };
 
@@ -330,8 +333,12 @@ const AnnotateTool = ( {images,data,annotations,setannotations}: AnnotationProps
               style={{ width: "60%" }}
               allowClear
             >
-              {data.categories_list?.map((ele,odx) => {
-                return <Option key={odx} value={ele}>{ele}</Option>;
+              {data.categories_list?.map((ele, odx) => {
+                return (
+                  <Option key={odx} value={ele}>
+                    {ele}
+                  </Option>
+                );
               })}
             </Select>
             {/* <input

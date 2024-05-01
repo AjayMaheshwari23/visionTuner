@@ -1,14 +1,13 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../../styles/modal.css";
 import { Modal, FloatButton, Button, Form, Steps, Spin, message } from "antd";
-import AnnotateTool from "../../app/dashboard/testing/page";
 import First from "./first";
 import Third from "./third";
 import usenewProject from "@/hooks/usenewProject";
 import { PlusOutlined } from "@ant-design/icons";
 import Uploader from "./Uploader";
-import { Project, Annotationbox, AnnotationObj } from "@/app/models/user";
+import { Project, AnnotationObj } from "@/app/models/user";
 import { useAppContext } from "@/contexts/AppContext";
 import { ImageObj } from "../upload/UploadImage";
 import { useRouter } from "next/navigation";
@@ -21,8 +20,13 @@ const imge: ImageObj[] = [];
 
 const defaultOpen = true;
 
-const defaultData: Data = {};
-  
+const defaultData: Data = {
+  Title_of_Project: "we",
+  CategoryCount: 0,
+  categories_list: [],
+  Description: "",
+};
+
 const steps = [
   {
     title: "MetaInfo",
@@ -36,14 +40,13 @@ const steps = [
 ];
 
 export interface Data {
-  Title_of_Project?: string;
-  Description?: string;
-  CategoryCount?: number;
-  categories_list?: any[];
+  Title_of_Project: string;
+  Description: string;
+  CategoryCount: number;
+  categories_list: any[];
 }
 
-const ModalComp: React.FC = () => {
-  
+const ModalComp = () => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [data, setdata] = useState<Data>(defaultData);
@@ -142,8 +145,7 @@ const ModalComp: React.FC = () => {
       const formValues = form.getFieldsValue();
       setdata(formValues);
     }
-    if(current==1)
-      {
+    if (current == 1) {
       const def: AnnotationObj[] = [];
       images.forEach((element, idx) => {
         const dum: AnnotationObj = { id: idx, coordinates: [] };
