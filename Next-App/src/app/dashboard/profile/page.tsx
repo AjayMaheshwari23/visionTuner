@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Input, Form} from 'antd';
 import '../../../../src/styles/profile.css';
 import { useAppContext } from '@/contexts/AppContext';
@@ -8,7 +8,16 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 
 
 const Profile: React.FC = () => {
+  const [x,setX] = useState<number>(0);
 const {state} = useAppContext();
+useEffect(()=>{
+var cur = 0;
+state.user?.projects.forEach((ele) => {
+  cur += ele.images.length;
+});
+setX(cur);
+
+},[])
   return (
     <div className='box1'>
       <h1 style={{color:'white' , fontSize: '50px'}}>Welcome {state.user?.username} !!</h1>
@@ -26,7 +35,7 @@ const {state} = useAppContext();
               No.of Projects <br/>{state.user?.projects.length }
             </div>
             <div className='inside'>
-              No.of Images <br/> 0
+              No. of Images <br/> {x}
             </div>
             <div></div>
           </div>

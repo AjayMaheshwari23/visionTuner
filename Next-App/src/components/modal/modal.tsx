@@ -14,15 +14,15 @@ import { ImageObj } from "../upload/UploadImage";
 import { useRouter } from "next/navigation";
 
 const imge: ImageObj[] = [];
-imge.push({ id: 0, url: "visionTuner/fnlb5odmowi2dojvwl7r" });
-imge.push({ id: 1, url: "visionTuner/m20a3xbguvokqivjmpdg" });
-imge.push({ id: 2, url: "visionTuner/ajyqhoivwftqz37xuom6" });
+// imge.push({ id: 0, url: "visionTuner/fnlb5odmowi2dojvwl7r" }); // Bus
+// imge.push({ id: 1, url: "visionTuner/m20a3xbguvokqivjmpdg" }); // Yellow
+// imge.push({ id: 2, url: "visionTuner/ajyqhoivwftqz37xuom6" }); // Japan
+// imge.push({ id: 3, url: "visionTuner/fnlb5odmowi2dojvwl7r" }); // Bus
 
 const defaultOpen = true;
 
 const defaultData: Data = {};
-defaultData.categories_list = ["A", "B", "C"];
-
+  
 const steps = [
   {
     title: "MetaInfo",
@@ -31,7 +31,7 @@ const steps = [
     title: "Upload",
   },
   {
-    title: "Review",
+    title: "Annotate",
   },
 ];
 
@@ -43,6 +43,7 @@ export interface Data {
 }
 
 const ModalComp: React.FC = () => {
+  
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [data, setdata] = useState<Data>(defaultData);
@@ -98,18 +99,17 @@ const ModalComp: React.FC = () => {
     const proj = convertToProject();
 
     proj.images = images;
-    proj.images.forEach((ele) => {
-      const x: Annotationbox = {
-        class: 0,
-        tl: 0.111,
-        tr: 0.221,
-        bl: 0.33242341,
-        br: 0.25435321,
-      };
-      const arr = [x];
-      annotations.push({ id: ele.id, coordinates: arr });
-    });
-
+    // proj.images.forEach((ele) => {
+    //   const x: Annotationbox = {
+    //     class: 0,
+    //     tl: 0.111,
+    //     tr: 0.221,
+    //     bl: 0.33242341,
+    //     br: 0.25435321,
+    //   };
+    //   const arr = [x];
+    //   annotations.push({ id: ele.id, coordinates: arr });
+    // });
     proj.annotations = annotations;
     createProject(proj);
   };
@@ -142,6 +142,15 @@ const ModalComp: React.FC = () => {
       const formValues = form.getFieldsValue();
       setdata(formValues);
     }
+    if(current==1)
+      {
+      const def: AnnotationObj[] = [];
+      images.forEach((element, idx) => {
+        const dum: AnnotationObj = { id: idx, coordinates: [] };
+        def.push(dum);
+      });
+      setannotations(def);
+    }
     setCurrent(current + 1);
   };
 
@@ -152,7 +161,12 @@ const ModalComp: React.FC = () => {
     <>
       <Uploader images={images} setImages={setImages} />
     </>,
-    <Third images={images} data={data} />,
+    <Third
+      images={images}
+      data={data}
+      annotations={annotations}
+      setannotations={setannotations}
+    />,
   ];
 
   const items = steps.map((item) => ({ key: item.title, title: item.title }));
@@ -163,7 +177,7 @@ const ModalComp: React.FC = () => {
         title="New Project"
         open={open}
         footer={null}
-        width={520}
+        width={820}
         maskClosable={false}
         onCancel={handleCancel}
       >

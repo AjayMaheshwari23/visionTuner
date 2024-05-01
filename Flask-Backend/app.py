@@ -62,6 +62,7 @@ def move_last_pt_file(username,projectId):
 
     if os.path.exists(last_pt_file):
         destination_directory = os.path.join(current_app.root_path, username, projectId)
+        print(projectId + "  -> " + destination_directory)
         os.makedirs(destination_directory, exist_ok=True)  # exist dekh lena 
         destination_file = os.path.join(destination_directory, 'last.pt')
         shutil.move(last_pt_file, destination_file)
