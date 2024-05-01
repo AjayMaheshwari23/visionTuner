@@ -5,10 +5,10 @@ import { Modal, FloatButton, Button, Form, Steps, Spin, message } from "antd";
 import AnnotateTool from "../../components/annotateTool/page";
 import First from "./first";
 import Third from "./third";
-import usenewProject from "@/hooks/usenewProject"
+import usenewProject from "@/hooks/usenewProject";
 import { PlusOutlined } from "@ant-design/icons";
 import Uploader from "./Uploader";
-import { Project, Annotationbox , AnnotationObj } from "@/app/models/user";
+import { Project, Annotationbox, AnnotationObj } from "@/app/models/user";
 import { useAppContext } from "@/contexts/AppContext";
 import { ImageObj } from "../upload/UploadImage";
 import { useRouter } from "next/navigation";
@@ -29,13 +29,11 @@ interface Data {
   Title_of_Project?: string;
   Description?: string;
   CategoryCount?: number;
-  categories_list?: any[]; 
+  categories_list?: any[];
 }
 
-const ModalComp: React.FC = () => 
-  {
-
-    const router = useRouter();
+const ModalComp: React.FC = () => {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [data, setdata] = useState<Data>({});
   const [images, setImages] = useState<ImageObj[]>([]);
@@ -45,41 +43,40 @@ const ModalComp: React.FC = () =>
   const { state, setState } = useAppContext();
 
   const convertToProject = () => {
-    const { Title_of_Project, Description, CategoryCount, categories_list } = data ;
-    const op : ImageObj[] = [];
+    const { Title_of_Project, Description, CategoryCount, categories_list } =
+      data;
+    const op: ImageObj[] = [];
     const op2: AnnotationObj[] = [];
     return {
-      projectId: 0, 
+      projectId: 0,
       title: Title_of_Project || "",
       description: Description || "",
       categoryNumber: CategoryCount || 0,
       categories: categories_list || [],
       images: op,
       annotations: op2,
-      model:"",
-      createdAt : new Date(),
+      model: "",
+      createdAt: new Date(),
     };
   };
 
   const createProject = async (projectData: Project) => {
     setSpinning(true);
-    
+
     console.log("Creating New Prject Spiiner Triggered...");
-    
+
     try {
       const res = await usenewProject(projectData);
       res.UpdatedUser;
-      if(res.status !== 200) message.error("Error Creating Project");
-      else
-      {
+      if (res.status !== 200) message.error("Error Creating Project");
+      else {
         message.success("Project Successfully Created");
       }
 
-      setState({...state,user:res.UpdatedUser});
+      setState({ ...state, user: res.UpdatedUser });
       setCurrent(0);
       setOpen(false);
       router.push(`/dashboard/projects/${res.UpdatedUser.projects.length}`);
-
     } catch (error) {
       console.error("Error creating project:", error);
     } finally {
@@ -87,20 +84,25 @@ const ModalComp: React.FC = () =>
     }
   };
 
-  const createNewProject = () => 
-    {
-      const proj = convertToProject();
-      
-      proj.images = images;
-      proj.images.forEach(ele => {
-        const x : Annotationbox = { tl:0.111 , tr:0.221 , bl:0.33242341 , br:0.25435321 }
-        const arr = [x]
-        annotations.push({ id:ele.id , coordinates:arr })
-      });
+  const createNewProject = () => {
+    const proj = convertToProject();
 
-      proj.annotations = annotations;
-      createProject(proj);
-  }
+    proj.images = images;
+    proj.images.forEach((ele) => {
+      const x: Annotationbox = {
+        class: 0,
+        tl: 0.111,
+        tr: 0.221,
+        bl: 0.33242341,
+        br: 0.25435321,
+      };
+      const arr = [x];
+      annotations.push({ id: ele.id, coordinates: arr });
+    });
+
+    proj.annotations = annotations;
+    createProject(proj);
+  };
 
   const [form] = Form.useForm();
 
@@ -109,8 +111,7 @@ const ModalComp: React.FC = () =>
     wrapperCol: { span: 16 },
   };
 
-  const onFinish = (values: any) => {
-  };
+  const onFinish = (values: any) => {};
   const onReset = () => {
     form.resetFields();
   };
@@ -127,23 +128,21 @@ const ModalComp: React.FC = () =>
   };
 
   const next = () => {
-    
-    if (current == 0) 
-      {
-        const formValues = form.getFieldsValue();
-        setdata(formValues);
-      }
+    if (current == 0) {
+      const formValues = form.getFieldsValue();
+      setdata(formValues);
+    }
     setCurrent(current + 1);
   };
 
   const whichStep = [
     <First setdata={setdata} />,
     <>
-    <Uploader images={images} setImages={setImages} />
+      <Uploader images={images} setImages={setImages} />
     </>,
     <Third images={images} data={data} />,
   ];
-   
+
   const items = steps.map((item) => ({ key: item.title, title: item.title }));
 
   return (
@@ -175,11 +174,7 @@ const ModalComp: React.FC = () =>
             >
               Discard
             </Button>
-            <Button
-              type="dashed"
-              className="operationbtn"
-              onClick={next}
-            >
+            <Button type="dashed" className="operationbtn" onClick={next}>
               Next
             </Button>
             <Button
