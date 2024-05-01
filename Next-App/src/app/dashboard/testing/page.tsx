@@ -43,7 +43,7 @@ interface AnnotationProps {
 const base_image_url =
   "https://res.cloudinary.com/dy3umrh6j/image/upload/v1712834199/";
 
-const AnnotateTool = ({
+const Page = ({
   images,
   data,
   annotations,
@@ -67,7 +67,6 @@ const AnnotateTool = ({
     y: number;
   } | null>(null);
   const [name, setName] = useState<string>("");
-  // const [showCoordinates, setShowCoordinates] = useState<boolean>(false);
   const [image, setImage] = useState<HTMLImageElement | null>(null);
   const [idx, setidx] = useState(0);
   const [height, setheight] = useState(0);
@@ -341,13 +340,6 @@ const AnnotateTool = ({
                 );
               })}
             </Select>
-            {/* <input
-                            id="nameInput"
-                            type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            style={{ height: '30px', width: '50%', borderRadius: '20px', paddingLeft: '10px' }}
-                        /> */}
           </div>
           {/* <Checkbox
               checked={showCoordinates}
@@ -368,8 +360,13 @@ const AnnotateTool = ({
               </div>
             ))}
           </div>
-          <div>
-            <Button onClick={() => nextfun(false)}>Done</Button>
+          <div className="doneDiv">
+            <Button
+              style={{ backgroundColor: "rgba(31,156,9,1)" , color:"white" }}
+              onClick={() => nextfun(false)}
+            >
+              Done
+            </Button>
           </div>
         </div>
       </div>
@@ -377,6 +374,5 @@ const AnnotateTool = ({
   );
 };
 
-export default AnnotateTool;
-
+export default Page;
 // -----------------------------------------------------------------------

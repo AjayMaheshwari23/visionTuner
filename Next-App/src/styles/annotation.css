@@ -10,9 +10,10 @@
     width: 90%;
     height: 62%;
     position: relative;
-    background-color: rgba(153, 221, 204, 0.884);
-    border-radius: 20px;
+    background-color: rgb(235 241 250);
+    border-radius: 5px;
     padding: 20px 20px 20px 20px;
+    margin: 20px;
 }
 
 .btns{
@@ -21,7 +22,7 @@
 }
 
 .edit{
-    border-radius: 50%;
+    border-radius: 19%;
 }
 
 .imageView{
@@ -29,6 +30,7 @@
     flex-direction: column;
 }
 .canvas{
+    width: 100%;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
@@ -36,7 +38,7 @@
 }
 .content{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .rectangle-list{
@@ -56,3 +58,14 @@
     margin-top: 20px;
 }
 
+
+.content h3{
+    margin-right: 5px;
+}
+
+
+.doneDiv{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}

@@ -22,7 +22,9 @@ const Third = ({ images, data, annotations, setannotations }: Props) => {
 
   return (
     <>
-      <h1>{Title_of_Project ? Title_of_Project : "Title_of_Project"} </h1>
+      <div style={{display:"flex" , justifyContent:"center" , alignItems:"center"}}>
+        <h1>{Title_of_Project ? Title_of_Project : "Title_of_Project"} </h1>
+      </div>
       <AnnotateTool
         images={images}
         data={data}

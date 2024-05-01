@@ -1,0 +1,20 @@
+.MaindivUploader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Clodinaryuploadbtn {
+  color: rgb(255, 255, 255);
+  width: 400px;
+  height: 200px;
+  margin: 50px;
+  font-size: 22px;
+  background: linear-gradient(rgb(250, 146, 146) 10%, rgb(109, 109, 215) 70%);
+  background-color: aqua;
+  background-size: cover;
+  border: 2px solid white;
+  border-radius: 15px;
+  font-weight: 600;
+  content: "Click to Upload";
+}
