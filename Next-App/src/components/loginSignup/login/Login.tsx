@@ -81,7 +81,8 @@ const LoginA: React.FC<Props> = ({ isFlipped, setIsFlipped }) => {
       });
 
       
-      if (res.status === 200) {
+      if (res.status === 200) 
+        {
         addSuccess("Logged In successfully");
         // console.log("Successful Login");
         router.push("./dashboard/profile");

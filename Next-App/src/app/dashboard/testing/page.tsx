@@ -22,16 +22,6 @@ interface Rectangle {
 const AnnotateTool = () => {
 
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    // const [rectangles, setRectangles] = useState<Rectangle[]>([
-    //     {
-    //         id: 0,
-    //         x: 0,
-    //         y: 0,
-    //         width: 20,
-    //         height: 20,
-    //         name: '',  
-    //     }
-    // ]);
     const [rectangles, setRectangles] = useState<Rectangle[]>([]);
     const [selectedRectangle, setSelectedRectangle] = useState<number | null>(null);
     const [isDragging, setIsDragging] = useState<boolean>(false);
@@ -127,6 +117,11 @@ const AnnotateTool = () => {
             }
         }
     };
+
+    // useEffect( () => {
+    //     console.log(rectangles);
+        
+    // },[])
 
     const onMouseMove: React.MouseEventHandler<HTMLCanvasElement> = (event) => {
         if (!isDragging && !resizeHandle) return;

@@ -40,6 +40,6 @@ next-env.d.ts
 
 /Next-App/.next
 
-# /Flask-Backend/*
+/Flask-Backend/*
 
-# !/Flask-Backend/*.py
+!/Flask-Backend/*.py
