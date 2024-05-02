@@ -22,6 +22,7 @@ export async function POST(req: Request, res: NextApiResponse) {
     // });
 
     const {
+      projectId,
       title,
       description,
       categoryNumber,
@@ -32,10 +33,11 @@ export async function POST(req: Request, res: NextApiResponse) {
       createdAt,
     }: Project = data;
 
-    const Newid =
-      user.projects.length > 0 ? user.projects[user.projects.length - 1].projectId + 1 : 0;
+    // const Newid =
+    //   user.projects.length > 0 ? user.projects[user.projects.length - 1].projectId + 1 : 0;
+      
     const NewProject: Project = {
-      projectId: Newid,
+      projectId: projectId,
       title: title,
       description: description,
       categoryNumber: categoryNumber,

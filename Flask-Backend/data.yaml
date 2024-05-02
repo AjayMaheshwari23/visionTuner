@@ -1,7 +1,7 @@
 names:
-- Tom
-- Jerry
+- A
+- B
 nc: 2
-test: /var/folders/px/z8lb6znd6q95tq6vlznyb0s40000gn/T/ajay/0/images/test
-train: /var/folders/px/z8lb6znd6q95tq6vlznyb0s40000gn/T/ajay/0/images/train
-val: /var/folders/px/z8lb6znd6q95tq6vlznyb0s40000gn/T/ajay/0/images/valid
+test: /var/folders/px/z8lb6znd6q95tq6vlznyb0s40000gn/T/test/1/images/test
+train: /var/folders/px/z8lb6znd6q95tq6vlznyb0s40000gn/T/test/1/images/train
+val: /var/folders/px/z8lb6znd6q95tq6vlznyb0s40000gn/T/test/1/images/valid

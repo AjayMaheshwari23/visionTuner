@@ -59,10 +59,15 @@ const ModalComp = () => {
   const convertToProject = () => {
     const { Title_of_Project, Description, CategoryCount, categories_list } =
       data;
+      var id = 0;
+      if(state && state.user?.projects.length > 0)
+        {
+          id = state.user?.projects[ state.user.projects.length - 1 ].projectId + 1;
+        }
     const op: ImageObj[] = [];
     const op2: AnnotationObj[] = [];
     return {
-      projectId: 0,
+      projectId: id,
       title: Title_of_Project || "",
       description: Description || "",
       categoryNumber: CategoryCount || 0,

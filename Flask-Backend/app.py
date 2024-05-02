@@ -7,7 +7,11 @@ import yaml
 from ultralytics import YOLO
 from flask import send_file
 import shutil
-
+import torch
+from torchvision import transforms
+from PIL import Image
+import requests
+from io import BytesIO
 
 model_path = "yolov8n.pt"
 
@@ -28,6 +32,81 @@ def get_files(path):
         abort(404)
 
 # ["F1_curve.png","F1_curve.png","P_curve.png","R_curve.png","PR_curve.png","confusion_matrix.png"]
+
+
+# Predict route
+# Define image transformation
+transform = transforms.Compose([
+    transforms.Resize((224, 224)),
+    transforms.ToTensor(),
+    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+])
+
+# @app.route('/predict', methods=['POST'])
+# def predict_image():
+#     print("Hello " + request)
+#     # Check if request contains file data
+#     if 'image' not in request.files:
+#         return jsonify({'error': 'No image provided'})
+
+
+#     model = torch.load("last.pt", map_location=torch.device('cpu'))
+#     model.eval()
+
+#     # Get the uploaded image file
+#     image_file = request.files['image']
+
+#     # Read the image file
+#     image = Image.open(image_file)
+
+#     # Preprocess the image
+#     image = transform(image).unsqueeze(0)
+
+#     # Make prediction
+#     with torch.no_grad():
+#         output = model(image)
+#         # Here you can process the output as required
+
+#     # Convert tensor output to list
+#     predicted_images = [output.tolist()]
+
+#     # Return the predicted images as a response
+#     return jsonify({'predicted_images': predicted_images})
+
+# Define image transformation
+# transform = transforms.Compose([
+#     transforms.Resize((224, 224)),  # Resize the image to 224x224
+#     transforms.ToTensor(),  # Convert the image to a PyTorch tensor
+#     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])  # Normalize the image
+# ])
+
+loaded_model = None
+
+def load_model(model_path):
+    global loaded_model
+    if loaded_model is None:
+        loaded_model = torch.load(model_path)
+        loaded_model.eval()
+
+
+@app.route('/predict',methods = ['GET','POST'])
+def predict():
+    if 'image' not in request.files:
+        return jsonify({'error': 'No image provided'}), 400
+
+    # image_file = request.files['image']
+    # image = Image.open(image_file)
+    # image = transform(image).unsqueeze(0) 
+
+    load_model("./ajay/0/last.pt")
+
+    # with torch.no_grad():
+    #     output = model(image)
+    print("Image received and processing...")
+
+    return jsonify({'predicted_images': 'Done'})
+
+
 
 def delete_runs_directory():
     runs_directory = os.path.join(current_app.root_path, 'runs')
