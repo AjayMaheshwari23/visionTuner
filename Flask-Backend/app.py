@@ -222,7 +222,7 @@ def handle_data():
             print(f"Annotation downloaded and saved to: {annotation_filename}")
 
         
-        model = YOLO('yolov8n.pt')
+        model = YOLO('yolov.pt')
         results = model.train(data='data.yaml',epochs=10)
         
         move_last_pt_file(username,projectId)
