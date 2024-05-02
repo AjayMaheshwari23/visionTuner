@@ -60,10 +60,15 @@ const ModalComp = () => {
     const { Title_of_Project, Description, CategoryCount, categories_list } =
       data;
       var id = 0;
-      if(state && state.user?.projects.length > 0)
-        {
-          id = state.user?.projects[ state.user.projects.length - 1 ].projectId + 1;
-        }
+      if (
+        state &&
+        state.user &&
+        state.user.projects &&
+        state.user.projects.length > 0
+      ) {
+        id = state.user.projects[state.user.projects.length - 1].projectId + 1;
+      }
+
     const op: ImageObj[] = [];
     const op2: AnnotationObj[] = [];
     return {

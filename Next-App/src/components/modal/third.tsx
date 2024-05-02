@@ -1,5 +1,5 @@
 import { ImageObj } from "../upload/UploadImage";
-import AnnotateTool from "../../app/dashboard/testing/page";
+import AnnotateTool from "../annotateTool/page";
 import { Dispatch, useEffect } from "react";
 import { AnnotationObj } from "@/app/models/user";
 
