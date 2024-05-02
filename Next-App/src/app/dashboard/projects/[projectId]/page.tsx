@@ -16,10 +16,13 @@ export default function Page() {
   const router = useRouter();
   const pathname = usePathname();
   const projectId = parseInt(pathname.split("/").pop() || "", 10);
-
+  console.log("in [] page projectId is " + projectId);
+  
   const def = state.user?.projects.find(
-    (project) => project.projectId === projectId
+    (project) => project.projectId == projectId
   );
+  console.log(def);
+  
   const [CurProject, setCurProject] = useState<Project | undefined>(def);
   const [loading, setLoading] = useState(0);
 
@@ -55,8 +58,8 @@ export default function Page() {
             modelCreated={modelCreated}
           />
         )}
-        {loading==2 && <Curves2 loading={loading} username={state.user?.username} projectId={CurProject?.projectId} />}
         {loading==2 && <Curves loading={loading} username={state.user?.username} projectId={CurProject?.projectId} />}
+        {/* {loading==2 && <Curves2 loading={loading} username={state.user?.username} projectId={CurProject?.projectId} />} */}
       </div>
     </>
   );

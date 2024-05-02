@@ -43,7 +43,9 @@ def move_files(username, projectId):
 
     os.makedirs(destination_directory, exist_ok=True)
 
-    files_to_move = ["F1_curve.png", "F1_curve.png", "P_curve.png", "R_curve.png", "PR_curve.png", "confusion_matrix.png"]
+    # files_to_move = ["F1_curve.png", "F1_curve.png", "P_curve.png", "R_curve.png", "PR_curve.png", "confusion_matrix.png"]
+    files_to_move = ["results.png", "labels.jpg", "confusion_matrix_normalized.png", "labels_correlogram.jpg"]
+
 
     for file_name in files_to_move:
         source_file_path = os.path.join(source_directory, file_name)
@@ -73,7 +75,7 @@ def move_last_pt_file(username,projectId):
 def handle_data():
     try:
         data = request.json
-        print(request)
+        print(data)
         username = data['username']
         projectId = str( data['project']['projectId'] )
         annotations = data['project']['annotations']
@@ -142,7 +144,7 @@ def handle_data():
 
         
         model = YOLO('yolov8n.pt')
-        results = model.train(data='data.yaml',epochs=1)
+        results = model.train(data='data.yaml',epochs=10)
         
         move_last_pt_file(username,projectId)
         delete_runs_directory()

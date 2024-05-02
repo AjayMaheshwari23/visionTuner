@@ -50,6 +50,7 @@ const Page = ({
   setannotations,
 }: AnnotationProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [diable, setdisabled] = useState(false);
   const [rectangles, setRectangles] = useState<Rectangle[]>([]);
   const [selectedRectangle, setSelectedRectangle] = useState<number | null>(
     null
@@ -238,7 +239,9 @@ const Page = ({
     console.log(rectangles);
     const updatedAnnotations = [...annotations];
 
-    rectangles.slice(1).forEach((rect) => {
+    rectangles.slice(1).forEach((rect) => 
+      {
+        
       // ele has x,y,height,width,id
       const cx = (rect.x + rect.width / 2) / width;
       const cy = (rect.y + rect.height / 2) / height;
@@ -258,8 +261,10 @@ const Page = ({
         const nh = rect.height / height;
         var clsIndex = -1;
         data.categories_list?.forEach((ele, index) => {
-          if (ele == name) clsIndex = index;
+          if (ele === rect.name) clsIndex = index;
         });
+        console.log(data.categories_list);
+        console.log( name , clsIndex);
 
         updatedAnnotations[annotationIdx].coordinates.push({
           class: clsIndex == undefined ? 0 : clsIndex,
@@ -276,12 +281,20 @@ const Page = ({
     if (ok) {
       setRectangles([]);
       setidx((idx) => idx + 1);
+    }else {
+      message.success("Everything Saved GO Ahead!!")
+      setdisabled(true);
     }
   };
 
   return (
     <div className="container">
       <div className="box">
+        <div
+          style={{ display: "flex", justifyContent: "center", margin: "5px" }}
+        >
+          {idx + 1} / {images.length}
+        </div>
         <div className="btns">
           <Button
             type="primary"
@@ -290,7 +303,7 @@ const Page = ({
             size="large"
             onClick={() => setidx((idx) => idx - 1)}
           >
-            Previous
+            Prev
           </Button>
           <Button
             type="primary"
@@ -362,8 +375,14 @@ const Page = ({
           </div>
           <div className="doneDiv">
             <Button
-              style={{ backgroundColor: "rgba(31,156,9,1)" , color:"white" }}
+              style={{
+                backgroundColor: !diable
+                  ? "rgba(31,156,9,1)"
+                  : "rgb(213 213 213)",
+                color: "white",
+              }}
               onClick={() => nextfun(false)}
+              disabled={diable}
             >
               Done
             </Button>

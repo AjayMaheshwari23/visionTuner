@@ -19,7 +19,7 @@ const ExampleComponent: React.FC<ExampleComponentProps> = ({
   setloading,
   setmodelCreated,
 }) => {
-  console.log("Loading in example " , loading);
+  // console.log("Loading in example " , loading);
   
   const { state , setState } = useAppContext();
   const username = state.user?.username;
@@ -77,12 +77,13 @@ const ExampleComponent: React.FC<ExampleComponentProps> = ({
 
   const downloadModel = async () => {
     try {
-      const url = `http://localhost:5000/get-files/${
-        state.user?.projects[project?.projectId - 1].model
-      }`;
+      const url = `http://localhost:5000/get-files/${state.user?.username}/${project.projectId}/last.pt`;
       console.log(url);
       window.open(url, "_blank");
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+      
+    }
   };
 
   return (

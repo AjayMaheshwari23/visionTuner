@@ -78,7 +78,8 @@ const ModalComp = () => {
     setSpinning(true);
 
     console.log("Creating New Prject Spiiner Triggered...");
-
+    console.log(projectData);
+    
     try {
       const res = await usenewProject(projectData);
       res.UpdatedUser;
@@ -90,7 +91,7 @@ const ModalComp = () => {
       setState({ ...state, user: res.UpdatedUser });
       setCurrent(0);
       setOpen(false);
-      router.push(`/dashboard/projects/${res.UpdatedUser.projects.length}`);
+      router.push(`/dashboard/projects/${projectData.projectId}`);
     } catch (error) {
       console.error("Error creating project:", error);
     } finally {
