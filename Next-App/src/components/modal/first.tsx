@@ -28,9 +28,10 @@ import {
   PlusOutlined,
   MinusCircleOutlined,
 } from "@ant-design/icons";
+import { Data } from "./modal";
 
 interface FirstProps {
-  setdata : React.Dispatch<React.SetStateAction<{}>>;
+  setdata : React.Dispatch<React.SetStateAction<Data>>;
 }
 
 const First = ({ setdata }: FirstProps) => 
@@ -56,7 +57,7 @@ const First = ({ setdata }: FirstProps) =>
         label="Description"
         rules={[{ message: "Please input Description" }]}
       >
-        <Input.TextArea showCount maxLength={100} />
+        <Input.TextArea showCount maxLength={500} />
       </Form.Item>
 
       <Form.Item label="Categories" name="CategoryCount">

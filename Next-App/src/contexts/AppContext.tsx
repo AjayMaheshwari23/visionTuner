@@ -53,19 +53,19 @@ interface AppProviderProps {
 export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [state, setState] = useState<AppState>(initialAppState);
 
-   const addSuccess = (messagee: string) => {
-     console.log("I called notification");
+  const addSuccess = (messagee: string) => {
+    console.log("I called notification");
 
-     message.success(messagee);
-   };
+    message.success(messagee);
+  };
 
-   const addError = (messagee: string) => {
-     message.error(messagee);
-   };
+  const addError = (messagee: string) => {
+    message.error(messagee);
+  };
 
-   const addWarning = (messagee: string) => {
-     message.warning(messagee);
-   };
+  const addWarning = (messagee: string) => {
+    message.warning(messagee);
+  };
 
   const router = useRouter();
   useEffect(() => {
@@ -91,12 +91,9 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
         ...state,
         user: user,
       });
-
-      
     };
 
     func();
-
   }, []);
 
   const value: AppContextType = {

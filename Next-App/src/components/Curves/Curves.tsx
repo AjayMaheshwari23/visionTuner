@@ -7,10 +7,10 @@ interface CurveProps {
 }
 
 const fileNames = [
-  "F1_curve.png",
-  "P_curve.png",
-  "R_curve.png",
-  "PR_curve.png",
+  "results.png",
+  "labels.jpg",
+  "confusion_matrix_normalized.png",
+  "labels_correlogram.jpg",
 ];
 
 function Curves({ loading , username, projectId }: CurveProps) 
@@ -19,7 +19,7 @@ function Curves({ loading , username, projectId }: CurveProps)
   const [files, setFiles] = useState<Blob[]>([]);
 
   useEffect(() => {
-    if (username && projectId) {
+    if (username!=undefined && projectId!=undefined) {
       const fetchFile = async (fileName: string) => {
         try {
           const response = await fetch(
@@ -72,7 +72,7 @@ function Curves({ loading , username, projectId }: CurveProps)
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(2, 1fr)",
-          gap: "10px",
+          gap: "50px",
           width: "100%",
           justifyContent: "center",
           alignItems: "center",

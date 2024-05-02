@@ -4,6 +4,7 @@ import { ImageObj } from "../upload/UploadImage";
 import { useRef, useState } from "react";
 import { useAppContext } from "@/contexts/AppContext";
 import { Button , message } from "antd";
+import "../../styles/Uploader.css";
 
 let ImageId = 0;
 
@@ -77,11 +78,12 @@ const Uploader = ({ images, setImages }: UploaderProps) =>
 
   return (
     <>
-    <div style={{ display: "flex", flexDirection: "row" }}>
+    <div className="MaindivUploader">
         <CldUploadButton
           uploadPreset="visionTuner_UploadPreset"
           onSuccess={(res: CloudinaryUploadWidgetResults) => extractId(res)}
           onError={(err) => console.log("ERROR OCCURRED -> " + err)}
+          className="Clodinaryuploadbtn"
         />
       </div>
     </>
