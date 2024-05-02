@@ -1,10 +1,13 @@
-# VisionTuner
 
+
+![alt text](Next-App/public/assets/images/readme_logo.png)
+
+
+# VisionTuner
   
 
 VisionTuner is a comprehensive platform for fine-tuning object detection and classification models, designed to empower users with seamless model training and deployment capabilities. With its intuitive interface and robust features, VisionTuner facilitates efficient management of projects, enabling users to customize and optimize machine learning models to their specific requirements.
 
-  
 
 ## Features
 
