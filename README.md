@@ -26,6 +26,9 @@ Easily create and manage projects, providing essential details and uploading ann
  Evaluate model performance with detailed training logs and performance metrics, including loss, accuracy, and validation scores.
 
 
+## Architecture
+![alt text](Next-App/public/assets/images/Architecture.png)
+
 ## Tech stack
 **FrontEnd** : Next.Js , Typescript
 
